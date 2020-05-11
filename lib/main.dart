@@ -11,7 +11,7 @@ class TwoGeeks extends StatelessWidget {
     return MaterialApp(
       title: 'Two Geeks',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       home: SignInPage(),
     );
