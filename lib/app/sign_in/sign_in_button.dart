@@ -10,11 +10,12 @@ class SignInButton extends CustomRaisedButton {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: 32,
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
               ),
             ),
             color: buttonColor,
-            borderRadius: 15,
+            height: 45.0,
+            borderRadius: 10,
             onPressed: onPressed);
 }
