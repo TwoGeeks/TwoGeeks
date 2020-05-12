@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
-import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
+import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -33,15 +33,17 @@ Widget _buildContent() {
           ),
         ),
         SizedBox(height: 80,),
-        SignInButton(
+        SignInButtonWithLogo(
           text: "Sign in with Google",
+          assetName: "images/google-logo.png",
           textColor: Colors.red[800],
           buttonColor: Colors.white,
           onPressed: () {},
         ),
         SizedBox(height: 10.0,),
-        SignInButton(
+        SignInButtonWithLogo(
           text: "Sign in with Facebook",
+          assetName: "images/facebook-logo.png",
           textColor: Colors.white,
           buttonColor: Color(0xFF334D92),
           onPressed: () {},
