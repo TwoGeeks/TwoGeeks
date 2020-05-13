@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
+import 'package:firebase_auth/firebase_auth.dart'
 
 class SignInPage extends StatelessWidget {
   @override
