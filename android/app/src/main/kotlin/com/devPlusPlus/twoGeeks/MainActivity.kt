@@ -1,4 +1,4 @@
-package com.example.twoGeeks
+package com.devPlusPlus.twoGeeks
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1057499984421",
+    "firebase_url": "https://twogeeks-f3505.firebaseio.com",
+    "project_id": "twogeeks-f3505",
+    "storage_bucket": "twogeeks-f3505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057499984421:android:b1db2704d8f8e02dbdc5cc",
+        "android_client_info": {
+          "package_name": "com.devPlusPlus.twoGeeks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057499984421-f7h2dvpnb52qjv5fv2hrjl4uh5oduqst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devPlusPlus.twoGeeks",
+            "certificate_hash": "b3cbf4fee0325ff18591de82a4beec68ac792f73"
+          }
+        },
+        {
+          "client_id": "1057499984421-bq12citk0dgdl8s3pvbfvpqsso11enbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx_ou_xsuAtyyjM55CiP1KCvHNqUlk8vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057499984421-bq12citk0dgdl8s3pvbfvpqsso11enbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
