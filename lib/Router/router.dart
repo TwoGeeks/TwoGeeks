@@ -4,6 +4,7 @@ import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing_page.dart';
+import 'package:twoGeeks/app/settings_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -27,7 +28,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 //    case 'Chatlist':
 //      return MaterialPageRoute(builder: (context) => Chatlist());
 //    case 'Settings':
-//      return MaterialPageRoute(builder: (context) => Settings());
+//      return MaterialPageRoute(builder: (context) => SettingPage());
     default:
       return MaterialPageRoute(
           builder: (context) => Undefined(name: settings.name));

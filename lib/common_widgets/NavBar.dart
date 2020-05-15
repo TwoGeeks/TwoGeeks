@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 /// Selected can be either 1,2,3,4
 /// 1 == Search
 /// 2 == Home
@@ -52,7 +51,9 @@ Widget NavBar(selected) {
               onPressed: () => {},
               child: selected == 3 ? activatedNav("Chat", Icons.account_circle) : deactiveNav(Icons.account_circle)),
           FlatButton(
-              onPressed: () => {},
+//              onPressed: () {
+//                Navigator.pushNamed(context, "Settings");
+//              },
               child: selected == 4 ? activatedNav("Settings", Icons.settings) : deactiveNav(Icons.settings)),
         ],
       ),
