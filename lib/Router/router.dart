@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/Undefined/undefined.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
+import 'package:twoGeeks/app/home_page.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing_page.dart';
@@ -19,16 +20,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     // To be implemented below
 //    case 'Signup':
 //      return MaterialPageRoute(builder: (context) => SignUp());
-//    case 'Main':
-//      return MaterialPageRoute(builder: (context) => Main());
+    case HomeRoute:
+      return MaterialPageRoute(builder: (context) => HomePage());
 //    case 'Matching':
 //      return MaterialPageRoute(builder: (context) => Matching());
 //    case 'Details':
 //      return MaterialPageRoute(builder: (context) => Details());
 //    case 'Chatlist':
 //      return MaterialPageRoute(builder: (context) => Chatlist());
-//    case 'Settings':
-//      return MaterialPageRoute(builder: (context) => SettingPage());
+    case SettingRoute:
+      return MaterialPageRoute(builder: (context) => Settings());
     default:
       return MaterialPageRoute(
           builder: (context) => Undefined(name: settings.name));
