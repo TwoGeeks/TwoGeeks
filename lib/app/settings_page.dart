@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 
-class SettingPage extends StatelessWidget {
+class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TwoGeeks"),
+        title: Text("Settings"),
         elevation: 3.0,
       ),
       body: _buildContent(),

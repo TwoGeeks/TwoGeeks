@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/settings_page.dart';
+import 'package:twoGeeks/common_widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -17,11 +18,16 @@ class HomePage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()),);
             }
           )
         ],
       ),
+      body: Column(
+        children: <Widget>[
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(child: NavBar(2),),
     );
   }
 }
