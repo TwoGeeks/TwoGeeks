@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:twoGeeks/app/services/user.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
 
 class SignInPage extends StatelessWidget {
 
-  SignInPage({@required this.onSignIn});
-  final Function(FirebaseUser) onSignIn;
+  SignInPage({@required this.auth,  @required this.onSignIn});
+  final Function(User) onSignIn;
+  final AuthBase auth;
 
   // temporary method to sign in for testing
   Future<void> _signInAnonymously() async {
     try {
-      AuthResult result = await FirebaseAuth.instance.signInAnonymously();
-      onSignIn(result.user);
+      User user = await auth.signInAnonymously();
+      onSignIn(user);
     } catch (e) {
       print("Error Encountered ${e.toString()}");
     }
