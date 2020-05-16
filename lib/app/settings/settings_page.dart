@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
-import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
 
 class Settings extends StatelessWidget {
 
   // sign out
-  Settings({@required this.onSignOut});
+  Settings({@required this.auth, @required this.onSignOut});
   final VoidCallback onSignOut;
+  final AuthBase auth;
 
   // temporary method to sign in for testing
   Future<void> _signOut() async {
+    print("is signed in? + ${auth.currentUser().toString()}");
     try {
-      await FirebaseAuth.instance.signOut();
+      await auth.signOut();
       onSignOut();
     } catch (e) {
       print("Error Encountered ${e.toString()}");
