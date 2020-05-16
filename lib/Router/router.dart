@@ -5,7 +5,7 @@ import 'package:twoGeeks/app/home_page.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing_page.dart';
-import 'package:twoGeeks/app/settings_page.dart';
+import 'file:///C:/Users/Austi/Desktop/GitHub/TwoGeeks/lib/app/settings/settings_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

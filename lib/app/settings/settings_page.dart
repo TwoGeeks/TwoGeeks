@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:twoGeeks/app/settings/setting_button.dart';
 
 class Settings extends StatelessWidget {
 
@@ -30,32 +31,33 @@ class Settings extends StatelessWidget {
 
   Widget _buildContent() {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.only(top: 35),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          _SignOutButton(),
+          SizedBox(height: 30,),
+          Container(
+            color: Colors.grey[400],
+            height: 40,
+            alignment: Alignment.center,
+            child: Text(
+              "Settings",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: 30,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          SizedBox(height: 40,),
+          SettingButton(text: "Log Out", textColor: Colors.white, onPressed: _signOut, buttonColor: Colors.red[600],),
           SizedBox(
             height: 80,
           ),
         ],
       ),
-    );
-  }
-
-  Widget _SignOutButton() {
-    return CustomFlatButton(
-      child: Text(
-        "Logout",
-        style: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
-      ),
-      height: 50,
-      color: Colors.red[600],
-      onPressed: _signOut,
     );
   }
 }

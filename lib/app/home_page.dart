@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twoGeeks/app/settings_page.dart';
+import 'file:///C:/Users/Austi/Desktop/GitHub/TwoGeeks/lib/app/settings/settings_page.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
