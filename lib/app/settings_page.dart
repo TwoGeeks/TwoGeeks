@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/common_widgets/NavBar.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -21,12 +22,9 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings"),
-        elevation: 3.0,
-      ),
       body: _buildContent(),
       backgroundColor: Colors.grey[200],
+      bottomNavigationBar: NavBar(context, 4),
     );
   }
 

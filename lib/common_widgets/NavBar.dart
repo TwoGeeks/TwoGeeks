@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
+
 /// Selected can be either 1,2,3,4
 /// 1 == Search
 /// 2 == Home
 /// 3 == Chat
 /// 4 == Settings
 
-Widget NavBar(selected) {
+Widget NavBar(context, selected) {
+
+  // Icons on the current page
   Widget activatedNav(name, icon) {
     return (Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -25,6 +29,7 @@ Widget NavBar(selected) {
     ));
   }
 
+  // Icons that are not on the current page
   Widget deactiveNav(icon) {
     return (Icon(
       icon,
@@ -45,16 +50,26 @@ Widget NavBar(selected) {
                   ? activatedNav("search", Icons.favorite)
                   : deactiveNav(Icons.favorite)),
           FlatButton(
-              onPressed: () => {},
-              child: selected == 2 ? activatedNav("Home", Icons.home) : deactiveNav(Icons.home)),
+              onPressed: () => {
+                    if (selected != 2) {Navigator.pushNamed(context, HomeRoute)}
+                  },
+              child: selected == 2
+                  ? activatedNav("Home", Icons.home)
+                  : deactiveNav(Icons.home)),
           FlatButton(
               onPressed: () => {},
-              child: selected == 3 ? activatedNav("Chat", Icons.account_circle) : deactiveNav(Icons.account_circle)),
+              child: selected == 3
+                  ? activatedNav("Chat", Icons.account_circle)
+                  : deactiveNav(Icons.account_circle)),
           FlatButton(
-//              onPressed: () {
-//                Navigator.pushNamed(context, "Settings");
-//              },
-              child: selected == 4 ? activatedNav("Settings", Icons.settings) : deactiveNav(Icons.settings)),
+              onPressed: () {
+                if (selected != 4) {
+                  Navigator.pushNamed(context, SettingRoute);
+                }
+              },
+              child: selected == 4
+                  ? activatedNav("Settings", Icons.settings)
+                  : deactiveNav(Icons.settings)),
         ],
       ),
     ),

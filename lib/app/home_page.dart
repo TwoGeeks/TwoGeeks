@@ -13,28 +13,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Two Geeks'),
-        actions: <Widget>[
-          FlatButton(
-            child: Text(
-              "settings",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(
-                onSignOut: onSignOut,
-              )),);
-            }
-          )
-        ],
       ),
       body: Column(
         children: <Widget>[
         ],
       ),
-      bottomNavigationBar: BottomAppBar(child: NavBar(2),),
+      bottomNavigationBar: NavBar(context, 2),
     );
   }
 }
