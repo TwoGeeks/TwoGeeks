@@ -3,6 +3,11 @@ import 'package:twoGeeks/app/settings_page.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
+
+  // sign out
+  HomePage({@required this.onSignOut});
+  final VoidCallback onSignOut;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(
+                onSignOut: onSignOut,
+              )),);
             }
           )
         ],
