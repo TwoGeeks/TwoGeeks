@@ -51,7 +51,7 @@ Widget NavBar(context, selected) {
                   : deactiveNav(Icons.favorite)),
           FlatButton(
               onPressed: () => {
-                    if (selected != 2) {Navigator.pushNamed(context, HomeRoute)}
+                    if (selected != 2) {Navigator.pushReplacementNamed(context, HomeRoute)}
                   },
               child: selected == 2
                   ? activatedNav("Home", Icons.home)
@@ -64,7 +64,7 @@ Widget NavBar(context, selected) {
           FlatButton(
               onPressed: () {
                 if (selected != 4) {
-                  Navigator.pushNamed(context, SettingRoute);
+                  Navigator.pushReplacementNamed(context, SettingRoute);
                 }
               },
               child: selected == 4

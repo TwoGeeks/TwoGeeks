@@ -6,13 +6,12 @@ import 'package:twoGeeks/common_widgets/NavBar.dart';
 class HomePage extends StatelessWidget {
 
   // sign out
-  HomePage({@required this.auth, @required this.onSignOut});
-  final VoidCallback onSignOut;
+  HomePage({this.auth,});
   final AuthBase auth;
 
   @override
   Widget build(BuildContext context) {
-    Settings(auth: auth, onSignOut: () => onSignOut(),);
+    Settings(auth: auth,);
     return Scaffold(
       appBar: AppBar(
         title: Text('Two Geeks'),
