@@ -8,21 +8,23 @@ import 'package:twoGeeks/app/landing_page.dart';
 import 'package:twoGeeks/app/settings/settings_page.dart';
 import 'package:twoGeeks/app/services/auth.dart';
 
+Auth auth;
 Route<dynamic> generateRoute(RouteSettings settings) {
+
   switch (settings.name) {
     // Add more routes here
     case SignInRoute:
-      return MaterialPageRoute(builder: (context) => SignInPage(auth: Auth(),));
+      return MaterialPageRoute(builder: (context) => SignInPage(auth: auth,));
     case ChatroomRoute:
       return MaterialPageRoute(builder: (context) => Chatroom());
     case LandingRoute:
-      return MaterialPageRoute(builder: (context) => LandingPage(auth: Auth(),));
+      return MaterialPageRoute(builder: (context) => LandingPage(auth: auth,));
 
     // To be implemented below
 //    case 'Signup':
 //      return MaterialPageRoute(builder: (context) => SignUp());
     case HomeRoute:
-      return MaterialPageRoute(builder: (context) => HomePage());
+      return MaterialPageRoute(builder: (context) => HomePage(auth: auth,));
 //    case 'Matching':
 //      return MaterialPageRoute(builder: (context) => Matching());
 //    case 'Details':
@@ -30,7 +32,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 //    case 'Chatlist':
 //      return MaterialPageRoute(builder: (context) => Chatlist());
     case SettingRoute:
-      return MaterialPageRoute(builder: (context) => Settings(auth: Auth(),));
+      return MaterialPageRoute(builder: (context) => Settings(auth: auth,));
     default:
       return MaterialPageRoute(
           builder: (context) => Undefined(name: settings.name));

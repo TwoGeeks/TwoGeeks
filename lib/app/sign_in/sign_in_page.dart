@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
-import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
 class SignInPage extends StatelessWidget {
 
-  SignInPage({@required this.auth,  @required this.onSignIn});
-  final Function(User) onSignIn;
+  SignInPage({@required this.auth,});
   final AuthBase auth;
 
   // temporary method to sign in for testing
   Future<void> _signInAnonymously() async {
     try {
-      User user = await auth.signInAnonymously();
-      onSignIn(user);
+      await auth.signInAnonymously();
+    } catch (e) {
+      print("Error Encountered ${e.toString()}");
+    }
+  }
+
+  // sign in with google
+  Future<void> _signInWithGoogle() async {
+    try {
+      await auth.signInWithGoogle();
+    } catch (e) {
+      print("Error Encountered ${e.toString()}");
+    }
+  }
+
+  // sign in with facebook
+  Future<void> _signInWithFacebook() async {
+    try {
+      await auth.signInWithFacebook();
     } catch (e) {
       print("Error Encountered ${e.toString()}");
     }
@@ -54,7 +69,7 @@ class SignInPage extends StatelessWidget {
             assetName: "images/google-logo.png",
             textColor: Colors.red[800],
             buttonColor: Colors.white,
-            onPressed: () {},
+            onPressed: _signInWithGoogle,
           ),
           SizedBox(height: 10.0,),
           SignInButtonWithLogo(
@@ -62,7 +77,7 @@ class SignInPage extends StatelessWidget {
             assetName: "images/facebook-logo.png",
             textColor: Colors.white,
             buttonColor: Color(0xFF334D92),
-            onPressed: () {},
+            onPressed: _signInWithFacebook,
           ),
           SizedBox(height: 10.0,),
           SignInButton(

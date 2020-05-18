@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/settings/settings_page.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Settings(auth: auth,);
     return Scaffold(
       appBar: AppBar(
         title: Text('Two Geeks'),
@@ -24,3 +22,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
