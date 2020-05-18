@@ -17,10 +17,19 @@ class SignInPage extends StatelessWidget {
     }
   }
 
-  // temporary method to sign in for testing
+  // sign in with google
   Future<void> _signInWithGoogle() async {
     try {
       await auth.signInWithGoogle();
+    } catch (e) {
+      print("Error Encountered ${e.toString()}");
+    }
+  }
+
+  // sign in with facebook
+  Future<void> _signInWithFacebook() async {
+    try {
+      await auth.signInWithFacebook();
     } catch (e) {
       print("Error Encountered ${e.toString()}");
     }
@@ -68,7 +77,7 @@ class SignInPage extends StatelessWidget {
             assetName: "images/facebook-logo.png",
             textColor: Colors.white,
             buttonColor: Color(0xFF334D92),
-            onPressed: () {},
+            onPressed: _signInWithFacebook,
           ),
           SizedBox(height: 10.0,),
           SignInButton(

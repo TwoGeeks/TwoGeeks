@@ -15,5 +15,6 @@ abstract class AuthBase {
   // sign in via google
   Future<User> signInWithGoogle();
   // sign in via facebook
+  Future<User> signInWithFacebook();
   // sign in via TwoGeeks
 }
