@@ -17,12 +17,8 @@ class Auth implements AuthBase{
   // anonymous sign in
   @override
   Future<User> signInAnonymously() async {
-    try {
       AuthResult result = await _firebaseAuth.signInAnonymously();
       return _userFromFirebase(result.user);
-    } catch (e) {
-      print("Error Encountered ${e.toString()}");
-    }
   }
 
   // sign out

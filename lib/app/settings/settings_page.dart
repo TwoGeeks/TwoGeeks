@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/common_widgets/NavBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -6,31 +7,29 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 class Settings extends StatelessWidget {
 
   // sign out
-  Settings({@required this.auth, @required this.onSignOut});
-  final VoidCallback onSignOut;
+  Settings({this.auth});
   final AuthBase auth;
-
-  // temporary method to sign in for testing
-  Future<void> _signOut() async {
-    print("is signed in? + ${auth.currentUser().toString()}");
-    try {
-      await auth.signOut();
-      onSignOut();
-    } catch (e) {
-      print("Error Encountered ${e.toString()}");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildContent(),
+      body: _buildContent(context),
       backgroundColor: Colors.grey[200],
       bottomNavigationBar: NavBar(context, 4),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
+    // temporary method to sign in for testing
+    Future<void> _signOut() async {
+      try {
+        await auth.signOut();
+        Navigator.pushReplacementNamed(context, LandingRoute);
+      } catch (e) {
+        print("Error Encountered ${e.toString()}");
+      }
+    }
+
     return Padding(
       padding: EdgeInsets.only(top: 35),
       child: Column(
