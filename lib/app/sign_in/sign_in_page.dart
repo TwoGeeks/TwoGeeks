@@ -45,14 +45,22 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: _buildContent(context),
-      backgroundColor: Colors.grey[200],
+      body: Container(
+          constraints: BoxConstraints.expand(),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/study.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: _buildContent(context), /* add child content here */
+      ),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +69,7 @@ class SignInPage extends StatelessWidget {
             "Sign in to TwoGeeks",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.w600,
               fontSize: 32,
             ),
@@ -96,13 +104,13 @@ class SignInPage extends StatelessWidget {
             buttonColor: Colors.red[700],
             onPressed: _signInAnonymously,
           ),
-          SizedBox(height: 10.0,),
+          SizedBox(height: 20.0,),
           Text(
             'or',
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 14,
-                color: Colors.black87
+                color: Colors.white
             ),
           ),
           SizedBox(height: 10.0,),
@@ -111,7 +119,7 @@ class SignInPage extends StatelessWidget {
               "Create a new TwoGeeks Account",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.black87,
+                color: Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
                 decoration: TextDecoration.underline,

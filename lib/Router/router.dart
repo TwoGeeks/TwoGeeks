@@ -35,6 +35,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case MatchingRoute:
       return MaterialPageRoute(builder: (context) => Matching(auth: auth,));
+//    case 'Matching':
+//      return MaterialPageRoute(builder: (context) => Matching());
 //    case 'Details':
 //      return MaterialPageRoute(builder: (context) => Details());
 //    case 'Chatlist':
