@@ -12,9 +12,11 @@ abstract class AuthBase {
   // current user
   Future<User> currentUser();
   // sign up
+  Future<User> signUpWithTwoGeeks(email, password);
   // sign in via google
   Future<User> signInWithGoogle();
   // sign in via facebook
   Future<User> signInWithFacebook();
   // sign in via TwoGeeks
+  Future<User> signInWithTwoGeeks(email, password);
 }

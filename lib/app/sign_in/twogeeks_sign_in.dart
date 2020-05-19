@@ -14,7 +14,7 @@ class TwoGeeksSignInPage extends StatelessWidget {
         title: Text("Sign in with TwoGeeks"),
         elevation: 3.0,
       ),
-      body: TwoGeeksSignInForm(),
+      body: TwoGeeksSignInForm(auth: auth,),
     );
   }
 }
