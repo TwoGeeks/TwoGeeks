@@ -8,7 +8,6 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 /// 4 == Settings
 
 Widget NavBar(context, selected) {
-
   // Icons on the current page
   Widget activatedNav(name, icon) {
     return (Column(
@@ -45,13 +44,17 @@ Widget NavBar(context, selected) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           FlatButton(
-              onPressed: () => {},
+              onPressed: () => {
+                    if (selected != 1)
+                      {Navigator.pushReplacementNamed(context, MatchingRoute)}
+                  },
               child: selected == 1
                   ? activatedNav("search", Icons.favorite)
                   : deactiveNav(Icons.favorite)),
           FlatButton(
               onPressed: () => {
-                    if (selected != 2) {Navigator.pushReplacementNamed(context, HomeRoute)}
+                    if (selected != 2)
+                      {Navigator.pushReplacementNamed(context, HomeRoute)}
                   },
               child: selected == 2
                   ? activatedNav("Home", Icons.home)
