@@ -106,8 +106,7 @@ class TwoGeeksSignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: ListView(
         children: _buildChildren(),
       ),
     );

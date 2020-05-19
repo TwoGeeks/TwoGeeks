@@ -14,12 +14,7 @@ class TwoGeeksSignInPage extends StatelessWidget {
         title: Text("Sign in with TwoGeeks"),
         elevation: 3.0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Card(
-          child: TwoGeeksSignInForm(),
-        ),
-      )
+      body: TwoGeeksSignInForm(),
     );
   }
 }
