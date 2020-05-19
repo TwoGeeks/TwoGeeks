@@ -14,7 +14,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildContent(context),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       bottomNavigationBar: NavBar(context, 4),
     );
   }
@@ -52,6 +52,8 @@ class Settings extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40,),
+          SettingButton(text: "Edit Profile", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
+          SettingButton(text: "Edit Preference", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
           SettingButton(text: "Log Out", textColor: Colors.black, onPressed: _signOut, buttonColor: Colors.white,),
           SizedBox(
             height: 80,

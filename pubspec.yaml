@@ -56,6 +56,7 @@ flutter:
     - images/facebook-logo.png
     - images/sample_pictures/profile_pic.png
     - images/sample_pictures/guy1.jpg
+    - images/study.jpg
     - google-logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
