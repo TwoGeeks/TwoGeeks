@@ -52,7 +52,7 @@ class Settings extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40,),
-          SettingButton(text: "Log Out", textColor: Colors.white, onPressed: _signOut, buttonColor: Colors.red[600],),
+          SettingButton(text: "Log Out", textColor: Colors.black, onPressed: _signOut, buttonColor: Colors.white,),
           SizedBox(
             height: 80,
           ),

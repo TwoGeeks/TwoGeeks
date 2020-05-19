@@ -7,6 +7,7 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing_page.dart';
 import 'package:twoGeeks/app/settings/settings_page.dart';
 import 'package:twoGeeks/app/services/auth.dart';
+import 'package:twoGeeks/app/sign_in/twogeeks_sign_in.dart';
 
 Auth auth;
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -25,6 +26,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 //      return MaterialPageRoute(builder: (context) => SignUp());
     case HomeRoute:
       return MaterialPageRoute(builder: (context) => HomePage(auth: auth,));
+
+    case TwoGeeksSignInRoute:
+      return MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (context) => TwoGeeksSignInPage(auth: auth,)
+      );
+
 //    case 'Matching':
 //      return MaterialPageRoute(builder: (context) => Matching());
 //    case 'Details':
