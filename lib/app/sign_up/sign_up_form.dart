@@ -5,16 +5,16 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
 import 'package:twoGeeks/common_widgets/email_password_form.dart';
 
-class TwoGeeksSignInForm extends StatefulWidget {
+class TwoGeeksSignUpForm extends StatefulWidget {
 
-  TwoGeeksSignInForm({@required this.auth,});
+  TwoGeeksSignUpForm({@required this.auth,});
   final AuthBase auth;
 
   @override
-  _TwoGeeksSignInFormState createState() => _TwoGeeksSignInFormState();
+  _TwoGeeksSignUpFormState createState() => _TwoGeeksSignUpFormState();
 }
 
-class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
+class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -24,7 +24,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
 
   void _submit() async {
     try{
-      await widget.auth.signInWithTwoGeeks(_email, _password);
+      await widget.auth.signUpWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
       print(e);
@@ -37,7 +37,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
         height: 20,
       ),
       Text(
-        "Welcome Back",
+        "Create a new TwoGeeks Account",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.black87,
@@ -49,7 +49,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
         height: 8,
       ),
       Text(
-        "Sign in to find a study partner",
+        "Sign up to find a study partner",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.grey[400],
@@ -67,7 +67,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
           children: <Widget>[
             CustomRaisedButton(
               child: Text(
-                "Sign in",
+                "Sign up",
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
@@ -83,23 +83,23 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
             Row(children: <Widget>[
               Expanded(
                   child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                child: Divider(
-                  thickness: 2,
-                ),
-              )),
+                    padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                    child: Divider(
+                      thickness: 2,
+                    ),
+                  )),
               Text("OR"),
               Expanded(
                   child: Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                child: Divider(
-                  thickness: 2,
-                ),
-              )),
+                    padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                    child: Divider(
+                      thickness: 2,
+                    ),
+                  )),
             ]),
             FlatButton(
-              child: Text("New to TwoGeeks? Join Now!"),
-              onPressed: () => Navigator.of(context).popAndPushNamed("Signup"),
+              child: Text("Already got an account? Sign in!"),
+              onPressed: () => Navigator.of(context).popAndPushNamed(TwoGeeksSignInRoute),
             )
           ],
         ),

@@ -110,7 +110,7 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.0,),
-          InkWell(
+          FlatButton(
             child: Text(
               "Create a new TwoGeeks Account",
               textAlign: TextAlign.center,
@@ -121,6 +121,7 @@ class SignInPage extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
             ),
+            onPressed: () => Navigator.of(context).pushNamed("Signup"),
           )
         ],
       ),
