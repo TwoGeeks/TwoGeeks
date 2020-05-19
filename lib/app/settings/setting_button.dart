@@ -27,7 +27,7 @@ class SettingButton extends CustomFlatButton {
             ),
             Icon(
               Icons.arrow_forward,
-              color: Colors.white,
+              color: textColor,
             )
           ],
         ),

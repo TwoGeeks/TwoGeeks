@@ -8,6 +8,8 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing_page.dart';
 import 'package:twoGeeks/app/settings/settings_page.dart';
 import 'package:twoGeeks/app/services/auth.dart';
+import 'package:twoGeeks/app/sign_in/twogeeks_sign_in.dart';
+import 'package:twoGeeks/app/sign_up/sign_up_page.dart';
 
 Auth auth;
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -22,12 +24,19 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => LandingPage(auth: auth,));
 
     // To be implemented below
-//    case 'Signup':
-//      return MaterialPageRoute(builder: (context) => SignUp());
+    case 'Signup':
+      return MaterialPageRoute(builder: (context) => TwoGeeksSignUpPage(auth: auth,));
     case HomeRoute:
       return MaterialPageRoute(builder: (context) => HomePage(auth: auth,));
+    case TwoGeeksSignInRoute:
+      return MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (context) => TwoGeeksSignInPage(auth: auth,)
+      );
     case MatchingRoute:
       return MaterialPageRoute(builder: (context) => Matching(auth: auth,));
+//    case 'Matching':
+//      return MaterialPageRoute(builder: (context) => Matching());
 //    case 'Details':
 //      return MaterialPageRoute(builder: (context) => Details());
 //    case 'Chatlist':

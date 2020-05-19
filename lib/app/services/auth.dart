@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:twoGeeks/Router/router.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
@@ -73,6 +72,18 @@ class Auth implements AuthBase {
         message: "sign in aborted by user",
       );
     }
+  }
+
+  @override
+  Future<User> signInWithTwoGeeks(email, password) async {
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    return _userFromFirebase(authResult.user);
+  }
+
+  @override
+  Future<User> signUpWithTwoGeeks(email, password) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    return _userFromFirebase(authResult.user);
   }
 
   // sign out
