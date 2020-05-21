@@ -8,7 +8,7 @@ class Chatroom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: ChatHeader(),
+        appBar: ChatHeader(context),
         body: ChatBody(context),
         bottomNavigationBar: Transform.translate(
           offset: Offset(0.0, -1 * MediaQuery.of(context).viewInsets.bottom),
@@ -17,7 +17,7 @@ class Chatroom extends StatelessWidget {
   }
 }
 
-Widget ChatHeader() {
+Widget ChatHeader(context) {
   return AppBar(
       backgroundColor: Color.fromRGBO(3, 218, 198, 1),
       title: Row(
@@ -38,7 +38,9 @@ Widget ChatHeader() {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: null));
+          onPressed: () {
+            Navigator.pop(context);
+          }));
 }
 
 Widget ChatBody(context) {
