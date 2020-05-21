@@ -60,7 +60,11 @@ Widget NavBar(context, selected) {
                   ? activatedNav("Home", Icons.home)
                   : deactiveNav(Icons.home)),
           FlatButton(
-              onPressed: () => {},
+              onPressed: () => {
+                if (selected != 3) {
+                  Navigator.pushReplacementNamed(context, ChatRoute)
+                }
+              },
               child: selected == 3
                   ? activatedNav("Chat", Icons.account_circle)
                   : deactiveNav(Icons.account_circle)),
