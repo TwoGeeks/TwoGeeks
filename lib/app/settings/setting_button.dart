@@ -12,7 +12,7 @@ class SettingButton extends CustomFlatButton {
         VoidCallback onPressed})
       : super(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(25,0,25,0),
+        padding: EdgeInsets.fromLTRB(20,0,20,0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -22,18 +22,18 @@ class SettingButton extends CustomFlatButton {
               style: TextStyle(
                 color: textColor,
                 fontWeight: FontWeight.w400,
-                fontSize: 20,
+                fontSize: 22,
               ),
             ),
             Icon(
-              Icons.arrow_forward,
-              color: Colors.white,
+              Icons.arrow_forward_ios,
+              color: textColor,
             )
           ],
         ),
       ),
       color: buttonColor,
-      height: 45.0,
+      height: 60.0,
       borderRadius: 0,
       onPressed: onPressed);
 }
