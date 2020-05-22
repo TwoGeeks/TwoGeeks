@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/Undefined/undefined.dart';
 import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
-import 'package:twoGeeks/app/home_page.dart';
+import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
