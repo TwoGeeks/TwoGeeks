@@ -1,0 +1,18 @@
+// use this class to create validators for inputs
+abstract class Validator<T> {
+  bool isValid(T value);
+}
+
+class StringValidator implements Validator<String> {
+  // returns true if string is not empty
+  @override
+  bool isValid(String value) {
+    return value.isNotEmpty;
+  }
+}
+
+// used as a mixin for email-password form
+class EmailAndPasswordValidator{
+  final StringValidator emailValidator = StringValidator();
+  final StringValidator passwordValidator = StringValidator();
+}
