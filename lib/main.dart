@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/Router/router.dart' as router;
-import 'package:twoGeeks/app/landing_page.dart';
+import 'package:twoGeeks/app/landing.dart';
 import 'package:twoGeeks/app/services/auth.dart';
 
 void main() {

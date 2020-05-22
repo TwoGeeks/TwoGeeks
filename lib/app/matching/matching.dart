@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/app/matching/CardData.dart';
+import 'package:twoGeeks/app/matching/cardSlide.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/common_widgets/NavBar.dart';
+import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class Matching extends StatefulWidget {
   Matching({this.auth});
@@ -23,12 +25,12 @@ class _MatchingState extends State<Matching> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _MatchingBody(),
-      bottomNavigationBar: NavBar(context, 1),
+      body: matchingBody(),
+      bottomNavigationBar: navBar(context, 1),
     );
   }
 
-  Widget _MatchingBody() {
+  Widget matchingBody() {
     return Stack(
       children: cardlist,
     );
@@ -47,99 +49,7 @@ class _MatchingState extends State<Matching> {
     ];
 
     for (int x = 0; x < 3; x++) {
-      cardlist.add(Positioned(
-        top: 30,
-        child: Draggable(
-          onDragEnd: (drag) {
-            _removeCard(x);
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 400,
-              height: 670,
-              child: Column(
-                children: <Widget>[
-                  Image.asset("images/sample_pictures/guy1.jpg"),
-                  Container(
-                    margin: EdgeInsets.all(50),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(bottom: 30),
-                          child: Text(
-                            magicbox[x].name,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 26
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            magicbox[x].desc,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 17
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          child: Card(
-            elevation: 12,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 400,
-              height: 670,
-              child: Column(
-                children: <Widget>[
-                  Image.asset("images/sample_pictures/guy1.jpg"),
-                  Container(
-                    margin: EdgeInsets.all(50),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(bottom: 30),
-                          child: Text(
-                            magicbox[x].name,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 26
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            magicbox[x].desc,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 17
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-      ));
+      cardlist.add(cardSlide(magicbox[x], _removeCard, x));
     }
     return cardlist;
   }
@@ -148,15 +58,5 @@ class _MatchingState extends State<Matching> {
     setState(() {
       cardlist.removeAt(index);
     });
-  }
-}
-
-class CardData {
-  String name = "";
-  String desc = "";
-
-  CardData(String inputname, String inputdesc) {
-    name = inputname;
-    desc = inputdesc;
   }
 }

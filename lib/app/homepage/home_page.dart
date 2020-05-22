@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequests.dart';
 import 'package:twoGeeks/app/homepage/unreadMessages/unreadMessages.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/common_widgets/NavBar.dart';
+import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class HomePage extends StatelessWidget {
   // sign out
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
           friendRequests(context),
         ],
       ),
-      bottomNavigationBar: NavBar(context, 2),
+      bottomNavigationBar: navBar(context, 2),
     );
   }
 }

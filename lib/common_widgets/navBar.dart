@@ -7,7 +7,7 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 /// 3 == Chat
 /// 4 == Settings
 
-Widget NavBar(context, selected) {
+Widget navBar(context, selected) {
   // Icons on the current page
   Widget activatedNav(name, icon) {
     return (Column(
