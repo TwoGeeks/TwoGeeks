@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/common_widgets/NavBar.dart';
+import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
@@ -15,7 +15,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       body: _buildContent(context),
       backgroundColor: Colors.white,
-      bottomNavigationBar: NavBar(context, 4),
+      bottomNavigationBar: navBar(context, 4),
     );
   }
 
