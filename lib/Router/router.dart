@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/Undefined/undefined.dart';
 import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
+import 'package:twoGeeks/app/detail/detail.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
@@ -36,8 +37,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case MatchingRoute:
       return MaterialPageRoute(builder: (context) => Matching(auth: auth));
-//    case 'Details':
-//      return MaterialPageRoute(builder: (context) => Details());
+    case DetailRoute:
+      return MaterialPageRoute(builder: (context) => Detail());
     case ChatRoute:
       return MaterialPageRoute(builder: (context) => Chat(auth: auth));
     case SettingRoute:
