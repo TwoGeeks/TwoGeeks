@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/matching/CardData.dart';
 import 'package:twoGeeks/app/matching/cardSlide.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -25,15 +26,19 @@ class _MatchingState extends State<Matching> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: matchingBody(),
+      body: matchingBody(context),
       bottomNavigationBar: navBar(context, 1),
     );
   }
 
-  Widget matchingBody() {
-    return Stack(
-      children: cardlist,
-    );
+  Widget matchingBody(context) {
+    return
+//        Stack(
+//          children: cardlist,
+//        ),
+        FlatButton(onPressed: () {
+          Navigator.pushReplacementNamed(context, DetailRoute);
+        }, child: Text("click me"));
   }
 
   List<Widget> _matchFrame() {
