@@ -7,7 +7,7 @@ Widget slideDeck(context, auth, name, photourl, desc) {
   return Stack(children: <Widget>[
     InkWell(
       onTap: () {
-        Navigator.pushReplacementNamed(context, DetailRoute);
+        Navigator.pushNamed(context, DetailRoute);
       },
       child: Column(
         children: <Widget>[
