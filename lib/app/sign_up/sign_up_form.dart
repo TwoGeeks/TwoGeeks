@@ -4,8 +4,10 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
 import 'package:twoGeeks/common_widgets/email_password_form.dart';
+import 'package:twoGeeks/common_widgets/lines.dart';
+import 'package:twoGeeks/common_widgets/validators.dart';
 
-class TwoGeeksSignUpForm extends StatefulWidget {
+class TwoGeeksSignUpForm extends StatefulWidget with EmailAndPasswordValidator{
 
   TwoGeeksSignUpForm({@required this.auth,});
   final AuthBase auth;
@@ -21,8 +23,12 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
 
   String get _email => _emailController.text;
   String get _password => _passwordController.text;
+  bool submitted = false;
 
   void _submit() async {
+    setState(() {
+      submitted = true;
+    });
     try{
       await widget.auth.signUpWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
@@ -31,7 +37,17 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
     }
   }
 
+  void _updateState(){
+    setState(() {
+
+    });
+  }
+
   List<Widget> _buildChildren() {
+
+    bool _submitEnabled = widget.emailValidator.isValid(_email) &&
+        widget.passwordValidator.isValid(_password);
+
     return [
       SizedBox(
         height: 20,
@@ -59,7 +75,8 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
       SizedBox(
         height: 20,
       ),
-      EmailPasswordForm(emailController: _emailController, passwordController: _passwordController,),
+      EmailPasswordForm(emailController: _emailController,
+        passwordController: _passwordController, onSubmit: _submitEnabled ? _submit : null, onChanged: _updateState, submitted: submitted,),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
         child: Column(
@@ -75,28 +92,12 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
               ),
               color: Colors.blue[800],
               borderRadius: 5,
-              onPressed: _submit,
+              onPressed: _submitEnabled ? _submit : null,
             ),
             SizedBox(
               height: 20,
             ),
-            Row(children: <Widget>[
-              Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                    child: Divider(
-                      thickness: 2,
-                    ),
-                  )),
-              Text("OR"),
-              Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                    child: Divider(
-                      thickness: 2,
-                    ),
-                  )),
-            ]),
+            Lines.lineWithCenterText(Text("or")),
             FlatButton(
               child: Text("Already got an account? Sign in!"),
               onPressed: () => Navigator.of(context).popAndPushNamed(TwoGeeksSignInRoute),
