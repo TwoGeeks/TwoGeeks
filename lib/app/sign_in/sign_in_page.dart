@@ -9,15 +9,6 @@ class SignInPage extends StatelessWidget {
   SignInPage({@required this.auth,});
   final AuthBase auth;
 
-  // temporary method to sign in for testing
-  Future<void> _signInAnonymously() async {
-    try {
-      await auth.signInAnonymously();
-    } catch (e) {
-      print("Error Encountered ${e.toString()}");
-    }
-  }
-
   // sign in with google
   Future<void> _signInWithGoogle() async {
     try {
@@ -98,13 +89,6 @@ class SignInPage extends StatelessWidget {
             onPressed: _signInWithGoogle,
           ),
           SizedBox(height: 10.0,),
-          SignInButton(
-            text: "Temporary annoymous sign-in (for testing)",
-            textColor: Colors.white,
-            buttonColor: Colors.red[700],
-            onPressed: _signInAnonymously,
-          ),
-          SizedBox(height: 20.0,),
           Text(
             'or',
             textAlign: TextAlign.center,
