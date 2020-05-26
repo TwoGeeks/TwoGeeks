@@ -36,7 +36,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => TwoGeeksSignInPage(auth: auth)
       );
     case MatchingRoute:
-      return MaterialPageRoute(builder: (context) => Matching(auth: auth));
+      return MaterialPageRoute(builder: (context) => Matching(auth: auth, name: "Doran Lee", photourl: "images/sample_pictures/guy1.jpg", desc: "Hi, I am 22 years old and currently studing in NUS. Looking to study with someone in FASS!",));
     case DetailRoute:
       return MaterialPageRoute(builder: (context) => Detail());
     case ChatRoute:
