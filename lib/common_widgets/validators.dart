@@ -15,4 +15,6 @@ class StringValidator implements Validator<String> {
 class EmailAndPasswordValidator{
   final StringValidator emailValidator = StringValidator();
   final StringValidator passwordValidator = StringValidator();
+  final String emailCannotBeEmpty = "Email can\'t be empty";
+  final String passwordCannotBeEmpty = "Password can\'t be empty";
 }

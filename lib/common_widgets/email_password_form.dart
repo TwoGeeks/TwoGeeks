@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/common_widgets/validators.dart';
+// this is a form template for email and password
 
-class EmailPasswordForm extends StatefulWidget {
+class EmailPasswordForm extends StatefulWidget with EmailAndPasswordValidator{
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  // onSubmit is triggered when user submits using keyboard
   final Function onSubmit;
+  // onchange is to trigger the onchange in the parent
   final Function onChanged;
-  EmailPasswordForm({this.emailController, this.passwordController, this.onSubmit, this.onChanged});
+  // submitted is a boolean value to check if form has been submitted
+  // to trigger errorText
+  final bool submitted;
+  EmailPasswordForm({this.emailController, this.passwordController, this.onSubmit, this.onChanged, this.submitted});
 
   @override
   _EmailPasswordFormState createState() => _EmailPasswordFormState();
@@ -23,6 +30,8 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
 
   @override
   Widget build(BuildContext context) {
+    bool _showEmailError = !widget.emailValidator.isValid(widget.emailController.text) && widget.submitted;
+    bool _showPasswordError = !widget.passwordValidator.isValid(widget.passwordController.text) && widget.submitted;
     return Column(
       children: <Widget>[
         // Email text field
@@ -39,6 +48,7 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
                   borderSide: new BorderSide(color: Colors.black87)),
               hintText: 'Email',
               labelText: 'Enter your Email',
+              errorText: _showEmailError ? widget.emailCannotBeEmpty : null,
               labelStyle: TextStyle(
                 color: Colors.black,
               ),
@@ -65,6 +75,7 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
             labelStyle: TextStyle(
               color: Colors.black,
             ),
+            errorText: _showPasswordError ? widget.passwordCannotBeEmpty : null,
           ),
           obscureText: true,
         ),

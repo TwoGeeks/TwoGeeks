@@ -23,8 +23,12 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
 
   String get _email => _emailController.text;
   String get _password => _passwordController.text;
+  bool submitted = false;
 
   void _submit() async {
+    setState(() {
+      submitted = true;
+    });
     try{
       await widget.auth.signInWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
@@ -72,7 +76,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
         height: 20,
       ),
       EmailPasswordForm(emailController: _emailController,
-        passwordController: _passwordController, onSubmit: _submitEnabled ? _submit : null, onChanged: _updateState,),
+        passwordController: _passwordController, onSubmit: _submitEnabled ? _submit : null, onChanged: _updateState, submitted: submitted,),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
         child: Column(
