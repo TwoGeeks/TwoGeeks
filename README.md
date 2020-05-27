@@ -2,6 +2,13 @@
 
 **twoGeeks is a mobile application to allow students to find study partners to make more friends, knowledge and experiences as well as to provide an avenue for them to ask for help in subjects they are weak at.**
 
+<div align="center">
+    <span display="inline">Build using</span>
+    <img alt="Flutter" src="https://img.shields.io/badge/-Flutter-blue">
+    <img alt="Firebase" src="https://img.shields.io/badge/-Firebase-orange">
+</div>
+
+
 ## Motivation
 
 In Singapore, many students do not have a partner to study with especially if they are freshmen.
