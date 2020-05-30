@@ -32,6 +32,8 @@ As a student,
 
 Using Adobe XD, we have come up we a mockup of our mobile application.
 
+links to be updated
+
 For our database, we have come up with a initial schema.
 
 
