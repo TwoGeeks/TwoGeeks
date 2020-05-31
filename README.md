@@ -56,8 +56,29 @@ Using Adobe XD, we have come up we a mockup of our mobile application.
     <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/People%20details%20page.png" width="200" />
 </p>
 
+### Chat page and FriendRequest notification
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Chatroom%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Notification.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Notification%20%E2%80%93%20Accept.png" width="200" />
+</p>
+
+### Tutor UI pages
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20matching%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20details%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20Home%20page.png" width="200" />
+</p>
+
+---
+
 For our database, we have come up with a initial schema.
 ![backend schema](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/schema.jpg)
+
+---
+
+### Overall app design
+![app design](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/userflow.jpg)
 
 ## Development Plan
 
