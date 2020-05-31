@@ -32,8 +32,32 @@ As a student,
 
 Using Adobe XD, we have come up we a mockup of our mobile application.
 
-For our database, we have come up with a initial schema.
+### Authentication pages
+<p float="left">
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Login-SIgnup.png" width="200" />
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Login%20page.png" width="200" /> 
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page.png" width="200" />
+</p>
 
+### Sign up pages
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%201.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%202.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%203.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%204.png" width="200" />
+</p>
+
+### In-app screens pages
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Home%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Matching%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Chat%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Settings.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/People%20details%20page.png" width="200" />
+</p>
+
+For our database, we have come up with a initial schema.
+![backend schema](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/schema.jpg)
 
 ## Development Plan
 
