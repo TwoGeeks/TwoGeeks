@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -41,6 +42,8 @@ class Auth implements AuthBase {
             accessToken: authToken.accessToken,
           ),
         );
+
+        await checkUserExist(authResult.user.uid);
         return _userFromFirebase(authResult.user);
       } else {
         throw PlatformException(
@@ -65,6 +68,8 @@ class Auth implements AuthBase {
           accessToken: result.accessToken.token,
         ),
       );
+
+      await checkUserExist(authResult.user.uid);
       return _userFromFirebase(authResult.user);
     } else {
       throw PlatformException(
@@ -76,13 +81,17 @@ class Auth implements AuthBase {
 
   @override
   Future<User> signInWithTwoGeeks(email, password) async {
-    final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
 
   @override
   Future<User> signUpWithTwoGeeks(email, password) async {
-    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+
+    await checkUserExist(authResult.user.uid);
     return _userFromFirebase(authResult.user);
   }
 
@@ -98,5 +107,44 @@ class Auth implements AuthBase {
   @override
   Future<User> currentUser() async {
     return _userFromFirebase(await _firebaseAuth.currentUser());
+  }
+
+  @override
+  Future<void> checkUserExist(uid) {
+    final Firestore _db = Firestore.instance;
+    _db.collection("users/${uid}").document("personalInfo/${uid}").get().then((value) {
+      if (value.data == null) {
+        // add new user
+        _db.collection("users/${uid}").document('personalInfo/${uid}').setData({
+          'name': "name",
+          'age': 0,
+          'currentSchool': '',
+          'currentSchoolYear': '',
+          'aboutMe': '',
+          'gender': '',
+          'profilePic': '',
+          'statement': '',
+          'hobbies': [],
+          'strength': [],
+          'weakness': [],
+        });
+
+        _db.collection("users/${uid}").document('preferences/${uid}').setData({
+          'ageLower': 0,
+          'ageUpper': 0,
+          'currentSchoolYear': '',
+          'gender': '',
+          'location': '',
+        });
+
+        _db.collection("users/${uid}").document('friends/${uid}').setData({
+          'user_uid': [],
+        });
+
+        _db.collection("users/${uid}").document('friendRequests/${uid}').setData({
+          'user_uid': [],
+        });
+      }
+    });
   }
 }
