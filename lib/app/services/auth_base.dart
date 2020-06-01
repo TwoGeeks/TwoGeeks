@@ -19,4 +19,6 @@ abstract class AuthBase {
   Future<User> signInWithFacebook();
   // sign in via TwoGeeks
   Future<User> signInWithTwoGeeks(email, password);
+  // check if new user
+  Future<void> checkUserExist(uid);
 }
