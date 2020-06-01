@@ -3,7 +3,7 @@ import 'package:twoGeeks/app/detail/detailInfo/infoTitle.dart';
 import 'package:twoGeeks/app/detail/detailInfo/strengthAndWeakness/strengthTile.dart';
 import 'package:twoGeeks/app/detail/detailInfo/strengthAndWeakness/weaknessTile.dart';
 
-Widget strengthAndWeakness() {
+Widget strengthAndWeakness(strengths, weaknesses) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -17,10 +17,7 @@ Widget strengthAndWeakness() {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                strengthTile("Math"),
-                strengthTile("Science"),
-                strengthTile("Art"),
-                strengthTile("H2 biology"),
+                for (var strength in strengths) strengthTile(strength),
               ],
             ),
           ),
@@ -29,8 +26,7 @@ Widget strengthAndWeakness() {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                weaknessTile("English"),
-                weaknessTile("Chemistry")
+                for (var weakness in weaknesses) weaknessTile(weakness),
               ],
             ),
           ),

@@ -38,7 +38,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case MatchingRoute:
       return MaterialPageRoute(builder: (context) => Matching(auth: auth, name: "Doran Lee", photourl: "images/sample_pictures/guy1.jpg", desc: "Hi, I am 22 years old and currently studing in NUS. Looking to study with someone in FASS!",));
     case DetailRoute:
-      return MaterialPageRoute(builder: (context) => Detail());
+      {
+        var argument_UID = settings.arguments;
+        return MaterialPageRoute(builder: (context) => Detail(uid: argument_UID));
+      }
     case ChatRoute:
       return MaterialPageRoute(builder: (context) => Chat(auth: auth));
     case SettingRoute:

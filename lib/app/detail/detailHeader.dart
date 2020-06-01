@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-List<Widget> detailHeader() {
+List<Widget> detailHeader(data) {
+  String name = data["name"];
+  int age = data["age"];
+  String gender = data["gender"] == "m" ? "Male" : "Female";
+  String currentSchool = data["currentSchool"];
+  String currentSchoolYear = data["currentSchoolYear"];
+
   return [
     Row(
       children: <Widget>[
         Text(
-          "Doran Lee",
+          name,
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         IconButton(
@@ -17,7 +23,7 @@ List<Widget> detailHeader() {
             onPressed: null)
       ],
     ),
-    Text("18, Male"),
-    Text("Jamesvile Junior College, Year 2"),
+    Text("$age, $gender"),
+    Text("$currentSchool, $currentSchoolYear"),
   ];
 }
