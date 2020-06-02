@@ -36,11 +36,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => TwoGeeksSignInPage(auth: auth)
       );
     case MatchingHandlerRoute:
-      return MaterialPageRoute(builder: (context) => MatchingHandler());
+      return MaterialPageRoute(builder: (context) => MatchingHandler(auth: auth));
     case DetailRoute:
       {
-        var argument_UID = settings.arguments;
-        return MaterialPageRoute(builder: (context) => Detail(uid: argument_UID));
+        var argumentUID = settings.arguments;
+        return MaterialPageRoute(builder: (context) => Detail(uid: argumentUID));
       }
     case ChatRoute:
       return MaterialPageRoute(builder: (context) => Chat(auth: auth));
