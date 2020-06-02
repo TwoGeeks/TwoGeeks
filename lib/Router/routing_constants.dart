@@ -7,3 +7,4 @@ const String TwoGeeksSignInRoute = 'TwoGeeksSignIn';
 const String MatchingRoute = 'Matching';
 const String ChatRoute = 'Chat';
 const String DetailRoute = 'Detail';
+const String MatchingHandlerRoute = 'MatchingHandler';

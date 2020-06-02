@@ -15,8 +15,8 @@ class Detail extends StatelessWidget {
     return Scaffold(
       body: StreamBuilder(
           stream: Firestore.instance
-              .collection("users/${uid}")
-              .document("personalInfo/${uid}")
+              .collection("users")
+              .document("$uid")
               .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {

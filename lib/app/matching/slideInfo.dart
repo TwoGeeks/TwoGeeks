@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget slideInfo(name, desc) {
+Widget slideInfo(name, statement) {
   return Container(
     margin: EdgeInsets.only(bottom: 20),
     padding: const EdgeInsets.all(20.0),
@@ -15,7 +15,7 @@ Widget slideInfo(name, desc) {
           ),
         ),
         Text(
-            desc, style: TextStyle(fontSize: 18),)
+          statement, style: TextStyle(fontSize: 18),)
       ],
     ),
   );
