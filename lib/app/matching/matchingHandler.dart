@@ -3,8 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/services/auth.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
 
 class MatchingHandler extends StatefulWidget {
+  MatchingHandler({this.auth});
+  final AuthBase auth;
+
   @override
   _MatchingHandlerState createState() => _MatchingHandlerState();
 }
@@ -12,8 +16,6 @@ class MatchingHandler extends StatefulWidget {
 class _MatchingHandlerState extends State<MatchingHandler> {
   Future myFuture;
   List<String> idList = new List();
-
-  Auth auth;
 
   // get a list of user ids
   Future<List<String>> getUsers() async {
@@ -64,7 +66,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
               } else {
                 return Matching(
                   onNext: _popUser,
-                  auth: auth,
+                  auth: widget.auth,
                   uid: idList[0],
                 );
               }

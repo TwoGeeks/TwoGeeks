@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/header.dart';
 
-Widget friendRequests(context) {
+Widget friendRequests(context,List<dynamic> friendRequestList) {
   return Column(
     children: <Widget>[
       header(),
@@ -25,7 +25,7 @@ Widget friendRequests(context) {
               ),
             );
           },
-          itemCount: 10,
+          itemCount: friendRequestList.length,
           scrollDirection: Axis.horizontal,
         ),
       ),
