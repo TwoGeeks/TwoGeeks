@@ -112,11 +112,11 @@ class Auth implements AuthBase {
   @override
   Future<void> checkUserExist(uid) {
     final Firestore _db = Firestore.instance;
-    _db.collection("users/${uid}").document("personalInfo/${uid}").get().then((value) {
+    _db.collection("users").document("$uid").get().then((value) {
       if (value.data == null) {
         // add new user
-        _db.collection("users/${uid}").document('personalInfo/${uid}').setData({
-          'name': "name",
+        _db.collection("users").document('$uid').setData({
+          'name': "",
           'age': 0,
           'currentSchool': '',
           'currentSchoolYear': '',
@@ -127,23 +127,25 @@ class Auth implements AuthBase {
           'hobbies': [],
           'strength': [],
           'weakness': [],
+          'friends_user_uid': [],
+          'friendrequest_user_uid': [],
         });
 
-        _db.collection("users/${uid}").document('preferences/${uid}').setData({
-          'ageLower': 0,
-          'ageUpper': 0,
-          'currentSchoolYear': '',
-          'gender': '',
-          'location': '',
-        });
+//        _db.collection("users").document('$uid/preferences/${uid}').setData({
+//          'ageLower': 0,
+//          'ageUpper': 0,
+//          'currentSchoolYear': '',
+//          'gender': '',
+//          'location': '',
+//        });
 
-        _db.collection("users/${uid}").document('friends/${uid}').setData({
-          'user_uid': [],
-        });
-
-        _db.collection("users/${uid}").document('friendRequests/${uid}').setData({
-          'user_uid': [],
-        });
+//        _db.collection("users").document('$uid/friends/$uid').setData({
+//          'user_uid': [],
+//        });
+//
+//        _db.collection("users").document('$uid/friendRequests/$uid').setData({
+//          'user_uid': [],
+//        });
       }
     });
   }

@@ -4,7 +4,7 @@ import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/detail/detail.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
-import 'package:twoGeeks/app/matching/matching.dart';
+import 'package:twoGeeks/app/matching/matchingHandler.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing.dart';
@@ -35,8 +35,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         fullscreenDialog: true,
         builder: (context) => TwoGeeksSignInPage(auth: auth)
       );
-    case MatchingRoute:
-      return MaterialPageRoute(builder: (context) => Matching(auth: auth, name: "Doran Lee", photourl: "images/sample_pictures/guy1.jpg", desc: "Hi, I am 22 years old and currently studing in NUS. Looking to study with someone in FASS!",));
+    case MatchingHandlerRoute:
+      return MaterialPageRoute(builder: (context) => MatchingHandler());
     case DetailRoute:
       {
         var argument_UID = settings.arguments;

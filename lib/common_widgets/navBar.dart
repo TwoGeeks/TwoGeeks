@@ -46,7 +46,7 @@ Widget navBar(context, selected) {
           FlatButton(
               onPressed: () => {
                     if (selected != 1)
-                      {Navigator.pushReplacementNamed(context, MatchingRoute)}
+                      {Navigator.pushReplacementNamed(context, MatchingHandlerRoute)}
                   },
               child: selected == 1
                   ? activatedNav("search", Icons.favorite)

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/app/matching/matching.dart';
 import 'package:twoGeeks/app/matching/slideInfo.dart';
 
-Widget slideDeck(context, auth, name, photourl, desc) {
+Widget slideDeck(context, auth, name, photourl, statement, uid, onNext) {
   return Stack(children: <Widget>[
     InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailRoute, arguments: "NDJvfZcLKPg7wwsedibOnivzErJ2");
+        Navigator.pushNamed(context, DetailRoute, arguments: uid);
       },
       child: Column(
         children: <Widget>[
@@ -15,7 +14,7 @@ Widget slideDeck(context, auth, name, photourl, desc) {
               child: Container(
                   color: Colors.grey.withOpacity(0.3),
                   child: Image.asset(photourl))),
-          slideInfo(name, desc)
+          slideInfo(name, statement)
         ],
       ),
     ),
@@ -25,16 +24,7 @@ Widget slideDeck(context, auth, name, photourl, desc) {
           widthFactor: 0.3,
           child: FlatButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Matching(
-                              auth: auth,
-                              name: "Frank",
-                              photourl: "images/sample_pictures/guy2.jpg",
-                              desc:
-                                  "Hi, I am a computing major in NTU! Looking to me great friends and expriences",
-                            )));
+                onNext();
               },
               child: Container())),
       alignment: Alignment.topLeft,
