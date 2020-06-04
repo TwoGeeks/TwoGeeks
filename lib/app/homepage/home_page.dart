@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                       indent: 50,
                       endIndent: 50,
                     ),
-                    friendRequests(context, friendRequestList),
+                    friendRequests(context, uid, friendRequestList),
                   ],
                 );
               }
