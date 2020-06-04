@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/header.dart';
+import 'package:twoGeeks/app/homepage/friendRequests/showFriendAlert.dart';
 
-Widget friendRequests(context,List<dynamic> friendRequestList) {
+Widget friendRequests(
+    context, String userUid, List<dynamic> friendRequestList) {
   return Column(
     children: <Widget>[
       header(),
@@ -18,10 +20,14 @@ Widget friendRequests(context,List<dynamic> friendRequestList) {
           itemBuilder: (BuildContext ctxt, int index) {
             return Container(
               margin: EdgeInsets.all(20),
-              child: CircleAvatar(
-                backgroundImage:
-                AssetImage("images/sample_pictures/profile_pic.png"),
-                radius: 25,
+              child: FlatButton(
+                onPressed: () => showFriendAlert(
+                    ctxt, context, friendRequestList[index], userUid),
+                child: CircleAvatar(
+                  backgroundImage:
+                      AssetImage("images/sample_pictures/profile_pic.png"),
+                  radius: 25,
+                ),
               ),
             );
           },
