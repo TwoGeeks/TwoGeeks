@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/addToFriendsList.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequestComplete.dart';
+import 'package:twoGeeks/app/homepage/friendRequests/rejectRequest.dart';
 
 void showFriendAlert(context, contextMain, friendUid, userUid) async {
   DocumentSnapshot user =
@@ -31,8 +32,11 @@ void showFriendAlert(context, contextMain, friendUid, userUid) async {
         actions: <Widget>[
           Container(
             child: FlatButton(
-                onPressed: () {
-                  Navigator.pop(context);
+                onPressed: () async {
+                  bool done = await rejectRequest(friendUid, userUid);
+                  if (done) {
+                    Navigator.pop(context);
+                  }
                 },
                 child: Text(
                   "Reject",

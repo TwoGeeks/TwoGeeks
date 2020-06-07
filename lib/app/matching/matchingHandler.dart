@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/services/auth.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -41,10 +42,14 @@ class _MatchingHandlerState extends State<MatchingHandler> {
     myFuture = getUsers();
   }
 
-  void _popUser() {
-    setState(() {
-      idList.removeAt(0);
-    });
+  void _popUser(context) {
+    if (idList.length == 1) {
+      Navigator.pushReplacementNamed(context, HomeRoute);
+    } else {
+      setState(() {
+        idList.removeAt(0);
+      });
+    }
   }
 
   @override
@@ -65,7 +70,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
                 );
               } else {
                 return Matching(
-                  onNext: _popUser,
+                  onNext: () {_popUser(context);},
                   auth: widget.auth,
                   uid: idList[0],
                 );
