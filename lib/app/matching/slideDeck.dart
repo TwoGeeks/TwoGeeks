@@ -29,6 +29,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
         Navigator.pushNamed(context, DetailRoute, arguments: uid);
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
               child: Container(
