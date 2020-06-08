@@ -24,16 +24,20 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
   String get _email => _emailController.text;
   String get _password => _passwordController.text;
   bool submitted = false;
+  bool isLoading = false;
 
   void _submit() async {
     setState(() {
       submitted = true;
+      isLoading = true;
     });
     try{
       await widget.auth.signUpWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
       print(e);
+    } finally {
+      isLoading = false;
     }
   }
 
@@ -46,7 +50,7 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
   List<Widget> _buildChildren() {
 
     bool _submitEnabled = widget.emailValidator.isValid(_email) &&
-        widget.passwordValidator.isValid(_password);
+        widget.passwordValidator.isValid(_password) && !isLoading;
 
     return [
       SizedBox(
@@ -76,7 +80,8 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
         height: 20,
       ),
       EmailPasswordForm(emailController: _emailController,
-        passwordController: _passwordController, onSubmit: _submitEnabled ? _submit : null, onChanged: _updateState, submitted: submitted,),
+        passwordController: _passwordController, onSubmit: _submitEnabled ?
+        _submit : null, onChanged: _updateState, submitted: submitted, isLoading: isLoading,),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
         child: Column(

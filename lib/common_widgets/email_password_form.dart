@@ -13,7 +13,8 @@ class EmailPasswordForm extends StatefulWidget with EmailAndPasswordValidator{
   // submitted is a boolean value to check if form has been submitted
   // to trigger errorText
   final bool submitted;
-  EmailPasswordForm({this.emailController, this.passwordController, this.onSubmit, this.onChanged, this.submitted});
+  final bool isLoading;
+  EmailPasswordForm({this.emailController, this.passwordController, this.onSubmit, this.onChanged, this.submitted: false, this.isLoading: false});
 
   @override
   _EmailPasswordFormState createState() => _EmailPasswordFormState();
@@ -25,7 +26,9 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
   final FocusNode _passwordFocusNode = FocusNode();
 
   void _emailEditingComplete() {
-    FocusScope.of(context).requestFocus(_passwordFocusNode);
+    final newFocus = widget.emailValidator.isValid(widget.emailController.text)
+    ? _passwordFocusNode : _emailFocusNode;
+    FocusScope.of(context).requestFocus(newFocus);
   }
 
   @override
@@ -43,6 +46,7 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
             focusNode: _emailFocusNode,
             onEditingComplete: _emailEditingComplete,
             onChanged: (email) => widget.onChanged(),
+            enabled: !widget.isLoading,
             decoration: InputDecoration(
               border: new OutlineInputBorder(
                   borderSide: new BorderSide(color: Colors.black87)),
@@ -68,6 +72,7 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
           focusNode: _passwordFocusNode,
           onEditingComplete: widget.onSubmit,
           onChanged: (password) => widget.onChanged(),
+          enabled: !widget.isLoading,
           decoration: InputDecoration(
             border: new OutlineInputBorder(
                 borderSide: new BorderSide(color: Colors.black87)),
