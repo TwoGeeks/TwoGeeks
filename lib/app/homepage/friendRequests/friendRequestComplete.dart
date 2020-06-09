@@ -12,6 +12,7 @@ void friendRequestComplete(context, friendUid, name) async {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             CircleAvatar(
+              key: Key("avatar"),
               backgroundImage:
                   AssetImage("images/sample_pictures/profile_pic.png"),
               radius: 25,

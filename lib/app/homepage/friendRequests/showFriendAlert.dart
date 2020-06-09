@@ -34,7 +34,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store) 
           Container(
             child: FlatButton(
                 onPressed: () async {
-                  bool done = await rejectRequest(friendUid, userUid);
+                  bool done = await rejectRequest(friendUid, userUid, store);
                   if (done) {
                     Navigator.pop(context);
                   }
@@ -50,7 +50,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store) 
             child: FlatButton(
                 onPressed: () async {
                   bool done =
-                      await addToFriendsList(context, friendUid, userUid);
+                      await addToFriendsList(context, friendUid, userUid, store);
                   if (done) {
                     friendRequestComplete(contextMain, friendUid, name);
                   }
