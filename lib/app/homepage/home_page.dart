@@ -8,10 +8,9 @@ import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class HomePage extends StatefulWidget {
   // sign out
-  HomePage({
-    this.auth,
-  });
+  HomePage({this.auth, this.store});
   final AuthBase auth;
+  Firestore store;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -31,6 +30,9 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     getCurrentUser();
+    if (widget.store == null) {
+      widget.store = Firestore.instance;
+    }
   }
 
   @override
@@ -38,23 +40,25 @@ class _HomePageState extends State<HomePage> {
     if (uid == null) {
       return Scaffold(
         body: Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(
+            key: Key("loader"),
+          ),
         ),
       );
     } else {
       return Scaffold(
         body: StreamBuilder(
-            stream: Firestore.instance
-                .collection("users")
-                .document(uid)
-                .snapshots(),
+            stream:  widget.store.collection("users").document(uid).snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    key: Key("loader"),
+                  ),
                 );
               } else {
-                List<dynamic> friendRequestList = snapshot.data["friendrequest_user_uid"];
+                List<dynamic> friendRequestList =
+                    snapshot.data["friendrequest_user_uid"];
                 return Column(
                   children: <Widget>[
                     unreadMessages(context),
@@ -64,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                       indent: 50,
                       endIndent: 50,
                     ),
-                    friendRequests(context, uid, friendRequestList),
+                    friendRequests(context, uid, friendRequestList, widget.store),
                   ],
                 );
               }
