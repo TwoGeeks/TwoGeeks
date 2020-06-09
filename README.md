@@ -10,7 +10,9 @@
 
 <div align="center">
     <span display="inline">Build status: </span>
-    <img alt="Build Status" src="https://api.codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/status_badge.svg">
+    <a href="https://codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/latest_build">
+        <img alt="Build Status" src="https://api.codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/status_badge.svg">
+    </a>
 </div>
 
 
