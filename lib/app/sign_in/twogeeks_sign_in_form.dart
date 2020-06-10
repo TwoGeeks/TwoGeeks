@@ -4,6 +4,7 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
 import 'package:twoGeeks/common_widgets/email_password_form.dart';
+import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 import 'package:twoGeeks/common_widgets/validators.dart';
 import 'package:twoGeeks/common_widgets/lines.dart';
 
@@ -35,9 +36,15 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       await widget.auth.signInWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
-      print(e);
+      PlatformAlertDialog(
+        title: "Sign In Failed",
+        content: e.toString().split(",")[1].trim(),
+        defaultActionText: 'OK',
+      ).show(context);
     } finally {
-      isLoading = false;
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
