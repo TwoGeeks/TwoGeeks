@@ -3,9 +3,16 @@
 **twoGeeks is a mobile application to allow students to find study partners to make more friends, knowledge and experiences as well as to provide an avenue for them to ask for help in subjects they are weak at.**
 
 <div align="center">
-    <span display="inline">Build using</span>
+    <span display="inline">Build using </span>
     <img alt="Flutter" src="https://img.shields.io/badge/-Flutter-blue">
     <img alt="Firebase" src="https://img.shields.io/badge/-Firebase-orange">
+</div>
+
+<div align="center">
+    <span display="inline">Build status: </span>
+    <a href="https://codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/latest_build">
+        <img alt="Build Status" src="https://api.codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/status_badge.svg">
+    </a>
 </div>
 
 

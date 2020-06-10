@@ -4,9 +4,9 @@ import 'package:twoGeeks/app/homepage/friendRequests/addToFriendsList.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequestComplete.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/rejectRequest.dart';
 
-void showFriendAlert(context, contextMain, friendUid, userUid) async {
+void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store) async {
   DocumentSnapshot user =
-      await Firestore.instance.collection("users").document(friendUid).get();
+      await store.collection("users").document(friendUid).get();
   String name = user.data["name"];
   return showDialog(
     context: context,
@@ -19,6 +19,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid) async {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             CircleAvatar(
+              key: Key("Friend Image"),
               backgroundImage:
                   AssetImage("images/sample_pictures/profile_pic.png"),
               radius: 25,
@@ -33,7 +34,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid) async {
           Container(
             child: FlatButton(
                 onPressed: () async {
-                  bool done = await rejectRequest(friendUid, userUid);
+                  bool done = await rejectRequest(friendUid, userUid, store);
                   if (done) {
                     Navigator.pop(context);
                   }
@@ -49,7 +50,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid) async {
             child: FlatButton(
                 onPressed: () async {
                   bool done =
-                      await addToFriendsList(context, friendUid, userUid);
+                      await addToFriendsList(context, friendUid, userUid, store);
                   if (done) {
                     friendRequestComplete(contextMain, friendUid, name);
                   }
