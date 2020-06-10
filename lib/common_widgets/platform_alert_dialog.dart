@@ -2,15 +2,19 @@ import 'package:twoGeeks/common_widgets/platform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
-
+/* creates a popup dialog */
 class PlatformAlertDialog extends PlatformWidget {
+  // takes in a title, content message for the body,
+  // message for default button text and a optional cancel button
   final String title;
   final String content;
   final String defaultActionText;
+  final String cancelActionText;
   PlatformAlertDialog(
       {@required this.title,
       @required this.content,
-      @required this.defaultActionText})
+      @required this.defaultActionText,
+      this.cancelActionText})
       : assert(title != null),
         assert(content != null),
         assert(defaultActionText != null);
@@ -34,12 +38,18 @@ class PlatformAlertDialog extends PlatformWidget {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    return [
-      PlatformAlertDialogAction(
-        child: Text(defaultActionText),
-        onPressed: () => Navigator.of(context).pop(),
-      )
-    ];
+    final actions = <Widget> [];
+    if (cancelActionText != null) {
+      actions.add(PlatformAlertDialogAction(
+        child: Text(cancelActionText),
+        onPressed: () => Navigator.of(context).pop(false),
+      ));
+    }
+    actions.add(PlatformAlertDialogAction(
+      child: Text(defaultActionText),
+      onPressed: () => Navigator.of(context).pop(true),
+    ));
+    return actions;
   }
 
   Future<bool> show(BuildContext context) async {
