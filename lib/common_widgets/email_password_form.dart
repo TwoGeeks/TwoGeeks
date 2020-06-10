@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/common_widgets/validators.dart';
 // this is a form template for email and password
 
-class EmailPasswordForm extends StatefulWidget with EmailAndPasswordValidator{
-
+class EmailPasswordForm extends StatefulWidget with EmailAndPasswordValidator {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   // onSubmit is triggered when user submits using keyboard
@@ -14,53 +13,63 @@ class EmailPasswordForm extends StatefulWidget with EmailAndPasswordValidator{
   // to trigger errorText
   final bool submitted;
   final bool isLoading;
-  EmailPasswordForm({this.emailController, this.passwordController, this.onSubmit, this.onChanged, this.submitted: false, this.isLoading: false});
+  EmailPasswordForm(
+      {this.emailController,
+      this.passwordController,
+      this.onSubmit,
+      this.onChanged,
+      this.submitted: false,
+      this.isLoading: false});
 
   @override
   _EmailPasswordFormState createState() => _EmailPasswordFormState();
 }
 
 class _EmailPasswordFormState extends State<EmailPasswordForm> {
-
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
 
   void _emailEditingComplete() {
     final newFocus = widget.emailValidator.isValid(widget.emailController.text)
-    ? _passwordFocusNode : _emailFocusNode;
+        ? _passwordFocusNode
+        : _emailFocusNode;
     FocusScope.of(context).requestFocus(newFocus);
   }
 
   @override
   Widget build(BuildContext context) {
-    bool _showEmailError = !widget.emailValidator.isValid(widget.emailController.text) && widget.submitted;
-    bool _showPasswordError = !widget.passwordValidator.isValid(widget.passwordController.text) && widget.submitted;
+    bool _showEmailError =
+        !widget.emailValidator.isValid(widget.emailController.text) &&
+            widget.submitted;
+    bool _showPasswordError =
+        !widget.passwordValidator.isValid(widget.passwordController.text) &&
+            widget.submitted;
     return Column(
       children: <Widget>[
         // Email text field
         TextField(
           controller: widget.emailController,
-            autocorrect: false,
-            textInputAction: TextInputAction.next,
-            keyboardType: TextInputType.emailAddress,
-            focusNode: _emailFocusNode,
-            onEditingComplete: _emailEditingComplete,
-            onChanged: (email) => widget.onChanged(),
-            enabled: !widget.isLoading,
-            decoration: InputDecoration(
-              border: new OutlineInputBorder(
-                  borderSide: new BorderSide(color: Colors.black87)),
-              hintText: 'Email',
-              labelText: 'Enter your Email',
-              errorText: _showEmailError ? widget.emailCannotBeEmpty : null,
-              labelStyle: TextStyle(
-                color: Colors.black,
-              ),
-              prefixIcon: const Icon(
-                Icons.email,
-                color: Colors.green,
-              ),
+          autocorrect: false,
+          textInputAction: TextInputAction.next,
+          keyboardType: TextInputType.emailAddress,
+          focusNode: _emailFocusNode,
+          onEditingComplete: _emailEditingComplete,
+          onChanged: (email) => widget.onChanged(),
+          enabled: !widget.isLoading,
+          decoration: InputDecoration(
+            border: new OutlineInputBorder(
+                borderSide: new BorderSide(color: Colors.black87)),
+            hintText: 'Email',
+            labelText: 'Enter your Email',
+            errorText: _showEmailError ? widget.emailCannotBeEmpty : null,
+            labelStyle: TextStyle(
+              color: Colors.black,
             ),
+            prefixIcon: const Icon(
+              Icons.email,
+              color: Colors.green,
+            ),
+          ),
         ),
         SizedBox(
           height: 10,

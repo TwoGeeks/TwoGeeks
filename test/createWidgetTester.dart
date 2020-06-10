@@ -5,6 +5,6 @@ Widget createWidgetTester(Widget child) {
   return AppConfig(
       test: true,
       child: MaterialApp(
-        home: child,
+        home: Scaffold(body: child),
       ));
 }

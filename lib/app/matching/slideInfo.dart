@@ -15,7 +15,9 @@ Widget slideInfo(name, statement) {
           ),
         ),
         Text(
-          statement, style: TextStyle(fontSize: 18),)
+          statement,
+          style: TextStyle(fontSize: 18),
+        )
       ],
     ),
   );

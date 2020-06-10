@@ -6,34 +6,31 @@ import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 
 class SettingButton extends CustomFlatButton {
   SettingButton(
-      {String text,
-        Color textColor,
-        Color buttonColor,
-        VoidCallback onPressed})
+      {String text, Color textColor, Color buttonColor, VoidCallback onPressed})
       : super(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(20,0,20,0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              text,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: textColor,
-                fontWeight: FontWeight.w400,
-                fontSize: 22,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: textColor,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 22,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: textColor,
+                  )
+                ],
               ),
             ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: textColor,
-            )
-          ],
-        ),
-      ),
-      color: buttonColor,
-      height: 60.0,
-      borderRadius: 0,
-      onPressed: onPressed);
+            color: buttonColor,
+            height: 60.0,
+            borderRadius: 0,
+            onPressed: onPressed);
 }

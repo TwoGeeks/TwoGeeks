@@ -6,7 +6,6 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class Settings extends StatelessWidget {
-
   // sign out
   Settings({this.auth});
   final AuthBase auth;
@@ -49,7 +48,9 @@ class Settings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             color: Colors.grey[400],
             height: 40,

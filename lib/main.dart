@@ -15,7 +15,9 @@ class TwoGeeks extends StatelessWidget {
     return MaterialApp(
       initialRoute: LandingRoute,
       onGenerateRoute: router.generateRoute,
-      home: LandingPage(auth: Auth(),),
+      home: LandingPage(
+        auth: Auth(),
+      ),
       title: 'Two Geeks',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,

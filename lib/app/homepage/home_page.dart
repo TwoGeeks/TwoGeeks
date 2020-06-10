@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Scaffold(
         body: StreamBuilder(
-            stream:  widget.store.collection("users").document(uid).snapshots(),
+            stream: widget.store.collection("users").document(uid).snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
@@ -68,7 +68,8 @@ class _HomePageState extends State<HomePage> {
                       indent: 50,
                       endIndent: 50,
                     ),
-                    friendRequests(context, uid, friendRequestList, widget.store),
+                    friendRequests(
+                        context, uid, friendRequestList, widget.store),
                   ],
                 );
               }

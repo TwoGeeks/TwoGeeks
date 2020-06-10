@@ -3,8 +3,9 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/sign_up/sign_up_form.dart';
 
 class TwoGeeksSignUpPage extends StatelessWidget {
-
-  TwoGeeksSignUpPage({@required this.auth,});
+  TwoGeeksSignUpPage({
+    @required this.auth,
+  });
   final AuthBase auth;
 
   @override

@@ -8,9 +8,10 @@ import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 import 'package:twoGeeks/common_widgets/validators.dart';
 import 'package:twoGeeks/common_widgets/lines.dart';
 
-class TwoGeeksSignInForm extends StatefulWidget with EmailAndPasswordValidator{
-
-  TwoGeeksSignInForm({@required this.auth,});
+class TwoGeeksSignInForm extends StatefulWidget with EmailAndPasswordValidator {
+  TwoGeeksSignInForm({
+    @required this.auth,
+  });
   final AuthBase auth;
 
   @override
@@ -18,7 +19,6 @@ class TwoGeeksSignInForm extends StatefulWidget with EmailAndPasswordValidator{
 }
 
 class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -32,7 +32,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       submitted = true;
       isLoading = true;
     });
-    try{
+    try {
       await widget.auth.signInWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
@@ -48,16 +48,14 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
     }
   }
 
-  void _updateState(){
-    setState(() {
-
-    });
+  void _updateState() {
+    setState(() {});
   }
 
   List<Widget> _buildChildren() {
-
     bool _submitEnabled = widget.emailValidator.isValid(_email) &&
-    widget.passwordValidator.isValid(_password) && !isLoading;
+        widget.passwordValidator.isValid(_password) &&
+        !isLoading;
 
     return [
       SizedBox(
@@ -86,9 +84,14 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       SizedBox(
         height: 20,
       ),
-      EmailPasswordForm(emailController: _emailController, passwordController: _passwordController,
+      EmailPasswordForm(
+        emailController: _emailController,
+        passwordController: _passwordController,
         onSubmit: _submitEnabled ? _submit : null,
-        onChanged: _updateState, submitted: submitted, isLoading: isLoading,),
+        onChanged: _updateState,
+        submitted: submitted,
+        isLoading: isLoading,
+      ),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
         child: Column(
@@ -104,13 +107,12 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
               ),
               color: Colors.blue[800],
               borderRadius: 5,
-              onPressed:  _submitEnabled ? _submit : null,
+              onPressed: _submitEnabled ? _submit : null,
             ),
             SizedBox(
               height: 20,
             ),
-            Lines.lineWithCenterText(Text("or"))
-            ,
+            Lines.lineWithCenterText(Text("or")),
             FlatButton(
               child: Text("New to TwoGeeks? Join Now!"),
               onPressed: () => Navigator.of(context).popAndPushNamed("Signup"),

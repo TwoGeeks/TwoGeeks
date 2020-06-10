@@ -1,6 +1,7 @@
 import 'package:twoGeeks/common_widgets/platform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'dart:io';
 /* creates a popup dialog */
 class PlatformAlertDialog extends PlatformWidget {
@@ -51,6 +52,7 @@ class PlatformAlertDialog extends PlatformWidget {
     ));
     return actions;
   }
+
 
   Future<bool> show(BuildContext context) async {
     return Platform.isIOS

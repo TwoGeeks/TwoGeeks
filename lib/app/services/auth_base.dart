@@ -2,7 +2,6 @@ import 'package:twoGeeks/app/services/user.dart';
 
 // abstract class for all auth methods
 abstract class AuthBase {
-
   // check if auth state is changed
   Stream<User> get onAuthStateChanged;
   // sign in anonymously

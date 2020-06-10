@@ -8,7 +8,11 @@ Widget backButton(context) {
       decoration: ShapeDecoration(
           shape: CircleBorder(), color: Colors.white.withOpacity(0.85)),
       child: IconButton(
-        icon: Icon(Icons.arrow_back),
+        key: Key("Back Button"),
+        icon: Icon(
+          Icons.arrow_back,
+          key: Key("Back Button Icon"),
+        ),
         onPressed: () {
           Navigator.pop(context);
         },

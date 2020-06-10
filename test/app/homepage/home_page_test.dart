@@ -168,44 +168,44 @@ void main() {
 
     testWidgets(
         "accepting friend request will show friend request complete dialog",
-            (WidgetTester tester) async {
-          final instance = MockFirestoreInstance();
-          await instance.collection("users").document(userID).setData({
-            "friends_user_uid": [],
-            "friendrequest_user_uid": [friendID]
-          });
+        (WidgetTester tester) async {
+      final instance = MockFirestoreInstance();
+      await instance.collection("users").document(userID).setData({
+        "friends_user_uid": [],
+        "friendrequest_user_uid": [friendID]
+      });
 
-          await instance
-              .collection("users")
-              .document(friendID)
-              .setData({"name": friendName});
+      await instance
+          .collection("users")
+          .document(friendID)
+          .setData({"name": friendName});
 
-          await tester.pumpWidget(MaterialApp(
-              home: HomePage(
-                auth: mockAuth,
-                store: instance,
-              )));
+      await tester.pumpWidget(MaterialApp(
+          home: HomePage(
+        auth: mockAuth,
+        store: instance,
+      )));
 
-          await tester.idle();
-          await tester.pump();
-          await tester.pump();
-          await tester.tap(find.byKey(Key("friendRequest button")));
-          await tester.pump();
-          await tester.tap(find.text("Accept"));
-          await tester.idle();
-          await tester.pump();
+      await tester.idle();
+      await tester.pump();
+      await tester.pump();
+      await tester.tap(find.byKey(Key("friendRequest button")));
+      await tester.pump();
+      await tester.tap(find.text("Accept"));
+      await tester.idle();
+      await tester.pump();
 
-          Finder makeNewFriendFinder = find.text("You made a new friend!");
-          Finder avatarFinder = find.byKey(Key("avatar"));
-          Finder nameFinder = find.text(friendName);
-          Finder returnButtonFinder = find.text("Return");
-          Finder chatButtonFinder = find.text("Chat");
+      Finder makeNewFriendFinder = find.text("You made a new friend!");
+      Finder avatarFinder = find.byKey(Key("avatar"));
+      Finder nameFinder = find.text(friendName);
+      Finder returnButtonFinder = find.text("Return");
+      Finder chatButtonFinder = find.text("Chat");
 
-          expect(makeNewFriendFinder, findsOneWidget);
-          expect(avatarFinder, findsOneWidget);
-          expect(nameFinder, findsOneWidget);
-          expect(returnButtonFinder, findsOneWidget);
-          expect(chatButtonFinder, findsOneWidget);
-        });
+      expect(makeNewFriendFinder, findsOneWidget);
+      expect(avatarFinder, findsOneWidget);
+      expect(nameFinder, findsOneWidget);
+      expect(returnButtonFinder, findsOneWidget);
+      expect(chatButtonFinder, findsOneWidget);
+    });
   });
 }
