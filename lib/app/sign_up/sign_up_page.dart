@@ -15,11 +15,7 @@ class TwoGeeksSignUpPage extends StatelessWidget {
         title: Text("Sign up with TwoGeeks"),
         elevation: 3.0,
       ),
-      body: SingleChildScrollView(
-        child: TwoGeeksSignUpForm(
-          auth: auth,
-        ),
-      ),
+      body: TwoGeeksSignUpForm(auth: auth,),
     );
   }
 }

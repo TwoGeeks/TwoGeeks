@@ -3,6 +3,7 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class Settings extends StatelessWidget {
   // sign out
@@ -29,6 +30,18 @@ class Settings extends StatelessWidget {
       }
     }
 
+    Future<void> _confirmSignOut(BuildContext context) async{
+      final requestSignOut = await PlatformAlertDialog(
+        title: "Log Out",
+        content: "Are you sure you want to log out?",
+        defaultActionText: 'LogOut',
+        cancelActionText: "Cancel",
+      ).show(context);
+      if (requestSignOut){
+        _signOut();
+      }
+    }
+
     return Padding(
       padding: EdgeInsets.only(top: 35),
       child: Column(
@@ -52,27 +65,10 @@ class Settings extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
-            height: 40,
-          ),
-          SettingButton(
-            text: "Edit Profile",
-            textColor: Colors.black,
-            onPressed: () {},
-            buttonColor: Colors.white,
-          ),
-          SettingButton(
-            text: "Edit Preference",
-            textColor: Colors.black,
-            onPressed: () {},
-            buttonColor: Colors.white,
-          ),
-          SettingButton(
-            text: "Log Out",
-            textColor: Colors.black,
-            onPressed: _signOut,
-            buttonColor: Colors.white,
-          ),
+          SizedBox(height: 40,),
+          SettingButton(text: "Edit Profile", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
+          SettingButton(text: "Edit Preference", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
+          SettingButton(text: "Log Out", textColor: Colors.black, onPressed: () => _confirmSignOut(context), buttonColor: Colors.white,),
           SizedBox(
             height: 80,
           ),
