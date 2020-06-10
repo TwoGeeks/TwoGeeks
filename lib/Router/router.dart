@@ -15,7 +15,6 @@ import 'package:twoGeeks/app/sign_up/sign_up_page.dart';
 
 Auth auth;
 Route<dynamic> generateRoute(RouteSettings settings) {
-
   switch (settings.name) {
     // Add more routes here
     case SignInRoute:
@@ -27,20 +26,22 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     // To be implemented below
     case 'Signup':
-      return MaterialPageRoute(builder: (context) => TwoGeeksSignUpPage(auth: auth));
+      return MaterialPageRoute(
+          builder: (context) => TwoGeeksSignUpPage(auth: auth));
     case HomeRoute:
       return MaterialPageRoute(builder: (context) => HomePage(auth: auth));
     case TwoGeeksSignInRoute:
       return MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (context) => TwoGeeksSignInPage(auth: auth)
-      );
+          fullscreenDialog: true,
+          builder: (context) => TwoGeeksSignInPage(auth: auth));
     case MatchingHandlerRoute:
-      return MaterialPageRoute(builder: (context) => MatchingHandler(auth: auth));
+      return MaterialPageRoute(
+          builder: (context) => MatchingHandler(auth: auth));
     case DetailRoute:
       {
         var argumentUID = settings.arguments;
-        return MaterialPageRoute(builder: (context) => Detail(uid: argumentUID));
+        return MaterialPageRoute(
+            builder: (context) => Detail(uid: argumentUID));
       }
     case ChatRoute:
       return MaterialPageRoute(builder: (context) => Chat(auth: auth));

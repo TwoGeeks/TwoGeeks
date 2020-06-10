@@ -4,7 +4,8 @@ import 'package:twoGeeks/app/homepage/friendRequests/addToFriendsList.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequestComplete.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/rejectRequest.dart';
 
-void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store) async {
+void showFriendAlert(
+    context, contextMain, friendUid, userUid, Firestore store) async {
   DocumentSnapshot user =
       await store.collection("users").document(friendUid).get();
   String name = user.data["name"];
@@ -49,8 +50,8 @@ void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store) 
             margin: EdgeInsets.only(left: 50, right: 10, bottom: 10, top: 10),
             child: FlatButton(
                 onPressed: () async {
-                  bool done =
-                      await addToFriendsList(context, friendUid, userUid, store);
+                  bool done = await addToFriendsList(
+                      context, friendUid, userUid, store);
                   if (done) {
                     friendRequestComplete(contextMain, friendUid, name);
                   }

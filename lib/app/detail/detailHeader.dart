@@ -7,6 +7,18 @@ List<Widget> detailHeader(data) {
   String currentSchool = data["currentSchool"];
   String currentSchoolYear = data["currentSchoolYear"];
 
+  Widget formatSchoolData(currentSchool, currentSchoolYear) {
+    if (currentSchool == "" && currentSchoolYear == "") {
+      return Text("");
+    } else if (currentSchool == "") {
+      return Text(currentSchoolYear);
+    } else if (currentSchoolYear == "") {
+      return Text(currentSchool);
+    } else {
+      return Text("$currentSchool, $currentSchoolYear");
+    }
+  }
+
   return [
     Row(
       children: <Widget>[
@@ -19,11 +31,12 @@ List<Widget> detailHeader(data) {
               Icons.favorite,
               size: 30,
               color: Colors.red,
+              key: Key("Heart icon"),
             ),
             onPressed: null)
       ],
     ),
     Text("$age, $gender"),
-    Text("$currentSchool, $currentSchoolYear"),
+    formatSchoolData(currentSchool, currentSchoolYear)
   ];
 }

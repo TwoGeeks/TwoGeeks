@@ -5,7 +5,6 @@ import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
 class Settings extends StatelessWidget {
-
   // sign out
   Settings({this.auth});
   final AuthBase auth;
@@ -36,7 +35,9 @@ class Settings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             color: Colors.grey[400],
             height: 40,
@@ -51,10 +52,27 @@ class Settings extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 40,),
-          SettingButton(text: "Edit Profile", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
-          SettingButton(text: "Edit Preference", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
-          SettingButton(text: "Log Out", textColor: Colors.black, onPressed: _signOut, buttonColor: Colors.white,),
+          SizedBox(
+            height: 40,
+          ),
+          SettingButton(
+            text: "Edit Profile",
+            textColor: Colors.black,
+            onPressed: () {},
+            buttonColor: Colors.white,
+          ),
+          SettingButton(
+            text: "Edit Preference",
+            textColor: Colors.black,
+            onPressed: () {},
+            buttonColor: Colors.white,
+          ),
+          SettingButton(
+            text: "Log Out",
+            textColor: Colors.black,
+            onPressed: _signOut,
+            buttonColor: Colors.white,
+          ),
           SizedBox(
             height: 80,
           ),

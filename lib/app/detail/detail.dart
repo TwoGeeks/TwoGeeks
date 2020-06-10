@@ -8,30 +8,38 @@ import 'package:twoGeeks/app/detail/detailInfo/hobbies.dart';
 
 class Detail extends StatelessWidget {
   final String uid;
-  const Detail({Key key, this.uid}) : super(key: key);
+  Firestore store;
+  Detail({this.uid, this.store});
 
   @override
   Widget build(BuildContext context) {
+    if (store == null) {
+      store = Firestore.instance;
+    }
+//    print(store);
     return Scaffold(
       body: StreamBuilder(
-          stream: Firestore.instance
-              .collection("users")
-              .document("$uid")
-              .snapshots(),
+          stream: store.collection("users").document("$uid").snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  key: Key("loader"),
+                ),
               );
             } else {
               DocumentSnapshot data = snapshot.data;
               return SingleChildScrollView(
+                key: Key("Detail ScrollView"),
                 child: Stack(
                   children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Image.asset("images/sample_pictures/guy1.jpg"),
+                        Image.asset(
+                          "images/sample_pictures/guy1.jpg",
+                          key: Key("image of friend"),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(

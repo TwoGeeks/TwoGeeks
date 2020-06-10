@@ -12,7 +12,7 @@ class StringValidator implements Validator<String> {
 }
 
 // used as a mixin for email-password form
-class EmailAndPasswordValidator{
+class EmailAndPasswordValidator {
   final StringValidator emailValidator = StringValidator();
   final StringValidator passwordValidator = StringValidator();
   final String emailCannotBeEmpty = "Email can\'t be empty";

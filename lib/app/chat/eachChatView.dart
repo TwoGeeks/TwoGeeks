@@ -32,7 +32,7 @@ Widget eachChatView(context) {
               margin: EdgeInsets.only(right: 20),
               child: CircleAvatar(
                 backgroundImage:
-                AssetImage("images/sample_pictures/profile_pic.png"),
+                    AssetImage("images/sample_pictures/profile_pic.png"),
                 radius: 32,
               ),
             ),

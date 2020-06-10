@@ -46,7 +46,10 @@ Widget navBar(context, selected) {
           FlatButton(
               onPressed: () => {
                     if (selected != 1)
-                      {Navigator.pushReplacementNamed(context, MatchingHandlerRoute)}
+                      {
+                        Navigator.pushReplacementNamed(
+                            context, MatchingHandlerRoute)
+                      }
                   },
               child: selected == 1
                   ? activatedNav("search", Icons.favorite)
@@ -61,10 +64,9 @@ Widget navBar(context, selected) {
                   : deactiveNav(Icons.home)),
           FlatButton(
               onPressed: () => {
-                if (selected != 3) {
-                  Navigator.pushReplacementNamed(context, ChatRoute)
-                }
-              },
+                    if (selected != 3)
+                      {Navigator.pushReplacementNamed(context, ChatRoute)}
+                  },
               child: selected == 3
                   ? activatedNav("Chat", Icons.account_circle)
                   : deactiveNav(Icons.account_circle)),

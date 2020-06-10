@@ -13,14 +13,14 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<User>(
       stream: auth.onAuthStateChanged,
-      builder: (context, snapshot){
+      builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           User user = snapshot.data;
-          if(user == null) {
+          if (user == null) {
             return SignInPage(
-            auth: auth,
-          );
-        }
+              auth: auth,
+            );
+          }
           return HomePage(
             auth: auth,
           );
@@ -28,30 +28,29 @@ class LandingPage extends StatelessWidget {
           return Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Text(
-                    "TwoGeeks",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.purple[600],
-                      fontSize: 35,
-                    ),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  "TwoGeeks",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.purple[600],
+                    fontSize: 35,
                   ),
-                  SizedBox(
-                    height: 35,
+                ),
+                SizedBox(
+                  height: 35,
+                ),
+                Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.grey[400],
                   ),
-                  Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.grey[400],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
+            ),
           );
         }
       },
     );
   }
 }
-

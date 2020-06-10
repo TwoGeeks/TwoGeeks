@@ -5,8 +5,9 @@ import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
 class SignInPage extends StatelessWidget {
-
-  SignInPage({@required this.auth,});
+  SignInPage({
+    @required this.auth,
+  });
   final AuthBase auth;
 
   // sign in with google
@@ -37,14 +38,14 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Container(
-          constraints: BoxConstraints.expand(),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/study.jpg"),
-              fit: BoxFit.cover,
-            ),
+        constraints: BoxConstraints.expand(),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/study.jpg"),
+            fit: BoxFit.cover,
           ),
-          child: _buildContent(context), /* add child content here */
+        ),
+        child: _buildContent(context), /* add child content here */
       ),
     );
   }
@@ -65,14 +66,18 @@ class SignInPage extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          SizedBox(height: 80,),
+          SizedBox(
+            height: 80,
+          ),
           SignInButton(
             text: "Sign in with TwoGeeks",
             textColor: Colors.white,
             buttonColor: Colors.purple[700],
             onPressed: () => _signInWithTwoGeeks(context),
           ),
-          SizedBox(height: 10.0,),
+          SizedBox(
+            height: 10.0,
+          ),
           SignInButtonWithLogo(
             text: "Sign in with Facebook",
             assetName: "images/facebook-logo.png",
@@ -80,7 +85,9 @@ class SignInPage extends StatelessWidget {
             buttonColor: Color(0xFF334D92),
             onPressed: _signInWithFacebook,
           ),
-          SizedBox(height: 10.0,),
+          SizedBox(
+            height: 10.0,
+          ),
           SignInButtonWithLogo(
             text: "Sign in with Google",
             assetName: "images/google-logo.png",
@@ -88,16 +95,17 @@ class SignInPage extends StatelessWidget {
             buttonColor: Colors.white,
             onPressed: _signInWithGoogle,
           ),
-          SizedBox(height: 10.0,),
+          SizedBox(
+            height: 10.0,
+          ),
           Text(
             'or',
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 14,
-                color: Colors.white
-            ),
+            style: TextStyle(fontSize: 14, color: Colors.white),
           ),
-          SizedBox(height: 10.0,),
+          SizedBox(
+            height: 10.0,
+          ),
           FlatButton(
             child: Text(
               "Create a new TwoGeeks Account",

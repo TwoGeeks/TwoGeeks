@@ -15,10 +15,10 @@ class CustomFlatButton extends StatelessWidget {
   // border radius for the button and callback
   CustomFlatButton(
       {this.child,
-        this.height: 50,
-        this.color,
-        this.borderRadius: 3,
-        this.onPressed});
+      this.height: 50,
+      this.color,
+      this.borderRadius: 3,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {

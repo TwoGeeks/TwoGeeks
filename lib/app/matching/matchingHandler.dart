@@ -70,7 +70,9 @@ class _MatchingHandlerState extends State<MatchingHandler> {
                 );
               } else {
                 return Matching(
-                  onNext: () {_popUser(context);},
+                  onNext: () {
+                    _popUser(context);
+                  },
                   auth: widget.auth,
                   uid: idList[0],
                 );

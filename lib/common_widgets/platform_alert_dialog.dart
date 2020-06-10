@@ -2,14 +2,17 @@ import 'package:twoGeeks/common_widgets/platform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class PlatformAlertDialog extends PlatformWidget{
+class PlatformAlertDialog extends PlatformWidget {
   final String title;
   final String content;
   final String defaultActionText;
-  PlatformAlertDialog({@required this.title,@required this.content,@required this.defaultActionText})
-  :assert(title != null),
-  assert(content != null),
-  assert(defaultActionText != null);
+  PlatformAlertDialog(
+      {@required this.title,
+      @required this.content,
+      @required this.defaultActionText})
+      : assert(title != null),
+        assert(content != null),
+        assert(defaultActionText != null);
 
   @override
   Widget buildCupertinoWidget(BuildContext context) {
@@ -29,7 +32,7 @@ class PlatformAlertDialog extends PlatformWidget{
     );
   }
 
-  List<Widget> _buildActions(BuildContext context){
+  List<Widget> _buildActions(BuildContext context) {
     return [
       PlatformAlertDialogAction(
         child: Text(defaultActionText),
@@ -39,8 +42,7 @@ class PlatformAlertDialog extends PlatformWidget{
   }
 }
 
-class PlatformAlertDialogAction extends PlatformWidget{
-
+class PlatformAlertDialogAction extends PlatformWidget {
   final Widget child;
   final VoidCallback onPressed;
   PlatformAlertDialogAction({this.child, this.onPressed});

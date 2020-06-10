@@ -15,17 +15,25 @@ class Matching extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-        stream: Firestore.instance.collection("users").document(uid).snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator(),);
-          } else {
-            DocumentSnapshot user = snapshot.data;
-            return slideDeck(
-                context, auth, user["name"], "images/sample_pictures/guy1.jpg", user["statement"], uid, onNext);
-          }
-        }
-      ),
+          stream:
+              Firestore.instance.collection("users").document(uid).snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              DocumentSnapshot user = snapshot.data;
+              return slideDeck(
+                  context,
+                  auth,
+                  user["name"],
+                  "images/sample_pictures/guy1.jpg",
+                  user["statement"],
+                  uid,
+                  onNext);
+            }
+          }),
       bottomNavigationBar: navBar(context, 1),
     );
   }
