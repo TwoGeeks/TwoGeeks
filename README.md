@@ -13,6 +13,8 @@
     <a href="https://codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/latest_build">
         <img alt="Build Status" src="https://api.codemagic.io/apps/5edf43a10e8f471f538d981f/5edf43a10e8f471f538d981e/status_badge.svg">
     </a>
+    <a href='https://coveralls.io/github/todoge/TwoGeeks?branch=master'><img src='https://coveralls.io/repos/github/todoge/TwoGeeks/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 </div>
 
 
