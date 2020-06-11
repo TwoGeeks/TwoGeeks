@@ -1,20 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-Widget messageHeader(context) {
+Widget messageHeader(context, String friendID) {
   return AppBar(
       backgroundColor: Color.fromRGBO(3, 218, 198, 1),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          CircleAvatar(
-            backgroundImage:
-                AssetImage("images/sample_pictures/profile_pic.png"),
-          ),
-          Container(
-              padding: EdgeInsets.only(left: 15),
-              child: Text("Name Here", style: TextStyle(color: Colors.black)))
-        ],
+      title: StreamBuilder(
+        stream: Firestore.instance.collection("users").document(friendID).snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator(),);
+          } else {
+            DocumentSnapshot doc = snapshot.data;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage:
+                  AssetImage("images/sample_pictures/profile_pic.png"),
+                ),
+                Container(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
+                        doc["name"], style: TextStyle(color: Colors.black)))
+              ],
+            );
+          }
+        }
       ),
       leading: IconButton(
           icon: Icon(

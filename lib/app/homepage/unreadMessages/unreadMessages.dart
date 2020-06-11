@@ -12,7 +12,8 @@ Widget unreadMessages(context) {
               padding: EdgeInsets.only(left: 20),
               itemCount: 13,
               itemBuilder: (BuildContext ctxt, int index) {
-                return eachChatView(context);
+//                return eachChatView(context);
+                  return Container();
               }),
         ),
       ],

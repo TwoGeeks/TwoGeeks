@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
+import 'package:twoGeeks/app/chatroom/chatroom.dart';
 
-Widget eachChatView(context) {
+Widget eachChatView(context, userID, friendID) {
   return Container(
     height: 80,
     margin: EdgeInsets.only(top: 20),
     child: FlatButton(
       onPressed: () {
-        Navigator.pushNamed(context, ChatroomRoute);
+        Navigator.pushNamed(context, ChatroomRoute, arguments: ObjectID(userID: userID, friendID: friendID));
       },
       child: Container(
         decoration: BoxDecoration(

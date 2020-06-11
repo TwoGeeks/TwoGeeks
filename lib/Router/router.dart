@@ -20,7 +20,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case SignInRoute:
       return MaterialPageRoute(builder: (context) => SignInPage(auth: auth));
     case ChatroomRoute:
-      return MaterialPageRoute(builder: (context) => Chatroom());
+      {
+        var argumentUID = settings.arguments;
+        return MaterialPageRoute(
+            builder: (context) => Chatroom(auth: auth, objectID: argumentUID,));
+      }
     case LandingRoute:
       return MaterialPageRoute(builder: (context) => LandingPage(auth: auth));
 
