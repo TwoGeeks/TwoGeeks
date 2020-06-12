@@ -8,19 +8,26 @@ import 'package:twoGeeks/app/services/user.dart';
 Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
   void _sendFriendRequest() async {
     User user = await auth.currentUser();
-    await Firestore.instance.collection("users").document(user.uid).updateData({
-      "friendrequest_user_uid": FieldValue.arrayUnion([uid]),
-    }).whenComplete(onNext);
-    Scaffold.of(context).showSnackBar(SnackBar(
-        content: Row(
-      children: <Widget>[
-        Container(
-          child: Icon(Icons.person_add),
-          margin: EdgeInsets.only(right: 20),
-        ),
-        Text("Friend Request Sent!"),
-      ],
-    )));
+    // get user's friend list to check if friend is already a friend
+    DocumentSnapshot userData =
+        await Firestore.instance.collection("users").document(user.uid).get();
+    List<dynamic> friendList = userData.data["friends_user_uid"];
+
+    if (!friendList.contains(uid)) {
+      await Firestore.instance.collection("users").document(uid).updateData({
+        "friendrequest_user_uid": FieldValue.arrayUnion([user.uid]),
+      });
+      Scaffold.of(context).showSnackBar(SnackBar(
+          content: Row(
+        children: <Widget>[
+          Container(
+            child: Icon(Icons.person_add),
+            margin: EdgeInsets.only(right: 20),
+          ),
+          Text("Friend Request Sent!"),
+        ],
+      )));
+    }
   }
 
   return Stack(children: <Widget>[

@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/app/services/auth.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/app/services/user.dart';
 
 class MatchingHandler extends StatefulWidget {
   MatchingHandler({this.auth});
@@ -17,23 +17,33 @@ class MatchingHandler extends StatefulWidget {
 class _MatchingHandlerState extends State<MatchingHandler> {
   Future myFuture;
   List<String> idList = new List();
+  User user;
 
   // get a list of user ids
   Future<List<String>> getUsers() async {
-    print("getting data");
+    user = await widget.auth.currentUser();
+    // get user's friend list and friend request list to check if friend is already a friend or already sent friend request
+    DocumentSnapshot userData =
+        await Firestore.instance.collection("users").document(user.uid).get();
+    List<dynamic> friendList = userData.data["friends_user_uid"];
+    List<dynamic> friendRequestList = userData.data["friendrequest_user_uid"];
+
     List<DocumentSnapshot> list;
-    List<String> iDlist = new List();
     await Firestore.instance.collection("users").getDocuments().then((onValue) {
       list = onValue.documents.toList();
     });
 
+    List<String> idList = new List();
     list.forEach((snapshot) {
-      if (snapshot.documentID != null) {
-        iDlist.add(snapshot.documentID);
+      String id = snapshot.documentID;
+      if (id != null && id != user.uid) {
+        if (!friendList.contains(id) && !friendRequestList.contains(id)) {
+          idList.add(snapshot.documentID);
+        }
       }
     });
 
-    return iDlist;
+    return idList;
   }
 
   @override
@@ -64,10 +74,6 @@ class _MatchingHandlerState extends State<MatchingHandler> {
               idList = snapshot.data;
               if (idList == null) {
                 return Center(child: CircularProgressIndicator());
-              } else if (idList.length == 0) {
-                return Center(
-                  child: Text("END OF USERS, Well its a dead end for now"),
-                );
               } else {
                 return Matching(
                   onNext: () {
