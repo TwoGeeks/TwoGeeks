@@ -16,7 +16,7 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   String uid;
 
-  Future<String> getCurrentUser() async {
+  Future<void> getCurrentUser() async {
     User user = await widget.auth.currentUser();
     setState(() {
       uid = user.uid;

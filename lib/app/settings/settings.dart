@@ -30,14 +30,14 @@ class Settings extends StatelessWidget {
       }
     }
 
-    Future<void> _confirmSignOut(BuildContext context) async{
+    Future<void> _confirmSignOut(BuildContext context) async {
       final requestSignOut = await PlatformAlertDialog(
         title: "Log Out",
         content: "Are you sure you want to log out?",
         defaultActionText: 'LogOut',
         cancelActionText: "Cancel",
       ).show(context);
-      if (requestSignOut){
+      if (requestSignOut) {
         _signOut();
       }
     }
@@ -65,10 +65,27 @@ class Settings extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 40,),
-          SettingButton(text: "Edit Profile", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
-          SettingButton(text: "Edit Preference", textColor: Colors.black, onPressed: (){}, buttonColor: Colors.white,),
-          SettingButton(text: "Log Out", textColor: Colors.black, onPressed: () => _confirmSignOut(context), buttonColor: Colors.white,),
+          SizedBox(
+            height: 40,
+          ),
+          SettingButton(
+            text: "Edit Profile",
+            textColor: Colors.black,
+            onPressed: () {},
+            buttonColor: Colors.white,
+          ),
+          SettingButton(
+            text: "Edit Preference",
+            textColor: Colors.black,
+            onPressed: () {},
+            buttonColor: Colors.white,
+          ),
+          SettingButton(
+            text: "Log Out",
+            textColor: Colors.black,
+            onPressed: () => _confirmSignOut(context),
+            buttonColor: Colors.white,
+          ),
           SizedBox(
             height: 80,
           ),

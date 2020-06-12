@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String uid;
 
-  Future<String> getCurrentUser() async {
+  Future<void> getCurrentUser() async {
     User user = await widget.auth.currentUser();
     setState(() {
       uid = user.uid;

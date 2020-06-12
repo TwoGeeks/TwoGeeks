@@ -7,8 +7,6 @@ import '../../createWidgetTester.dart';
 
 void main() {
   group("Details page test", () {
-    final String userID = "userid";
-    final String friendName = "my friend name";
     final String friendID = "id1";
 
     testWidgets("shows loader while fetching data",

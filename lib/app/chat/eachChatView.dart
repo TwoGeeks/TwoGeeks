@@ -8,7 +8,8 @@ Widget eachChatView(context, userID, friendID) {
     margin: EdgeInsets.only(top: 20),
     child: FlatButton(
       onPressed: () {
-        Navigator.pushNamed(context, ChatroomRoute, arguments: ObjectID(userID: userID, friendID: friendID));
+        Navigator.pushNamed(context, ChatroomRoute,
+            arguments: ObjectID(userID: userID, friendID: friendID));
       },
       child: Container(
         decoration: BoxDecoration(

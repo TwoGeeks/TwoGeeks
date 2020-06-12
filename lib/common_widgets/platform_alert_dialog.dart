@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'dart:io';
+
 /* creates a popup dialog */
 class PlatformAlertDialog extends PlatformWidget {
   // takes in a title, content message for the body,
@@ -39,7 +40,7 @@ class PlatformAlertDialog extends PlatformWidget {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    final actions = <Widget> [];
+    final actions = <Widget>[];
     if (cancelActionText != null) {
       actions.add(PlatformAlertDialogAction(
         child: Text(cancelActionText),
@@ -52,7 +53,6 @@ class PlatformAlertDialog extends PlatformWidget {
     ));
     return actions;
   }
-
 
   Future<bool> show(BuildContext context) async {
     return Platform.isIOS

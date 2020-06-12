@@ -25,8 +25,7 @@ Widget userChat(context, DocumentSnapshot doc) {
           ),
         ),
         CircleAvatar(
-          backgroundImage:
-          AssetImage("images/sample_pictures/profile_pic.png"),
+          backgroundImage: AssetImage("images/sample_pictures/profile_pic.png"),
         ),
       ],
     )),

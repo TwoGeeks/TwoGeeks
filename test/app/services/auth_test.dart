@@ -1,9 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/user.dart';
 
 class MockAuth extends Mock implements AuthBase {}
 //class MockFirebaseAuth extends Mock implements FirebaseAuth{}

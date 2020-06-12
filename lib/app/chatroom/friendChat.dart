@@ -10,8 +10,7 @@ Widget friendChat(context, DocumentSnapshot doc) {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         CircleAvatar(
-          backgroundImage:
-          AssetImage("images/sample_pictures/profile_pic.png"),
+          backgroundImage: AssetImage("images/sample_pictures/profile_pic.png"),
         ),
         Container(
           constraints: BoxConstraints(

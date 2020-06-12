@@ -110,12 +110,12 @@ class Auth implements AuthBase {
   }
 
   @override
-  Future<void> checkUserExist(uid) {
+  Future<void> checkUserExist(uid) async {
     final Firestore _db = Firestore.instance;
-    _db.collection("users").document("$uid").get().then((value) {
+    _db.collection("users").document("$uid").get().then((value) async {
       if (value.data == null) {
         // add new user
-        _db.collection("users").document('$uid').setData({
+        await _db.collection("users").document('$uid').setData({
           'name': "",
           'age': 0,
           'currentSchool': '',
