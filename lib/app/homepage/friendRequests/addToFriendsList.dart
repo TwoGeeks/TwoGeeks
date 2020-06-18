@@ -6,10 +6,14 @@ Future<bool> addToFriendsList(
   // add to friend list
   await store.collection("users").document(userUid).updateData({
     "friends_user_uid": FieldValue.arrayUnion([friendUid]),
-  }).whenComplete(() => Navigator.pop(context));
+  });
   // remove from friend request
   await store.collection("users").document(userUid).updateData({
     "friendrequest_user_uid": FieldValue.arrayRemove([friendUid]),
   });
+  // add to friend's friendlist
+  await store.collection("users").document(friendUid).updateData({
+    "friends_user_uid": FieldValue.arrayUnion([userUid]),
+  }).whenComplete(() => Navigator.pop(context));
   return true;
 }
