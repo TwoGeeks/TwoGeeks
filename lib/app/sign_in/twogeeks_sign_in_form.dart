@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
 import 'package:twoGeeks/common_widgets/email_password_form.dart';
 import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
@@ -29,7 +29,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       isLoading = true;
     });
     try {
-      final auth = AuthProvider.of(context);
+      final auth = Provider.of<AuthBase>(context,listen: false);
       await auth.signInWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {

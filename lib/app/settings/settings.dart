@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -21,7 +21,7 @@ class Settings extends StatelessWidget {
     // temporary method to sign in for testing
     Future<void> _signOut() async {
       try {
-        final auth = AuthProvider.of(context);
+        final auth = Provider.of<AuthBase>(context,listen: false);
         await auth.signOut();
         Navigator.pushReplacementNamed(context, LandingRoute);
       } catch (e) {

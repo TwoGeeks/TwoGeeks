@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -9,7 +9,7 @@ class SignInPage extends StatelessWidget {
 
   // sign in with google
   Future<void> _signInWithGoogle(BuildContext context) async {
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context,listen: false);
     try {
       await auth.signInWithGoogle();
     } catch (e) {
@@ -19,7 +19,7 @@ class SignInPage extends StatelessWidget {
 
   // sign in with facebook
   Future<void> _signInWithFacebook(BuildContext context) async {
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context,listen: false);
     try {
       await auth.signInWithFacebook();
     } catch (e) {

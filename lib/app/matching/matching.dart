@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/app/matching/slideDeck.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class Matching extends StatelessWidget {
@@ -14,7 +14,7 @@ class Matching extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context,listen: false);
     return Scaffold(
       body: StreamBuilder(
           stream:

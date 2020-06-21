@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/app/chat/chatContent.dart';
 import 'package:twoGeeks/app/chat/chatHeader/chatHeader.dart';
-import 'package:twoGeeks/app/services/auth.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 
@@ -15,7 +15,7 @@ class _ChatState extends State<Chat> {
   String uid;
 
   Future<void> getCurrentUser() async {
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     User user = await auth.currentUser();
     if (mounted){
       setState(() {

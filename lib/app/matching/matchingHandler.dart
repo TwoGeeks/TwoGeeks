@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/user.dart';
 
 class MatchingHandler extends StatefulWidget {
@@ -21,7 +22,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
   // get a list of user ids
   Future<List<String>> getUsers() async {
 
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context,listen: false);
     user = await auth.currentUser();
     // get user's friend list and friend request list to check if friend is already a friend or already sent friend request
     DocumentSnapshot userData =

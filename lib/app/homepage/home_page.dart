@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequests.dart';
 import 'package:twoGeeks/app/homepage/unreadMessages/unreadMessages.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   String uid;
 
   Future<void> getCurrentUser() async {
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context,listen: false);
     User user = await auth.currentUser();
     if (mounted){
       setState(() {
