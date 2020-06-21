@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
 class SignInPage extends StatelessWidget {
-  SignInPage({
-    @required this.auth,
-  });
-  final AuthBase auth;
 
   // sign in with google
-  Future<void> _signInWithGoogle() async {
+  Future<void> _signInWithGoogle(BuildContext context) async {
+    final auth = Provider.of<AuthBase>(context,listen: false);
     try {
       await auth.signInWithGoogle();
     } catch (e) {
@@ -20,7 +18,8 @@ class SignInPage extends StatelessWidget {
   }
 
   // sign in with facebook
-  Future<void> _signInWithFacebook() async {
+  Future<void> _signInWithFacebook(BuildContext context) async {
+    final auth = Provider.of<AuthBase>(context,listen: false);
     try {
       await auth.signInWithFacebook();
     } catch (e) {
@@ -28,7 +27,7 @@ class SignInPage extends StatelessWidget {
     }
   }
 
-  // sign in with facebook
+  // sign in with TwoGeeks
   void _signInWithTwoGeeks(BuildContext context) async {
     Navigator.of(context).pushNamed(TwoGeeksSignInRoute);
   }
@@ -83,7 +82,7 @@ class SignInPage extends StatelessWidget {
             assetName: "images/facebook-logo.png",
             textColor: Colors.white,
             buttonColor: Color(0xFF334D92),
-            onPressed: _signInWithFacebook,
+            onPressed: () => _signInWithFacebook(context),
           ),
           SizedBox(
             height: 10.0,
@@ -93,7 +92,7 @@ class SignInPage extends StatelessWidget {
             assetName: "images/google-logo.png",
             textColor: Colors.red[800],
             buttonColor: Colors.white,
-            onPressed: _signInWithGoogle,
+            onPressed: () => _signInWithGoogle(context),
           ),
           SizedBox(
             height: 10.0,

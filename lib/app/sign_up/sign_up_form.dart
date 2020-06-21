@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
@@ -9,10 +10,6 @@ import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 import 'package:twoGeeks/common_widgets/validators.dart';
 
 class TwoGeeksSignUpForm extends StatefulWidget with EmailAndPasswordValidator {
-  TwoGeeksSignUpForm({
-    @required this.auth,
-  });
-  final AuthBase auth;
 
   @override
   _TwoGeeksSignUpFormState createState() => _TwoGeeksSignUpFormState();
@@ -33,7 +30,8 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
       isLoading = true;
     });
     try {
-      await widget.auth.signUpWithTwoGeeks(_email, _password);
+      final auth = Provider.of<AuthBase>(context,listen: false);
+      await auth.signUpWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
       PlatformAlertDialog(

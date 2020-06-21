@@ -9,41 +9,38 @@ import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing.dart';
 import 'package:twoGeeks/app/settings/settings.dart';
-import 'package:twoGeeks/app/services/auth.dart';
 import 'package:twoGeeks/app/sign_in/twogeeks_sign_in.dart';
 import 'package:twoGeeks/app/sign_up/sign_up_page.dart';
 
-Auth auth;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     // Add more routes here
     case SignInRoute:
-      return MaterialPageRoute(builder: (context) => SignInPage(auth: auth));
+      return MaterialPageRoute(builder: (context) => SignInPage());
     case ChatroomRoute:
       {
         var argumentUID = settings.arguments;
         return MaterialPageRoute(
             builder: (context) => Chatroom(
-                  auth: auth,
                   objectID: argumentUID,
                 ));
       }
     case LandingRoute:
-      return MaterialPageRoute(builder: (context) => LandingPage(auth: auth));
+      return MaterialPageRoute(builder: (context) => LandingPage());
 
     // To be implemented below
     case 'Signup':
       return MaterialPageRoute(
-          builder: (context) => TwoGeeksSignUpPage(auth: auth));
+          builder: (context) => TwoGeeksSignUpPage());
     case HomeRoute:
-      return MaterialPageRoute(builder: (context) => HomePage(auth: auth));
+      return MaterialPageRoute(builder: (context) => HomePage());
     case TwoGeeksSignInRoute:
       return MaterialPageRoute(
           fullscreenDialog: true,
-          builder: (context) => TwoGeeksSignInPage(auth: auth));
+          builder: (context) => TwoGeeksSignInPage());
     case MatchingHandlerRoute:
       return MaterialPageRoute(
-          builder: (context) => MatchingHandler(auth: auth));
+          builder: (context) => MatchingHandler());
     case DetailRoute:
       {
         var argumentUID = settings.arguments;
@@ -51,9 +48,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             builder: (context) => Detail(uid: argumentUID));
       }
     case ChatRoute:
-      return MaterialPageRoute(builder: (context) => Chat(auth: auth));
+      return MaterialPageRoute(builder: (context) => Chat());
     case SettingRoute:
-      return MaterialPageRoute(builder: (context) => Settings(auth: auth));
+      return MaterialPageRoute(builder: (context) => Settings());
     default:
       return MaterialPageRoute(
           builder: (context) => Undefined(name: settings.name));

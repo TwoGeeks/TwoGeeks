@@ -3,25 +3,18 @@ import 'package:cloud_firestore_mocks/cloud_firestore_mocks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
-import 'package:mockito/mockito.dart';
-import 'package:twoGeeks/app/services/user.dart';
 import '../../createWidgetTester.dart';
-import '../services/auth_test.dart';
 
 void main() {
   group("homepage test", () {
     final String userID = "userid";
     final String friendName = "my friend name";
     final String friendID = "id1";
-    MockAuth mockAuth = MockAuth();
-    when(mockAuth.currentUser())
-        .thenAnswer((_) async => Future.value(User(uid: userID)));
 
     testWidgets("shows loader while fetching data",
         (WidgetTester tester) async {
       final instance = MockFirestoreInstance();
       await tester.pumpWidget(createWidgetTester(HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -39,7 +32,6 @@ void main() {
       });
 
       await tester.pumpWidget(createWidgetTester(HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -68,9 +60,7 @@ void main() {
           .document(friendID)
           .setData({"name": friendName});
 
-      await tester.pumpWidget(MaterialApp(
-          home: HomePage(
-        auth: mockAuth,
+      await tester.pumpWidget(createWidgetTester(HomePage(
         store: instance,
       )));
 
@@ -104,9 +94,7 @@ void main() {
           .document(friendID)
           .setData({"name": friendName});
 
-      await tester.pumpWidget(MaterialApp(
-          home: HomePage(
-        auth: mockAuth,
+      await tester.pumpWidget(createWidgetTester(HomePage(
         store: instance,
       )));
 
@@ -141,9 +129,7 @@ void main() {
           .document(friendID)
           .setData({"name": friendName});
 
-      await tester.pumpWidget(MaterialApp(
-          home: HomePage(
-        auth: mockAuth,
+      await tester.pumpWidget(createWidgetTester(HomePage(
         store: instance,
       )));
 
@@ -180,9 +166,7 @@ void main() {
           .document(friendID)
           .setData({"name": friendName});
 
-      await tester.pumpWidget(MaterialApp(
-          home: HomePage(
-        auth: mockAuth,
+      await tester.pumpWidget(createWidgetTester(HomePage(
         store: instance,
       )));
 

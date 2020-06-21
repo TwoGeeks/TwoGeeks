@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequests.dart';
 import 'package:twoGeeks/app/homepage/unreadMessages/unreadMessages.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -8,8 +9,8 @@ import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class HomePage extends StatefulWidget {
   // sign out
-  HomePage({this.auth, this.store});
-  final AuthBase auth;
+  HomePage({this.store});
+
   Firestore store;
 
   @override
@@ -20,16 +21,18 @@ class _HomePageState extends State<HomePage> {
   String uid;
 
   Future<void> getCurrentUser() async {
-    User user = await widget.auth.currentUser();
-    setState(() {
-      uid = user.uid;
-    });
+    final auth = Provider.of<AuthBase>(context,listen: false);
+    User user = await auth.currentUser();
+    if (mounted){
+      setState(() {
+        uid = user.uid;
+      });
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
     if (widget.store == null) {
       widget.store = Firestore.instance;
     }
@@ -37,6 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    getCurrentUser();
     if (uid == null) {
       return Scaffold(
         body: Center(
@@ -69,7 +73,8 @@ class _HomePageState extends State<HomePage> {
                       endIndent: 50,
                     ),
                     friendRequests(
-                        context, uid, friendRequestList, widget.store),
+                        context, uid, friendRequestList, widget.store
+                    ),
                   ],
                 );
               }
