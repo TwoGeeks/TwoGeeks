@@ -5,7 +5,6 @@ import 'package:flutter/rendering.dart';
 import 'package:twoGeeks/app/chatroom/messageBody.dart';
 import 'package:twoGeeks/app/chatroom/messageHeader.dart';
 import 'package:twoGeeks/app/chatroom/messageInput.dart';
-import 'package:twoGeeks/app/services/auth.dart';
 
 class ObjectID {
   String userID;
@@ -15,9 +14,9 @@ class ObjectID {
 }
 
 class Chatroom extends StatefulWidget {
-  final Auth auth;
+
   final ObjectID objectID;
-  Chatroom({this.auth, this.objectID});
+  Chatroom({this.objectID});
 
   @override
   _ChatroomState createState() => _ChatroomState();

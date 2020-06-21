@@ -21,7 +21,6 @@ void main() {
         (WidgetTester tester) async {
       final instance = MockFirestoreInstance();
       await tester.pumpWidget(createWidgetTester(HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -39,7 +38,6 @@ void main() {
       });
 
       await tester.pumpWidget(createWidgetTester(HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -70,7 +68,6 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
           home: HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -106,7 +103,6 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
           home: HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -143,7 +139,6 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
           home: HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 
@@ -182,7 +177,6 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
           home: HomePage(
-        auth: mockAuth,
         store: instance,
       )));
 

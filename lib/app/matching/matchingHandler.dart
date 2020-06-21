@@ -3,12 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/matching/matching.dart';
-import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/app/services/auth_provider.dart';
 import 'package:twoGeeks/app/services/user.dart';
 
 class MatchingHandler extends StatefulWidget {
-  MatchingHandler({this.auth});
-  final AuthBase auth;
+  MatchingHandler();
 
   @override
   _MatchingHandlerState createState() => _MatchingHandlerState();
@@ -21,7 +20,9 @@ class _MatchingHandlerState extends State<MatchingHandler> {
 
   // get a list of user ids
   Future<List<String>> getUsers() async {
-    user = await widget.auth.currentUser();
+
+    final auth = AuthProvider.of(context);
+    user = await auth.currentUser();
     // get user's friend list and friend request list to check if friend is already a friend or already sent friend request
     DocumentSnapshot userData =
         await Firestore.instance.collection("users").document(user.uid).get();
@@ -49,7 +50,14 @@ class _MatchingHandlerState extends State<MatchingHandler> {
   @override
   void initState() {
     super.initState();
-    myFuture = getUsers();
+  }
+
+  Future<void> updateState() async {
+    if (mounted){
+      setState(() {
+        myFuture = getUsers();
+      });
+    }
   }
 
   void _popUser(context) {
@@ -64,6 +72,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
 
   @override
   Widget build(BuildContext context) {
+    updateState();
     return Scaffold(
       body: FutureBuilder(
           future: myFuture,
@@ -79,7 +88,6 @@ class _MatchingHandlerState extends State<MatchingHandler> {
                   onNext: () {
                     _popUser(context);
                   },
-                  auth: widget.auth,
                   uid: idList[0],
                 );
               }

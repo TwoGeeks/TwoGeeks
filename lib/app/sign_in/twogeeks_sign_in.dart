@@ -3,11 +3,6 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/sign_in/twogeeks_sign_in_form.dart';
 
 class TwoGeeksSignInPage extends StatelessWidget {
-  TwoGeeksSignInPage({
-    @required this.auth,
-  });
-  final AuthBase auth;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,9 +10,7 @@ class TwoGeeksSignInPage extends StatelessWidget {
         title: Text("Sign in with TwoGeeks"),
         elevation: 3.0,
       ),
-      body: TwoGeeksSignInForm(
-        auth: auth,
-      ),
+      body: TwoGeeksSignInForm(),
     );
   }
 }
