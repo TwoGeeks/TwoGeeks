@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
+import 'package:twoGeeks/app/settings/AddPhoto.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -70,7 +71,7 @@ class Settings extends StatelessWidget {
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
-            onPressed: () {},
+            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhoto()));},
             buttonColor: Colors.white,
           ),
           SettingButton(
