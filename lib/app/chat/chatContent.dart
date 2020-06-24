@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/chat/eachChatView.dart';
 
 Widget chatContent(context, userID) {
@@ -17,7 +18,8 @@ Widget chatContent(context, userID) {
           return (ListView.builder(
               itemCount: friendList.length,
               itemBuilder: (BuildContext ctxt, int index) {
-                return eachChatView(context, userID, friendList[index]);
+                double animationDelay = 1.3 + index/10;
+                return FadeAnimation(animationDelay, eachChatView(context, userID, friendList[index]));
               }));
         }
       });

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/chat/chatContent.dart';
 import 'package:twoGeeks/app/chat/chatHeader/chatHeader.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -17,7 +18,7 @@ class _ChatState extends State<Chat> {
   Future<void> getCurrentUser() async {
     final auth = Provider.of<AuthBase>(context, listen: false);
     User user = await auth.currentUser();
-    if (mounted){
+    if (mounted) {
       setState(() {
         uid = user.uid;
       });
@@ -38,8 +39,14 @@ class _ChatState extends State<Chat> {
       );
     } else {
       return Scaffold(
-          appBar: chatHeader(context),
-          body: chatContent(context, uid),
+          backgroundColor: Color(0xfff0f6f4),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              FadeAnimation(0.8, chatHeader()),
+              Expanded(child: chatContent(context, uid)),
+            ],
+          ),
           bottomNavigationBar: navBar(context, 3));
     }
   }
