@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
@@ -38,31 +40,86 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-              child: Container(
-                  color: Colors.grey.withOpacity(0.3),
-                  child: Image.asset(photourl))),
-          slideInfo(name, statement)
+          Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0.0, 2.0),
+                    blurRadius: 6.0,
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+//                child: Image.network(
+//                  photourl,
+//                  fit: BoxFit.cover,
+//                  loadingBuilder: (BuildContext ctxt, Widget child, ImageChunkEvent loadingProgress) {
+//                    if (loadingProgress == null) return child;
+//                    return Center(child: CircularProgressIndicator(),);
+//                  },
+//                ),
+                child: Image.asset(
+                  photourl,
+                  fit: BoxFit.cover,
+                ),
+              )),
+          slideInfo(name, statement),
+          Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  onNext();
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Color(0xffec008c), Color(0xfffc6767)]),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30)),
+                  ),
+                  child: Text(
+                    "Reject",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: _sendFriendRequest,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Color(0xff04ce9b), Color(0xff64e408)]),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        bottomLeft: Radius.circular(30)),
+                  ),
+                  child: Text(
+                    "Send Friend Request",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+          Spacer(),
         ],
       ),
-    ),
-    Align(
-      child: FractionallySizedBox(
-          heightFactor: 1,
-          widthFactor: 0.3,
-          child: FlatButton(
-              onPressed: () {
-                onNext();
-              },
-              child: Container())),
-      alignment: Alignment.topLeft,
-    ),
-    Align(
-      child: FractionallySizedBox(
-          heightFactor: 1,
-          widthFactor: 0.3,
-          child: FlatButton(onPressed: _sendFriendRequest, child: Container())),
-      alignment: Alignment.topRight,
     ),
   ]);
 }

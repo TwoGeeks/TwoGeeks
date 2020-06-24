@@ -36,6 +36,8 @@ dependencies:
   image_picker: ^0.6.0+17S
   firebase_storage: ^3.0.3
   cached_network_image: 2.0.0
+  flutter_svg: 0.17.4
+  simple_animations: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,7 @@ flutter:
     - images/sample_pictures/guy2.jpg
     - images/study.jpg
     - google-logo.png
+    - images/friends.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

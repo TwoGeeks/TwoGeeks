@@ -66,7 +66,7 @@ class _ChatroomState extends State<Chatroom> {
         );
       });
       listScrollController.animateTo(0.0,
-          duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+          duration: Duration(milliseconds: 400), curve: Curves.easeOut);
     }
   }
 
@@ -79,6 +79,7 @@ class _ChatroomState extends State<Chatroom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff0f6f4),
       resizeToAvoidBottomInset: true,
       appBar: messageHeader(context, friendID),
       body: Container(
