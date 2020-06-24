@@ -5,6 +5,7 @@ import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/detail/detail.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/matching/matchingHandler.dart';
+import 'package:twoGeeks/app/settings/user_profile.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/landing.dart';
@@ -51,6 +52,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => Chat());
     case SettingRoute:
       return MaterialPageRoute(builder: (context) => Settings());
+
+    case UserProfileRoute:
+      return MaterialPageRoute(builder: (context) => UserProfile());
+
     default:
       return MaterialPageRoute(
           builder: (context) => Undefined(name: settings.name));

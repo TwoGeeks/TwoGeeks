@@ -70,7 +70,7 @@ class Settings extends StatelessWidget {
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
             buttonColor: Colors.white,
           ),
           SettingButton(
