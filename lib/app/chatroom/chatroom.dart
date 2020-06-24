@@ -79,6 +79,7 @@ class _ChatroomState extends State<Chatroom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff0f6f4),
       resizeToAvoidBottomInset: true,
       appBar: messageHeader(context, friendID),
       body: Container(

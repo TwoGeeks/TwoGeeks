@@ -15,9 +15,9 @@ Widget userChat(context, DocumentSnapshot doc) {
               minWidth: MediaQuery.of(context).size.width * 0.5,
               maxWidth: MediaQuery.of(context).size.width * 0.5),
           margin: EdgeInsets.only(right: 20),
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Color.fromRGBO(0, 0, 0, 0.14),
+              color: Color(0xfffbceb5),
               borderRadius: BorderRadius.circular(13)),
           child: Text(
             doc["content"],
