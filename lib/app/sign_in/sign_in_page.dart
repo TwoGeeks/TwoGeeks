@@ -6,10 +6,9 @@ import 'package:twoGeeks/app/sign_in/sign_in_button_with_logo.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 
 class SignInPage extends StatelessWidget {
-
   // sign in with google
   Future<void> _signInWithGoogle(BuildContext context) async {
-    final auth = Provider.of<AuthBase>(context,listen: false);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     try {
       await auth.signInWithGoogle();
     } catch (e) {
@@ -19,7 +18,7 @@ class SignInPage extends StatelessWidget {
 
   // sign in with facebook
   Future<void> _signInWithFacebook(BuildContext context) async {
-    final auth = Provider.of<AuthBase>(context,listen: false);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     try {
       await auth.signInWithFacebook();
     } catch (e) {
@@ -65,11 +64,23 @@ class SignInPage extends StatelessWidget {
               fontSize: 32,
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text(
+              "with",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 32,
+              ),
+            ),
+          ),
           SizedBox(
-            height: 80,
+            height: 70,
           ),
           SignInButton(
-            text: "Sign in with TwoGeeks",
+            text: "TwoGeeks",
             textColor: Colors.white,
             buttonColor: Colors.purple[700],
             onPressed: () => _signInWithTwoGeeks(context),
@@ -78,7 +89,7 @@ class SignInPage extends StatelessWidget {
             height: 10.0,
           ),
           SignInButtonWithLogo(
-            text: "Sign in with Facebook",
+            text: "Facebook",
             assetName: "images/facebook-logo.png",
             textColor: Colors.white,
             buttonColor: Color(0xFF334D92),
@@ -88,7 +99,7 @@ class SignInPage extends StatelessWidget {
             height: 10.0,
           ),
           SignInButtonWithLogo(
-            text: "Sign in with Google",
+            text: "Google",
             assetName: "images/google-logo.png",
             textColor: Colors.red[800],
             buttonColor: Colors.white,
