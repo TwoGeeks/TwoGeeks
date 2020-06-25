@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/chatroom/friendChat.dart';
 import 'package:twoGeeks/app/chatroom/userChat.dart';
 
@@ -12,9 +13,9 @@ Widget messageBody(context, List<DocumentSnapshot> listMessage, String userID,
       itemBuilder: (BuildContext ctxt, int index) {
         DocumentSnapshot doc = listMessage[index];
         if (userID == doc["idFrom"]) {
-          return userChat(context, doc);
+          return FadeAnimation(0.2, userChat(context, doc));
         } else {
-          return friendChat(context, doc);
+          return FadeAnimation(0.2, friendChat(context, doc));
         }
       }));
 }

@@ -15,12 +15,12 @@ Widget navBar(context, selected) {
       children: <Widget>[
         Icon(
           icon,
-          color: Color.fromRGBO(255, 255, 255, 1),
+          color: Color(0xff1e3c00),
         ),
         Text(
           name,
           style: TextStyle(
-            color: Colors.white,
+            color: Color(0xff1e3c00),
             fontSize: 12,
           ),
         )
@@ -32,14 +32,16 @@ Widget navBar(context, selected) {
   Widget deactiveNav(icon) {
     return (Icon(
       icon,
-      color: Color.fromRGBO(255, 255, 255, 0.5),
+      color: Color(0xffc1bbb7),
     ));
   }
 
   return BottomAppBar(
     child: Container(
       height: 60.0,
-      decoration: BoxDecoration(color: Color.fromRGBO(98, 0, 238, 1.0)),
+      decoration: BoxDecoration(
+          color: Color(0xffffcb8b),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

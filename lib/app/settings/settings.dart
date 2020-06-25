@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
+import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/settings/AddPhoto.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
@@ -8,7 +9,6 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class Settings extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,7 @@ class Settings extends StatelessWidget {
     // temporary method to sign in for testing
     Future<void> _signOut() async {
       try {
-        final auth = Provider.of<AuthBase>(context,listen: false);
+        final auth = Provider.of<AuthBase>(context, listen: false);
         await auth.signOut();
         Navigator.pushReplacementNamed(context, LandingRoute);
       } catch (e) {
@@ -42,59 +42,71 @@ class Settings extends StatelessWidget {
       }
     }
 
-    return Padding(
-      padding: EdgeInsets.only(top: 35),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        FadeAnimation(
+          0.8,
           Container(
-            color: Colors.grey[400],
-            height: 40,
+            height: 100,
             alignment: Alignment.center,
+            padding: EdgeInsets.only(top: 10),
+            decoration: BoxDecoration(
+                color: Color(0xffb9789f),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
             child: Text(
               "Settings",
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w500,
                 fontSize: 30,
+                letterSpacing: 1.4,
               ),
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
-            height: 40,
-          ),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        FadeAnimation(0.9,
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
 //<<<<<<< HEAD
             onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
 //=======
-//            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhoto()));},
-//>>>>>>> 52d7954be7011165f0fcb68a1e40216e077c072c
+//            onPressed: () {
+//              Navigator.push(
+//                  context, MaterialPageRoute(builder: (context) => AddPhoto()));
+//            },
+//>>>>>>> 51d9586b239f37e25efb76fb18ad630ac567fc40
             buttonColor: Colors.white,
           ),
+        ),
+        FadeAnimation(1,
           SettingButton(
             text: "Edit Preference",
             textColor: Colors.black,
             onPressed: () {},
             buttonColor: Colors.white,
           ),
+        ),
+        FadeAnimation(1.1,
           SettingButton(
             text: "Log Out",
             textColor: Colors.black,
             onPressed: () => _confirmSignOut(context),
             buttonColor: Colors.white,
           ),
-          SizedBox(
-            height: 80,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 80,
+        ),
+      ],
     );
   }
 }
