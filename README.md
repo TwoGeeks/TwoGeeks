@@ -37,6 +37,11 @@ As a student,
 5. I want to be able to chat with my fellow students so that I can plan when to study together after accepting a friend request.
 6. I want to be able to see all my chats with other students so that I can resume chatting with them.
 
+As a tutor (another student),
+1. I want to inform other students in the area of studies that I am proficient in.
+2. I want to be able to accept friend requests from other students.
+3. I want to show a list of chats with students I have been helping.
+
 ## Design of system
 
 Using Adobe XD, we have come up we a mockup of our mobile application.
@@ -164,9 +169,36 @@ For our database, we have come up with a initial schema.
 
 ## Testing Methods
 
+### Unit Testing
+- Testing individual widgets with Flutter in-built tester
+- Loaded widgets to tester to check if the required elements are present (E.g texts, pictures, buttons)
+- Check if logic in functions are working
+
+### Stubs
+- Used Mockito package to mock authentication
+- Preconfigure mock class to return a particular user
+- Used cloud_firestore_mocks package to mock firestore
+- Preconfigued data for the mock firestore
+
+### Integration Testing
+- Using combination of unit test to test each main pages
+- Mock presses on buttons to test navigation to other pages
+
+### System Testing
+- Ensure the features created is working as per expected
+- Ensure there is input validation and error handling in places such as 
+    - login
+    - signup
+    - edit profile
+    - chat messaging input
+- Ensure inputs cannot exceed a certain length
+- Ensure buttons are not obscured
+- Ensure app is easy to use and understand
+
 ## Software engineering design practices
 
 ## Problems Encountered
+- Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues. 
 
 ## Other Similar Applications
 
