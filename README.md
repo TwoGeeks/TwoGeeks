@@ -175,9 +175,9 @@ For our database, we have come up with a initial schema.
 - Check if logic in functions are working
 
 ### Stubs
-- Used Mockito package to mock authentication
+- Used [Mockito](https://flutter.dev/docs/cookbook/testing/unit/mocking) package to mock authentication
 - Preconfigure mock class to return a particular user
-- Used cloud_firestore_mocks package to mock firestore
+- Used [cloud_firestore_mocks](https://pub.dev/packages/cloud_firestore_mocks) package to mock firestore
 - Preconfigued data for the mock firestore
 
 ### Integration Testing
