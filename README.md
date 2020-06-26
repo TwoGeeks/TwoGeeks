@@ -184,6 +184,10 @@ For our database, we have come up with a initial schema.
 - Using combination of unit test to test each main pages
 - Mock presses on buttons to test navigation to other pages
 
+### Testing Automation and Coverage
+- Set up automatic testing using TravisCI on pull request
+- Calculate test coverage score using TravisCI
+
 ### System Testing
 - Ensure the features created is working as per expected
 - Ensure there is input validation and error handling in places such as 
@@ -201,6 +205,16 @@ For our database, we have come up with a initial schema.
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues. 
 
 ## Other Similar Applications
+
+### Reddit r/FindStudyBuddies
+![r/FindStudyBuddies](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other2.png)
+- Limitations
+    - Hard to filter and search based on preferences as reddit can only sort via latest or most popular or search via description
+
+### MoocLab
+![mooclab](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other1.png)
+- Limitations
+    - This platform is designed for students to meet up online and share their progress on MOOC courses. It doest really support looking at finding physical interactions and studying
 
 ---
 
