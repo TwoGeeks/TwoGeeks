@@ -34,6 +34,9 @@ Widget messageInput(Function onSendMessage, TextEditingController _controller) {
               if (value.isEmpty) {
                 return "Wrong";
               }
+              if (value.length > 5000) {
+                return "Toolong";
+              }
               return null;
             },
           ),
