@@ -37,6 +37,11 @@ As a student,
 5. I want to be able to chat with my fellow students so that I can plan when to study together after accepting a friend request.
 6. I want to be able to see all my chats with other students so that I can resume chatting with them.
 
+As a tutor (another student),
+1. I want to inform other students in the area of studies that I am proficient in.
+2. I want to be able to accept friend requests from other students.
+3. I want to show a list of chats with students I have been helping.
+
 ## Design of system
 
 Using Adobe XD, we have come up we a mockup of our mobile application.
@@ -161,6 +166,61 @@ For our database, we have come up with a initial schema.
     </td>
   </tr>
 </table>
+
+## Software engineering design practices
+- Using Github for version control and merging of conflicts
+- Ensure all test are passed before merging to master branch
+- Ensure harder to understand codes are well commented
+- Write test to ensure code is working
+
+## Testing Methods
+
+### Unit Testing
+- Testing individual widgets with Flutter in-built tester
+- Loaded widgets to tester to check if the required elements are present (E.g texts, pictures, buttons)
+- Check if logic in functions are working
+
+### Stubs
+- Used [Mockito](https://flutter.dev/docs/cookbook/testing/unit/mocking) package to mock authentication
+- Preconfigure mock class to return a particular user
+- Used [cloud_firestore_mocks](https://pub.dev/packages/cloud_firestore_mocks) package to mock firestore
+- Preconfigued data for the mock firestore
+
+### Integration Testing
+- Using combination of unit test to test each main pages
+- Mock presses on buttons to test navigation to other pages
+
+### Testing Automation and Coverage
+- Set up automatic testing using TravisCI on pull request
+- Calculate test coverage score using TravisCI
+
+### System Testing
+- Ensure the features created is working as per expected
+- Ensure there is input validation and error handling in places such as 
+    - login
+    - signup
+    - edit profile
+    - chat messaging input
+- Ensure inputs cannot exceed a certain length
+- Ensure buttons are not obscured
+- Ensure app is easy to use and understand
+
+## Problems Encountered
+- Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
+- Since firebase and firestore are deeply intertwined in our app, it was hard to set up testing as most of the time it would break. One way we resolved this issue was to mock both dependencies
+- 
+
+## Other Similar Applications
+
+### Reddit r/FindStudyBuddies
+![r/FindStudyBuddies](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other2.png)
+- Limitations
+    - Hard to filter and search based on preferences as reddit can only sort via latest or most popular or search via description
+
+### MoocLab
+![mooclab](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other1.png)
+- Limitations
+    - This platform is designed for students to meet up online and share their progress on MOOC courses. It doest really support looking at finding physical interactions and studying
 
 ---
 
