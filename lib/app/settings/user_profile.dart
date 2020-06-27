@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +8,7 @@ import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
+import 'package:twoGeeks/app/settings/edit_number_tile.dart';
 
 /* Edit User Profile */
 class UserProfile extends StatefulWidget {
@@ -64,6 +64,16 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
+  void _updateAge(int age) async{
+    try{
+      await database.updateProfile("age", age.toString());
+    } on PlatformException catch(e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
 
 
   Widget _buildUserProfileForm(){
@@ -81,9 +91,10 @@ class _UserProfileState extends State<UserProfile> {
                     maxLength: 35,
                     maxLines: 1,
                   ),
-                  EditTextTile(
+                  EditNumberTile(
                     title: "Age",
                     subtitle: snapshot.data.age.toString(),
+                    onSubmit: _updateAge,
                   ),
                   EditTextTile(
                     title: "Country",

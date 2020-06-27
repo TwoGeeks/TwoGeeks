@@ -1,7 +1,7 @@
 // model for user
 class UserProfileModel {
   final String name;
-  final int age;
+  final String age;
   final String country;
   final String currentSchool;
   final String currentSchoolYear;
@@ -27,7 +27,7 @@ class UserProfileModel {
       return null;
     }
     final String name = _isEmpty(data["name"]).toString();
-    final int age = _isEmpty(data["age"]);
+    final String age = _isEmpty(data["age"]).toString();
     final String country = _isEmpty(data["country"]).toString();
     final String currentSchool = _isEmpty(data["currentSchool"]).toString();
     final String currentSchoolYear = _isEmpty(data["currentSchoolYear"]).toString();
