@@ -9,6 +9,7 @@ import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 import 'package:twoGeeks/app/settings/edit_number_tile.dart';
+import 'package:twoGeeks/app/settings/edit_country_tile.dart';
 
 /* Edit User Profile */
 class UserProfile extends StatefulWidget {
@@ -75,6 +76,17 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
+  void _updateCountry(String country) async{
+    try{
+      await database.updateProfile("country", country);
+    } on PlatformException catch(e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+
 
   Widget _buildUserProfileForm(){
     _getUid();
@@ -96,9 +108,10 @@ class _UserProfileState extends State<UserProfile> {
                     subtitle: snapshot.data.age.toString(),
                     onSubmit: _updateAge,
                   ),
-                  EditTextTile(
+                  EditCountryTile(
                     title: "Country",
                     subtitle: snapshot.data.country,
+                    onSubmit: _updateCountry,
                   ),
                   EditTextTile(
                     title: "Current School",
