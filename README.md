@@ -167,6 +167,12 @@ For our database, we have come up with a initial schema.
   </tr>
 </table>
 
+## Software engineering design practices
+- Using Github for version control and merging of conflicts
+- Ensure all test are passed before merging to master branch
+- Ensure harder to understand codes are well commented
+- Write test to ensure code is working
+
 ## Testing Methods
 
 ### Unit Testing
@@ -199,10 +205,10 @@ For our database, we have come up with a initial schema.
 - Ensure buttons are not obscured
 - Ensure app is easy to use and understand
 
-## Software engineering design practices
-
 ## Problems Encountered
-- Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues. 
+- Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
+- Since firebase and firestore are deeply intertwined in our app, it was hard to set up testing as most of the time it would break. One way we resolved this issue was to mock both dependencies
+- 
 
 ## Other Similar Applications
 
