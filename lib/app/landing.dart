@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/app/services/database.dart';
 
 class LandingPage extends StatelessWidget {
 

@@ -76,10 +76,14 @@ class Settings extends StatelessWidget {
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddPhoto()));
-            },
+//<<<<<<< HEAD
+            onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
+//=======
+//            onPressed: () {
+//              Navigator.push(
+//                  context, MaterialPageRoute(builder: (context) => AddPhoto()));
+//            },
+//>>>>>>> 51d9586b239f37e25efb76fb18ad630ac567fc40
             buttonColor: Colors.white,
           ),
         ),
