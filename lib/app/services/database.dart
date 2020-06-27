@@ -13,6 +13,9 @@ abstract class Database{
   Future<dynamic> read(String data);
 
   Stream<UserProfileModel> getUserProfile();
+
+  // updates the key with a new value
+  Future<void> updateProfile(String key, String value);
 }
 
 
@@ -26,6 +29,8 @@ class FireStoreDatabase implements Database{
   data: {"hobbies" : FieldValue.arrayUnion([hobby])}
   );
 
+  Future<void> updateProfile(String key, String value) => _service.updateData(path: APIPath.user(uid), data: {key : value});
+
   Stream<UserProfileModel> getUserProfile(){
     return _service.documentStream(path: APIPath.user(uid), builder: (data) => UserProfileModel.fromMap(data));
   }
@@ -36,6 +41,5 @@ class FireStoreDatabase implements Database{
         print(item.data[data])
     );
   }
-
 
 }

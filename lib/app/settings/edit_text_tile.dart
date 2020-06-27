@@ -5,8 +5,10 @@ class EditTextTile extends StatefulWidget {
   final String title;
   final String subtitle;
   final Function onSubmit;
+  final int maxLength;
+  final int maxLines;
 
-  EditTextTile({this.title, this.subtitle, this.onSubmit});
+  EditTextTile({this.title, this.subtitle, this.onSubmit, this.maxLines, this.maxLength});
   @override
   _EditTextTileState createState() => _EditTextTileState();
 }
@@ -42,6 +44,13 @@ class _EditTextTileState extends State<EditTextTile> {
     }
   }
 
+  void _cancel(){
+    setState(() {
+      _controller = TextEditingController(text: widget.subtitle);
+      _toggle();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_edit) {
@@ -60,6 +69,8 @@ class _EditTextTileState extends State<EditTextTile> {
             children: <Widget>[
               TextFormField(
                 controller: _controller,
+                maxLength: widget.maxLength,
+                maxLines: widget.maxLines,
                 onChanged: (text) => {},
                 onEditingComplete: _validateAndSubmit,
                 decoration: InputDecoration(
@@ -72,7 +83,7 @@ class _EditTextTileState extends State<EditTextTile> {
                 children: <Widget>[
                   CustomFlatButton(
                     child: Text("Cancel"),
-                    onPressed: _toggle,
+                    onPressed: _cancel,
                     color: Colors.red.withOpacity(0.7),
                     height: 30,
                   ),

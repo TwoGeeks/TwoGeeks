@@ -8,7 +8,7 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
-import 'package:twoGeeks/app/settings/edit_tile.dart';
+import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 
 /* Edit User Profile */
 class UserProfile extends StatefulWidget {
@@ -19,6 +19,7 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
 
   String currentUserUid;
+  Database database;
 
   void _getUid() async{
     final auth = Provider.of<AuthBase>(context, listen: false);
@@ -26,6 +27,7 @@ class _UserProfileState extends State<UserProfile> {
     if (mounted) {
       setState(() {
         currentUserUid = user.uid;
+        database = FireStoreDatabase(uid: currentUserUid);
       });
     }
   }
@@ -41,10 +43,19 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 
-  void _addHobby(BuildContext context, String hobby) {
+  void _updateName(String name) async{
     try{
-      final database = Provider.of<Database>(context, listen: false);
-      database.addHobby(hobby);
+      await database.updateProfile("name", name);
+    } on PlatformException catch(e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+  void _updateAboutMe(String aboutMe) async{
+    try{
+      await database.updateProfile("aboutMe", aboutMe);
     } on PlatformException catch(e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
@@ -54,44 +65,44 @@ class _UserProfileState extends State<UserProfile> {
   }
 
 
+
   Widget _buildUserProfileForm(){
     _getUid();
-    final database = FireStoreDatabase(uid: currentUserUid);
     return StreamBuilder<UserProfileModel>(
       stream: database.getUserProfile(),
       builder: (context, snapshot){
         if (snapshot.hasData){
             return ListView(
                 children: <Widget>[
-                  EditTile(
+                  EditTextTile(
                     title: "Name",
                     subtitle: snapshot.data.name,
-                    onTap: () => (){},
+                    onSubmit: _updateName,
+                    maxLength: 35,
+                    maxLines: 1,
                   ),
-                  EditTile(
+                  EditTextTile(
                     title: "Age",
-                    subtitle: snapshot.data.age,
-                    onTap: () => (){},
+                    subtitle: snapshot.data.age.toString(),
                   ),
-                  EditTile(
+                  EditTextTile(
                     title: "Country",
                     subtitle: snapshot.data.country,
-                    onTap: () => (){},
                   ),
-                  EditTile(
+                  EditTextTile(
                     title: "Current School",
                     subtitle: snapshot.data.currentSchool,
-                    onTap: () => (){},
                   ),
-                  EditTile(
+                  EditTextTile(
                     title: "Current School Year",
                     subtitle: snapshot.data.currentSchoolYear,
-                    onTap: () => (){},
                   ),
-                  EditTile(
+                  EditTextTile(
                     title: "About me",
                     subtitle: snapshot.data.aboutMe,
-                    onTap: () => (){},
+                    onSubmit: _updateAboutMe,
+                    maxLength: 140,
+                    maxLines: 6,
                   ),
                 ],
             );
