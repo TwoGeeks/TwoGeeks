@@ -1,31 +1,41 @@
 import 'package:meta/meta.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:twoGeeks/app/detail/detailInfo/hobbies.dart';
+import 'package:twoGeeks/app/models/user_profile_model.dart';
+import 'package:twoGeeks/app/services/firestore_service.dart';
 import 'package:twoGeeks/app/services/api_paths.dart';
 
 abstract class Database{
   // method to add hobby
   Future<void> addHobby(String hobby);
+
+  // get name
+//  Future<String> getName();
+  Future<dynamic> read(String data);
+
+  Stream<UserProfileModel> getUserProfile();
 }
+
 
 class FireStoreDatabase implements Database{
   String uid;
+  final _service = FireStoreService.instance;
   FireStoreDatabase({@required this.uid}) : assert(uid != null);
 
-  Future<void> addHobby(String hobby) async => updateData(
+  Future<void> addHobby(String hobby) async => _service.updateData(
     path: APIPath.user(uid),
   data: {"hobbies" : FieldValue.arrayUnion([hobby])}
   );
 
-  // set data in firestore
-  Future<void> setData({String path, Map<String, dynamic> data}) async{
-    final documentReference = Firestore.instance.document(path);
-    await documentReference.setData(data);
+  Stream<UserProfileModel> getUserProfile(){
+    return _service.documentStream(path: APIPath.user(uid), builder: (data) => UserProfileModel.fromMap(data));
   }
 
-  // update data in firestore
-  Future<void> updateData({String path, Map<String, dynamic> data}) async{
-    final documentReference = Firestore.instance.document(path);
-    await documentReference.updateData(data);
+  Future<dynamic> read(String data) async{
+    var document = await Firestore.instance.document(APIPath.user(uid));
+    document.get().then((item) =>
+        print(item.data[data])
+    );
   }
+
+
 }
