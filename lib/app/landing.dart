@@ -21,10 +21,7 @@ class LandingPage extends StatelessWidget {
           if (user == null) {
             return SignInPage();
           }
-          return Provider<Database>(
-            create: (_) => FireStoreDatabase(uid: user.uid),
-            child: HomePage(),
-          );
+          return HomePage();
         } else {
           return Scaffold(
             body: Column(
