@@ -71,6 +71,7 @@ class _EditTextTileState extends State<EditTextTile> {
                 controller: _controller,
                 maxLength: widget.maxLength,
                 maxLines: widget.maxLines,
+                minLines: 1,
                 onChanged: (text) => {},
                 onEditingComplete: _validateAndSubmit,
                 decoration: InputDecoration(
