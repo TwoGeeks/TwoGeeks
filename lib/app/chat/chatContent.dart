@@ -18,8 +18,9 @@ Widget chatContent(context, userID) {
           return (ListView.builder(
               itemCount: friendList.length,
               itemBuilder: (BuildContext ctxt, int index) {
-                double animationDelay = 1.3 + index/10;
-                return FadeAnimation(animationDelay, eachChatView(context, userID, friendList[index]));
+                double animationDelay = 1.3 + index / 10;
+                return FadeAnimation(animationDelay,
+                    eachChatView(context, userID, friendList[index]));
               }));
         }
       });

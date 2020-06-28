@@ -72,7 +72,8 @@ class Settings extends StatelessWidget {
         SizedBox(
           height: 40,
         ),
-        FadeAnimation(0.9,
+        FadeAnimation(
+          0.9,
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
@@ -87,7 +88,8 @@ class Settings extends StatelessWidget {
             buttonColor: Colors.white,
           ),
         ),
-        FadeAnimation(1,
+        FadeAnimation(
+          1,
           SettingButton(
             text: "Edit Preference",
             textColor: Colors.black,
@@ -95,7 +97,8 @@ class Settings extends StatelessWidget {
             buttonColor: Colors.white,
           ),
         ),
-        FadeAnimation(1.1,
+        FadeAnimation(
+          1.1,
           SettingButton(
             text: "Log Out",
             textColor: Colors.black,

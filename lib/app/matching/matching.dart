@@ -13,8 +13,7 @@ class Matching extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final auth = Provider.of<AuthBase>(context,listen: false);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     return Scaffold(
       body: StreamBuilder(
           stream:

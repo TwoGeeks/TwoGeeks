@@ -18,11 +18,10 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   String currentUserUid;
   Database database;
 
-  void _getUid() async{
+  void _getUid() async {
     final auth = Provider.of<AuthBase>(context, listen: false);
     User user = await auth.currentUser();
     if (mounted) {
@@ -44,20 +43,21 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 
-  void _updateName(String name) async{
-    try{
+  void _updateName(String name) async {
+    try {
       await database.updateProfile("name", name);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
       ).show(context);
     }
   }
-  void _updateAboutMe(String aboutMe) async{
-    try{
+
+  void _updateAboutMe(String aboutMe) async {
+    try {
       await database.updateProfile("aboutMe", aboutMe);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -65,10 +65,10 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateAge(int age) async{
-    try{
+  void _updateAge(int age) async {
+    try {
       await database.updateProfile("age", age.toString());
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -76,10 +76,10 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateCountry(String country) async{
-    try{
+  void _updateCountry(String country) async {
+    try {
       await database.updateProfile("country", country);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -87,55 +87,53 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-
-  Widget _buildUserProfileForm(){
+  Widget _buildUserProfileForm() {
     _getUid();
     return StreamBuilder<UserProfileModel>(
-      stream: database.getUserProfile(),
-      builder: (context, snapshot){
-        if (snapshot.hasData){
+        stream: database.getUserProfile(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             return ListView(
-                children: <Widget>[
-                  EditTextTile(
-                    title: "Name",
-                    subtitle: snapshot.data.name,
-                    onSubmit: _updateName,
-                    maxLength: 35,
-                    maxLines: 1,
-                  ),
-                  EditNumberTile(
-                    title: "Age",
-                    subtitle: snapshot.data.age.toString(),
-                    onSubmit: _updateAge,
-                  ),
-                  EditCountryTile(
-                    title: "Country",
-                    subtitle: snapshot.data.country,
-                    onSubmit: _updateCountry,
-                  ),
-                  EditTextTile(
-                    title: "Current School",
-                    subtitle: snapshot.data.currentSchool,
-                  ),
-                  EditTextTile(
-                    title: "Current School Year",
-                    subtitle: snapshot.data.currentSchoolYear,
-                  ),
-                  EditTextTile(
-                    title: "About me",
-                    subtitle: snapshot.data.aboutMe,
-                    onSubmit: _updateAboutMe,
-                    maxLength: 140,
-                    maxLines: 6,
-                  ),
-                ],
+              children: <Widget>[
+                EditTextTile(
+                  title: "Name",
+                  subtitle: snapshot.data.name,
+                  onSubmit: _updateName,
+                  maxLength: 35,
+                  maxLines: 1,
+                ),
+                EditNumberTile(
+                  title: "Age",
+                  subtitle: snapshot.data.age.toString(),
+                  onSubmit: _updateAge,
+                ),
+                EditCountryTile(
+                  title: "Country",
+                  subtitle: snapshot.data.country,
+                  onSubmit: _updateCountry,
+                ),
+                EditTextTile(
+                  title: "Current School",
+                  subtitle: snapshot.data.currentSchool,
+                ),
+                EditTextTile(
+                  title: "Current School Year",
+                  subtitle: snapshot.data.currentSchoolYear,
+                ),
+                EditTextTile(
+                  title: "About me",
+                  subtitle: snapshot.data.aboutMe,
+                  onSubmit: _updateAboutMe,
+                  maxLength: 140,
+                  maxLines: 6,
+                ),
+              ],
             );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }
-    );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
   }
 }

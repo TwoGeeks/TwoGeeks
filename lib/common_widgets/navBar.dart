@@ -32,7 +32,7 @@ Widget navBar(context, selected) {
   Widget deactiveNav(icon) {
     return (Icon(
       icon,
-      color: Color(0xffc1bbb7),
+      color: Color(0xfff0f6f4),
     ));
   }
 
@@ -40,7 +40,7 @@ Widget navBar(context, selected) {
     child: Container(
       height: 60.0,
       decoration: BoxDecoration(
-          color: Color(0xffffcb8b),
+          color: Color(0xfffc6767),
           borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

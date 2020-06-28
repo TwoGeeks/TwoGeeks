@@ -30,6 +30,8 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
         ],
       )));
     }
+
+    onNext();
   }
 
   return Stack(children: <Widget>[
