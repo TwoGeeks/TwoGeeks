@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/homepage/friendRequests/friendRequests.dart';
 import 'package:twoGeeks/app/homepage/homepageHeader.dart';
-import 'package:twoGeeks/app/homepage/unreadMessages/unreadMessages.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
