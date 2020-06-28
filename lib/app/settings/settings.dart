@@ -32,7 +32,7 @@ class Settings extends StatelessWidget {
     Future<void> _confirmSignOut(BuildContext context) async {
       final requestSignOut = await PlatformAlertDialog(
         title: "Log Out",
-        content: "Are you sure you want to log out?",
+        content: Text("Are you sure you want to log out?"),
         defaultActionText: 'LogOut',
         cancelActionText: "Cancel",
       ).show(context);

@@ -12,7 +12,7 @@ class PlatformExceptionAlertDialog extends PlatformAlertDialog{
     @required PlatformException exception,
   }) : super(
     title: title,
-    content: _message(exception),
+    content: Text(_message(exception)),
     defaultActionText: "OK",
   );
 

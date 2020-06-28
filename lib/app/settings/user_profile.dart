@@ -7,6 +7,7 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/settings/education_levels.dart';
+import 'package:twoGeeks/app/settings/show_tile.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 import 'package:twoGeeks/app/settings/edit_number_tile.dart';
@@ -127,12 +128,8 @@ class _UserProfileState extends State<UserProfile> {
                     maxLength: 35,
                     maxLines: 1,
                   ),
-                  ListTile(
-                    title: Text("Change Profile Picture",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),),
+                  ShowTile(
+                    title: "Change Profile Picture",
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhoto())),
                   ),
                   EditNumberTile(

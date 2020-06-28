@@ -36,7 +36,7 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
     } catch (e) {
       PlatformAlertDialog(
         title: "Sign Up Failed",
-        content: e.toString().split(",")[1].trim(),
+        content: Text(e.toString().split(",")[1].trim()),
         defaultActionText: 'OK',
       ).show(context);
     } finally {

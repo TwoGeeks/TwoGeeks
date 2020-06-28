@@ -35,7 +35,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
     } catch (e) {
       PlatformAlertDialog(
         title: "Sign In Failed",
-        content: e.toString().split(",")[1].trim(),
+        content: Text(e.toString().split(",")[1].trim()),
         defaultActionText: 'OK',
       ).show(context);
     } finally {
