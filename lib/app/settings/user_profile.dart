@@ -24,7 +24,6 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   Database database;
 
   void _getUid() async {
@@ -92,10 +91,10 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateGrade(String grade) async{
-    try{
+  void _updateGrade(String grade) async {
+    try {
       await database.updateProfile("currentSchoolYear", grade);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -103,10 +102,21 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateGender(String gender) async{
-    try{
+  void _updateGender(String gender) async {
+    try {
       await database.updateProfile("gender", gender);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+
+  void _updateProfilePicture(String url) async {
+    try {
+      await database.updateProfile("profilePic", url);
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -121,49 +131,61 @@ class _UserProfileState extends State<UserProfile> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView(
-                children: <Widget>[
-                  EditTextTile(
-                    title: "Name",
-                    subtitle: snapshot.data.name,
-                    onSubmit: _updateName,
-                    maxLength: 35,
-                    maxLines: 1,
-                  ),
-                  ShowTile(
-                    title: "Change Profile Picture",
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhoto())),
-                  ),
-                  EditNumberTile(
-                    title: "Age",
-                    subtitle: snapshot.data.age.toString(),
-                    onSubmit: _updateAge,
-                  ),
-                  CustomDropdownTile(
-                    title: "Gender",
-                    subtitle: snapshot.data.gender,
-                    list: ["neutral", "male", "female"],
-                    onSubmit: _updateGender,
-                  ),
-                  EditCountryTile(
-                    title: "Country",
-                    subtitle: snapshot.data.country,
-                    onSubmit: _updateCountry,
-                  ),
-                  CustomDropdownTile(
-                    title: "Current School Year",
-                    subtitle: snapshot.data.currentSchoolYear,
-                    list: EducationLevel.education,
-                    onSubmit: _updateGrade,
-                  ),
-                  EditTextTile(
-                    title: "About me",
-                    subtitle: snapshot.data.aboutMe,
-                    onSubmit: _updateAboutMe,
-                    maxLength: 140,
-                    maxLines: 6,
-                  ),
-                  SizedBox(height: 20,)
-                ],
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Image.network(snapshot.data.profilePic),
+                    ShowTile(
+                      title: "Change Profile Picture",
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddPhoto(
+                                    updateImgUrl: _updateProfilePicture,
+                                  ))),
+                    ),
+                  ],
+                ),
+                EditTextTile(
+                  title: "Name",
+                  subtitle: snapshot.data.name,
+                  onSubmit: _updateName,
+                  maxLength: 35,
+                  maxLines: 1,
+                ),
+                EditNumberTile(
+                  title: "Age",
+                  subtitle: snapshot.data.age.toString(),
+                  onSubmit: _updateAge,
+                ),
+                CustomDropdownTile(
+                  title: "Gender",
+                  subtitle: snapshot.data.gender,
+                  list: ["neutral", "male", "female"],
+                  onSubmit: _updateGender,
+                ),
+                EditCountryTile(
+                  title: "Country",
+                  subtitle: snapshot.data.country,
+                  onSubmit: _updateCountry,
+                ),
+                CustomDropdownTile(
+                  title: "Current School Year",
+                  subtitle: snapshot.data.currentSchoolYear,
+                  list: EducationLevel.education,
+                  onSubmit: _updateGrade,
+                ),
+                EditTextTile(
+                  title: "About me",
+                  subtitle: snapshot.data.aboutMe,
+                  onSubmit: _updateAboutMe,
+                  maxLength: 140,
+                  maxLines: 6,
+                ),
+                SizedBox(
+                  height: 20,
+                )
+              ],
             );
           } else {
             return Center(
