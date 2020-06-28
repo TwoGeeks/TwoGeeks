@@ -162,6 +162,7 @@ class _UserProfileState extends State<UserProfile> {
                     maxLength: 140,
                     maxLines: 6,
                   ),
+                  SizedBox(height: 20,)
                 ],
             );
           } else {
