@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
+import 'package:twoGeeks/app/chatroom/chatroom.dart';
 
-void friendRequestComplete(context, friendUid, name) async {
+void friendRequestComplete(context, friendUid, userUid, name) async {
   return showDialog(
     context: context,
     builder: (context) {
@@ -38,7 +40,11 @@ void friendRequestComplete(context, friendUid, name) async {
           Container(
             margin: EdgeInsets.only(left: 50, right: 10, bottom: 10, top: 10),
             child: FlatButton(
-                onPressed: null,
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, ChatroomRoute,
+                      arguments:
+                          ObjectID(userID: userUid, friendID: friendUid));
+                },
                 child: Text(
                   "Chat",
                   style: TextStyle(color: Colors.white, fontSize: 18),

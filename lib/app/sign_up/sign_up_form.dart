@@ -10,7 +10,6 @@ import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 import 'package:twoGeeks/common_widgets/validators.dart';
 
 class TwoGeeksSignUpForm extends StatefulWidget with EmailAndPasswordValidator {
-
   @override
   _TwoGeeksSignUpFormState createState() => _TwoGeeksSignUpFormState();
 }
@@ -30,7 +29,7 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
       isLoading = true;
     });
     try {
-      final auth = Provider.of<AuthBase>(context,listen: false);
+      final auth = Provider.of<AuthBase>(context, listen: false);
       await auth.signUpWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {

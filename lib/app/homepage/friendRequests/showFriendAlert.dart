@@ -53,7 +53,8 @@ void showFriendAlert(
                   bool done = await addToFriendsList(
                       context, friendUid, userUid, store);
                   if (done) {
-                    friendRequestComplete(contextMain, friendUid, name);
+                    friendRequestComplete(
+                        contextMain, friendUid, userUid, name);
                   }
                 },
                 child: Text(

@@ -21,8 +21,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
 
   // get a list of user ids
   Future<List<String>> getUsers() async {
-
-    final auth = Provider.of<AuthBase>(context,listen: false);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     user = await auth.currentUser();
     // get user's friend list and friend request list to check if friend is already a friend or already sent friend request
     DocumentSnapshot userData =
@@ -51,10 +50,11 @@ class _MatchingHandlerState extends State<MatchingHandler> {
   @override
   void initState() {
     super.initState();
+    updateState();
   }
 
   Future<void> updateState() async {
-    if (mounted){
+    if (mounted) {
       setState(() {
         myFuture = getUsers();
       });
@@ -73,7 +73,6 @@ class _MatchingHandlerState extends State<MatchingHandler> {
 
   @override
   Widget build(BuildContext context) {
-    updateState();
     return Scaffold(
       body: FutureBuilder(
           future: myFuture,

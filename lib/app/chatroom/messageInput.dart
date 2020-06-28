@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 Widget messageInput(Function onSendMessage, TextEditingController _controller) {
   return Container(
     decoration: BoxDecoration(
-      color: Color.fromRGBO(0, 0, 0, 0.13),
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-    ),
+        color: Color.fromRGBO(0, 0, 0, 0.13),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20))),
     child: (Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[

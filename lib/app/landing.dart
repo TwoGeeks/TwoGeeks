@@ -9,10 +9,9 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 
 class LandingPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<AuthBase>(context,listen: false);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     return StreamBuilder<User>(
       stream: auth.onAuthStateChanged,
       builder: (context, snapshot) {

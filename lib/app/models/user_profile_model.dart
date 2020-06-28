@@ -12,8 +12,18 @@ class UserProfileModel {
   final weakness;
   final hobbies;
 
-  UserProfileModel({this.name, this.age, this.country, this.currentSchool, this.currentSchoolYear, this.aboutMe,
-    this.gender, this.profilePic, this.strength, this.weakness, this.hobbies});
+  UserProfileModel(
+      {this.name,
+      this.age,
+      this.country,
+      this.currentSchool,
+      this.currentSchoolYear,
+      this.aboutMe,
+      this.gender,
+      this.profilePic,
+      this.strength,
+      this.weakness,
+      this.hobbies});
 
   static dynamic _ifEmpty(dynamic value, dynamic altVal){
     if(value == null || value == ""){
@@ -22,8 +32,8 @@ class UserProfileModel {
     return value;
   }
 
-  factory UserProfileModel.fromMap(Map<String,dynamic> data){
-    if(data.isEmpty){
+  factory UserProfileModel.fromMap(Map<String, dynamic> data) {
+    if (data.isEmpty) {
       return null;
     }
     final String name = _ifEmpty(data["name"], "No name given").toString();

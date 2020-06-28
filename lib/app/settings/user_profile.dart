@@ -27,7 +27,7 @@ class _UserProfileState extends State<UserProfile> {
 
   Database database;
 
-  void _getUid() async{
+  void _getUid() async {
     final auth = Provider.of<AuthBase>(context, listen: false);
     User user = await auth.currentUser();
     if (mounted) {
@@ -48,20 +48,21 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 
-  void _updateName(String name) async{
-    try{
+  void _updateName(String name) async {
+    try {
       await database.updateProfile("name", name);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
       ).show(context);
     }
   }
-  void _updateAboutMe(String aboutMe) async{
-    try{
+
+  void _updateAboutMe(String aboutMe) async {
+    try {
       await database.updateProfile("aboutMe", aboutMe);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -69,10 +70,10 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateAge(int age) async{
-    try{
+  void _updateAge(int age) async {
+    try {
       await database.updateProfile("age", age.toString());
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -80,10 +81,10 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  void _updateCountry(String country) async{
-    try{
+  void _updateCountry(String country) async {
+    try {
       await database.updateProfile("country", country);
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
         exception: e,
@@ -113,12 +114,12 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
-  Widget _buildUserProfileForm(){
+  Widget _buildUserProfileForm() {
     _getUid();
     return StreamBuilder<UserProfileModel>(
-      stream: database.getUserProfile(),
-      builder: (context, snapshot){
-        if (snapshot.hasData){
+        stream: database.getUserProfile(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             return ListView(
                 children: <Widget>[
                   EditTextTile(
@@ -163,12 +164,11 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                 ],
             );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }
-    );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
   }
 }
