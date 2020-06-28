@@ -9,13 +9,16 @@ import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
 import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class AddPhoto extends StatefulWidget {
+
+  final Function updateImgUrl;
+  AddPhoto({@required this.updateImgUrl});
+
   @override
   _AddPhotoState createState() => _AddPhotoState();
 }
 
 class _AddPhotoState extends State<AddPhoto> {
   File profilePic;
-  final databaseReference = Firestore.instance;
   final storageReference = FirebaseStorage.instance;
 
   Future _chooseFile() async {
@@ -29,15 +32,12 @@ class _AddPhotoState extends State<AddPhoto> {
   void _sendData() async {
     String _imageUrl;
     StorageReference imageRef =
-        storageReference.ref().child("food/${path.basename(profilePic.path)}");
+        storageReference.ref().child("profile/picture/${path.basename(profilePic.path)}");
     StorageUploadTask uploadTask = imageRef.putFile(profilePic);
     await uploadTask.onComplete;
     _imageUrl = await imageRef.getDownloadURL();
 
-    await databaseReference
-        .collection("users")
-        .document("diiBEZvWZJd4u7SarzwsW8ucbfZ2")
-        .updateData({"profilePic": _imageUrl});
+    widget.updateImgUrl(_imageUrl).then((_) => Navigator.pop(context));
   }
 
   @override
@@ -49,7 +49,7 @@ class _AddPhotoState extends State<AddPhoto> {
         children: <Widget>[
           profilePic == null
               ? Container(
-                  height: 150,
+                  height: 200,
                 )
               : Image.asset(profilePic.path),
           profilePic == null
@@ -60,7 +60,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   height: 40,
                 )
               : Container(
-                  height: 100,
+                  height: 50,
                 ),
           SizedBox(
             height: 20,
@@ -73,7 +73,7 @@ class _AddPhotoState extends State<AddPhoto> {
           ),
         ],
       )),
-      defaultActionText: "Done",
+      defaultActionText: "Cancel",
     );
   }
 }
