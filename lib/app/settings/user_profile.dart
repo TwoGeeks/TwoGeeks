@@ -6,11 +6,15 @@ import 'package:twoGeeks/app/models/user_profile_model.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
+import 'package:twoGeeks/app/settings/education_levels.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 import 'package:twoGeeks/app/settings/edit_number_tile.dart';
 import 'package:twoGeeks/app/settings/edit_country_tile.dart';
-import 'package:twoGeeks/app/settings/edit_grade_tile.dart';
+import 'package:twoGeeks/app/settings/custom_dropdown_tile.dart';
+import 'package:twoGeeks/app/settings/AddPhoto.dart';
+
+import 'AddPhoto.dart';
 
 /* Edit User Profile */
 class UserProfile extends StatefulWidget {
@@ -20,7 +24,6 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
 
-  String currentUserUid;
   Database database;
 
   void _getUid() async{
@@ -28,8 +31,7 @@ class _UserProfileState extends State<UserProfile> {
     User user = await auth.currentUser();
     if (mounted) {
       setState(() {
-        currentUserUid = user.uid;
-        database = FireStoreDatabase(uid: currentUserUid);
+        database = FireStoreDatabase(uid: user.uid);
       });
     }
   }
@@ -99,6 +101,16 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
+  void _updateGender(String gender) async{
+    try{
+      await database.updateProfile("gender", gender);
+    } on PlatformException catch(e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
 
   Widget _buildUserProfileForm(){
     _getUid();
@@ -115,23 +127,34 @@ class _UserProfileState extends State<UserProfile> {
                     maxLength: 35,
                     maxLines: 1,
                   ),
+                  ListTile(
+                    title: Text("Change Profile Picture",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhoto())),
+                  ),
                   EditNumberTile(
                     title: "Age",
                     subtitle: snapshot.data.age.toString(),
                     onSubmit: _updateAge,
+                  ),
+                  CustomDropdownTile(
+                    title: "Gender",
+                    subtitle: snapshot.data.gender,
+                    list: ["neutral", "male", "female"],
+                    onSubmit: _updateGender,
                   ),
                   EditCountryTile(
                     title: "Country",
                     subtitle: snapshot.data.country,
                     onSubmit: _updateCountry,
                   ),
-                  EditTextTile(
-                    title: "Current School",
-                    subtitle: snapshot.data.currentSchool,
-                  ),
-                  EditGradeTile(
+                  CustomDropdownTile(
                     title: "Current School Year",
                     subtitle: snapshot.data.currentSchoolYear,
+                    list: EducationLevel.education,
                     onSubmit: _updateGrade,
                   ),
                   EditTextTile(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/app/settings/show_tile.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 
 class EditTextTile extends StatefulWidget {
@@ -56,7 +57,11 @@ class _EditTextTileState extends State<EditTextTile> {
     if (_edit) {
       return _EditTile();
     } else {
-      return _showTile();
+      return ShowTile(
+        title: widget.title,
+        subtitle: widget.subtitle,
+        onTap: _toggle,
+      );
     }
   }
 
@@ -100,36 +105,6 @@ class _EditTextTileState extends State<EditTextTile> {
             ],
           ),
         )
-    );
-  }
-
-  Widget _showTile(){
-    return Container(
-      child: ListTile(
-        title: Text(
-          widget.title,
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-        ),
-        subtitle: Text(
-          widget.subtitle,
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 20,
-          ),
-        ),
-        onTap: _toggle,
-        trailing: Icon(Icons.edit),
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-            bottom: BorderSide(width: 1, color: Colors.black54.withOpacity(0.2),
-            )
-        ),
-      ),
     );
   }
 }
