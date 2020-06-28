@@ -27,17 +27,18 @@ class _AddPhotoState extends State<AddPhoto> {
   void _sendData() async {
     String _imageUrl;
     StorageReference imageRef =
-    storageReference.ref().child("food/${path.basename(profilePic.path)}");
+        storageReference.ref().child("food/${path.basename(profilePic.path)}");
     StorageUploadTask uploadTask = imageRef.putFile(profilePic);
     await uploadTask.onComplete;
     _imageUrl = await imageRef.getDownloadURL();
 
-    await databaseReference.collection("users").document("diiBEZvWZJd4u7SarzwsW8ucbfZ2").updateData({
-      "profilePic": _imageUrl
-    });
+    await databaseReference
+        .collection("users")
+        .document("diiBEZvWZJd4u7SarzwsW8ucbfZ2")
+        .updateData({"profilePic": _imageUrl});
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -54,7 +55,10 @@ class _AddPhotoState extends State<AddPhoto> {
               : Container(
                   height: 100,
                 ),
-          RaisedButton(onPressed: _sendData, child: Text("Submit"),)
+          RaisedButton(
+            onPressed: _sendData,
+            child: Text("Submit"),
+          )
         ],
       )),
     );

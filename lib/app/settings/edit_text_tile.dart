@@ -8,7 +8,12 @@ class EditTextTile extends StatefulWidget {
   final int maxLength;
   final int maxLines;
 
-  EditTextTile({this.title, this.subtitle, this.onSubmit, this.maxLines, this.maxLength});
+  EditTextTile(
+      {this.title,
+      this.subtitle,
+      this.onSubmit,
+      this.maxLines,
+      this.maxLength});
   @override
   _EditTextTileState createState() => _EditTextTileState();
 }
@@ -17,7 +22,7 @@ class _EditTextTileState extends State<EditTextTile> {
   bool _edit = false;
   TextEditingController _controller;
 
-  void _toggle(){
+  void _toggle() {
     setState(() {
       _edit == false ? _edit = true : _edit = false;
     });
@@ -29,22 +34,22 @@ class _EditTextTileState extends State<EditTextTile> {
     _controller = TextEditingController(text: widget.subtitle);
   }
 
-  bool _validate(){
-    if (_controller.text.length == 0){
+  bool _validate() {
+    if (_controller.text.length == 0) {
       return false;
     } else {
       return true;
     }
   }
 
-  void _validateAndSubmit(){
-    if (_validate()){
+  void _validateAndSubmit() {
+    if (_validate()) {
       widget.onSubmit(_controller.text);
       _toggle();
     }
   }
 
-  void _cancel(){
+  void _cancel() {
     setState(() {
       _controller = TextEditingController(text: widget.subtitle);
       _toggle();
@@ -63,46 +68,47 @@ class _EditTextTileState extends State<EditTextTile> {
   Widget _EditTile() {
     return Card(
         child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextFormField(
-                controller: _controller,
-                maxLength: widget.maxLength,
-                maxLines: widget.maxLines,
-                onChanged: (text) => {},
-                onEditingComplete: _validateAndSubmit,
-                decoration: InputDecoration(
-                    labelText: widget.title
-                ),
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  CustomFlatButton(
-                    child: Text("Cancel"),
-                    onPressed: _cancel,
-                    color: Colors.red.withOpacity(0.7),
-                    height: 30,
-                  ),
-                  SizedBox(width: 20,),
-                  CustomFlatButton(
-                    child: Text("Submit"),
-                    onPressed: _validateAndSubmit,
-                    color: Colors.green.withOpacity(0.7),
-                    height: 30,
-                  ),
-                ],
-              )
-            ],
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          TextFormField(
+            controller: _controller,
+            maxLength: widget.maxLength,
+            maxLines: widget.maxLines,
+            onChanged: (text) => {},
+            onEditingComplete: _validateAndSubmit,
+            decoration: InputDecoration(labelText: widget.title),
           ),
-        )
-    );
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              CustomFlatButton(
+                child: Text("Cancel"),
+                onPressed: _cancel,
+                color: Colors.red.withOpacity(0.7),
+                height: 30,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              CustomFlatButton(
+                child: Text("Submit"),
+                onPressed: _validateAndSubmit,
+                color: Colors.green.withOpacity(0.7),
+                height: 30,
+              ),
+            ],
+          )
+        ],
+      ),
+    ));
   }
 
-  Widget _showTile(){
+  Widget _showTile() {
     return Container(
       child: ListTile(
         title: Text(
@@ -125,11 +131,11 @@ class _EditTextTileState extends State<EditTextTile> {
       ),
       decoration: BoxDecoration(
         border: Border(
-            bottom: BorderSide(width: 1, color: Colors.black54.withOpacity(0.2),
-            )
-        ),
+            bottom: BorderSide(
+          width: 1,
+          color: Colors.black54.withOpacity(0.2),
+        )),
       ),
     );
   }
 }
-

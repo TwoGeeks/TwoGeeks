@@ -29,7 +29,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       isLoading = true;
     });
     try {
-      final auth = Provider.of<AuthBase>(context,listen: false);
+      final auth = Provider.of<AuthBase>(context, listen: false);
       await auth.signInWithTwoGeeks(_email, _password);
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {

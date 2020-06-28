@@ -8,7 +8,6 @@ import 'package:twoGeeks/env/config.dart';
 import 'app/services/auth_test.dart';
 
 Widget createWidgetTester(Widget child) {
-
   final String userID = "userid";
   MockAuth mockAuth = MockAuth();
   when(mockAuth.currentUser())

@@ -14,7 +14,6 @@ class ObjectID {
 }
 
 class Chatroom extends StatefulWidget {
-
   final ObjectID objectID;
   Chatroom({this.objectID});
 

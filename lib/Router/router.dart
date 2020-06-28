@@ -31,17 +31,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     // To be implemented below
     case 'Signup':
-      return MaterialPageRoute(
-          builder: (context) => TwoGeeksSignUpPage());
+      return MaterialPageRoute(builder: (context) => TwoGeeksSignUpPage());
     case HomeRoute:
       return MaterialPageRoute(builder: (context) => HomePage());
     case TwoGeeksSignInRoute:
       return MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (context) => TwoGeeksSignInPage());
+          fullscreenDialog: true, builder: (context) => TwoGeeksSignInPage());
     case MatchingHandlerRoute:
-      return MaterialPageRoute(
-          builder: (context) => MatchingHandler());
+      return MaterialPageRoute(builder: (context) => MatchingHandler());
     case DetailRoute:
       {
         var argumentUID = settings.arguments;
