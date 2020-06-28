@@ -1,22 +1,28 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_country_picker/flutter_country_picker.dart';
 import 'package:twoGeeks/app/settings/show_tile.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
-import 'package:flutter_country_picker/country.dart';
 
-class EditCountryTile extends StatefulWidget {
+class CustomDropdownTile extends StatefulWidget {
   final String title;
   final String subtitle;
+  final List<String> list;
   final Function onSubmit;
 
-  EditCountryTile({this.title, this.subtitle, this.onSubmit});
+  CustomDropdownTile({this.title, this.subtitle, this.onSubmit, this.list});
   @override
-  _EditCountryTileState createState() => _EditCountryTileState();
+  _CustomDropdownTileState createState() => _CustomDropdownTileState();
 }
 
-class _EditCountryTileState extends State<EditCountryTile> {
+class _CustomDropdownTileState extends State<CustomDropdownTile> {
   bool _edit = false;
-  Country _country;
+  String _currentGrade;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentGrade = widget.subtitle;
+  }
 
   void _toggle() {
     setState(() {
@@ -25,12 +31,13 @@ class _EditCountryTileState extends State<EditCountryTile> {
   }
 
   void _submit() {
-    widget.onSubmit(_country.name);
+    widget.onSubmit(_currentGrade);
     _toggle();
   }
 
   void _cancel() {
     setState(() {
+      _currentGrade = widget.subtitle;
       _toggle();
     });
   }
@@ -55,10 +62,29 @@ class _EditCountryTileState extends State<EditCountryTile> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          CountryPicker(
-            showDialingCode: false,
-            onChanged: (newValue) => setState(() => _country = newValue),
-            selectedCountry: _country,
+          Text(
+            "Current School Year",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black87,
+            ),
+          ),
+          DropdownButton<String>(
+            value: _currentGrade,
+            onChanged: (val) {
+              setState(() {
+                _currentGrade = val;
+              });
+            },
+            items: widget.list
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            isExpanded: true,
           ),
           SizedBox(
             height: 20,

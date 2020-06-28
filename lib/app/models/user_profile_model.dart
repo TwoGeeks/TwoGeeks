@@ -25,9 +25,9 @@ class UserProfileModel {
       this.weakness,
       this.hobbies});
 
-  static dynamic _isEmpty(dynamic value) {
-    if (value == null) {
-      return "Undefined";
+  static dynamic _ifEmpty(dynamic value, dynamic altVal){
+    if(value == null || value == ""){
+      return altVal;
     }
     return value;
   }
@@ -36,29 +36,19 @@ class UserProfileModel {
     if (data.isEmpty) {
       return null;
     }
-    final String name = _isEmpty(data["name"]).toString();
-    final String age = _isEmpty(data["age"]).toString();
-    final String country = _isEmpty(data["country"]).toString();
-    final String currentSchool = _isEmpty(data["currentSchool"]).toString();
-    final String currentSchoolYear =
-        _isEmpty(data["currentSchoolYear"]).toString();
-    final String aboutMe = _isEmpty(data["aboutMe"]).toString();
-    final String gender = _isEmpty(data["gender"]).toString();
-    final String profilePic = _isEmpty(data["profilePic"]).toString();
-    final strength = _isEmpty(data["strength"]);
-    final weakness = _isEmpty(data["weakness"]);
-    final hobbies = _isEmpty(data["hobbies"]);
-    return UserProfileModel(
-        name: name,
-        age: age,
-        country: country,
-        currentSchool: currentSchool,
-        currentSchoolYear: currentSchoolYear,
-        aboutMe: aboutMe,
-        gender: gender,
-        profilePic: profilePic,
-        strength: strength,
-        weakness: weakness,
-        hobbies: hobbies);
+    final String name = _ifEmpty(data["name"], "No name given").toString();
+    final String age = _ifEmpty(data["age"], "undefined").toString();
+    final String country = _ifEmpty(data["country"], "undefined").toString();
+    final String currentSchool = _ifEmpty(data["currentSchool"], "undefined").toString();
+    final String currentSchoolYear = _ifEmpty(data["currentSchoolYear"], "Others").toString();
+    final String aboutMe = _ifEmpty(data["aboutMe"], "").toString();
+    final String gender = _ifEmpty(data["gender"], "neutral").toString();
+    final String profilePic = _ifEmpty(data["profilePic"], "").toString();
+    final strength = _ifEmpty(data["strength"], []);
+    final weakness = _ifEmpty(data["weakness"], []);
+    final hobbies = _ifEmpty(data["hobbies"], []);
+    return UserProfileModel(name: name, age: age ,country: country, currentSchool: currentSchool,
+    currentSchoolYear: currentSchoolYear, aboutMe: aboutMe, gender: gender,
+    profilePic: profilePic, strength: strength, weakness: weakness, hobbies: hobbies);
   }
 }

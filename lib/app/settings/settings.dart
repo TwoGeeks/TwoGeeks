@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/animations/FadeAnimation.dart';
-import 'package:twoGeeks/app/settings/AddPhoto.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -33,7 +32,7 @@ class Settings extends StatelessWidget {
     Future<void> _confirmSignOut(BuildContext context) async {
       final requestSignOut = await PlatformAlertDialog(
         title: "Log Out",
-        content: "Are you sure you want to log out?",
+        content: Text("Are you sure you want to log out?"),
         defaultActionText: 'LogOut',
         cancelActionText: "Cancel",
       ).show(context);
@@ -77,14 +76,7 @@ class Settings extends StatelessWidget {
           SettingButton(
             text: "Edit Profile",
             textColor: Colors.black,
-//<<<<<<< HEAD
             onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
-//=======
-//            onPressed: () {
-//              Navigator.push(
-//                  context, MaterialPageRoute(builder: (context) => AddPhoto()));
-//            },
-//>>>>>>> 51d9586b239f37e25efb76fb18ad630ac567fc40
             buttonColor: Colors.white,
           ),
         ),

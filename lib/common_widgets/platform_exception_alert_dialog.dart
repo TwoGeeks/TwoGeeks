@@ -9,11 +9,10 @@ class PlatformExceptionAlertDialog extends PlatformAlertDialog {
     @required String title,
     @required PlatformException exception,
   }) : super(
-          title: title,
-          content: _message(exception),
-          defaultActionText: "OK",
-        );
-
+    title: title,
+    content: Text(_message(exception)),
+    defaultActionText: "OK",
+  );
   // maps PlatformException error to customised messages
   static String _message(PlatformException error) {
     return error.message;

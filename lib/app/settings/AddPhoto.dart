@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
+import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
+import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
+import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class AddPhoto extends StatefulWidget {
   @override
@@ -40,8 +42,9 @@ class _AddPhotoState extends State<AddPhoto> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return PlatformAlertDialog(
+      title: "Add a photo",
+      content: Center(
           child: Column(
         children: <Widget>[
           profilePic == null
@@ -50,17 +53,27 @@ class _AddPhotoState extends State<AddPhoto> {
                 )
               : Image.asset(profilePic.path),
           profilePic == null
-              ? FlatButton(
-                  onPressed: _chooseFile, child: Text("Add profile picture"))
+              ? CustomFlatButton(
+                  onPressed: _chooseFile,
+                  child: Text("Add profile picture"),
+                  color: Colors.lightBlue.withOpacity(0.5),
+                  height: 40,
+                )
               : Container(
                   height: 100,
                 ),
-          RaisedButton(
+          SizedBox(
+            height: 20,
+          ),
+          CustomRaisedButton(
             onPressed: _sendData,
             child: Text("Submit"),
-          )
+            color: Colors.lightGreen.withOpacity(0.5),
+            height: 40,
+          ),
         ],
       )),
+      defaultActionText: "Done",
     );
   }
 }

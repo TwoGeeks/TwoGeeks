@@ -9,7 +9,7 @@ class PlatformAlertDialog extends PlatformWidget {
   // takes in a title, content message for the body,
   // message for default button text and a optional cancel button
   final String title;
-  final String content;
+  final Widget content;
   final String defaultActionText;
   final String cancelActionText;
   PlatformAlertDialog(
@@ -25,7 +25,7 @@ class PlatformAlertDialog extends PlatformWidget {
   Widget buildCupertinoWidget(BuildContext context) {
     return CupertinoAlertDialog(
       title: Text(title),
-      content: Text(content),
+      content: content,
       actions: _buildActions(context),
     );
   }
@@ -34,7 +34,7 @@ class PlatformAlertDialog extends PlatformWidget {
   Widget buildMaterialWidget(BuildContext context) {
     return AlertDialog(
       title: Text(title),
-      content: Text(content),
+      content: content,
       actions: _buildActions(context),
     );
   }
