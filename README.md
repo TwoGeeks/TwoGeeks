@@ -208,7 +208,8 @@ For our database, we have come up with a initial schema.
 ## Problems Encountered
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
 - Since firebase and firestore are deeply intertwined in our app, it was hard to set up testing as most of the time it would break. One way we resolved this issue was to mock both dependencies
-- 
+- The code was rather cluttered and not very reusable so to solve this issue, we had to spend time refactoring our code and making our code more resuable.
+- When we tested the app with several people, many people find it hard to know what to do in the matching page, as such we decided to replace it with buttoned text to let users know what each button does
 
 ## Other Similar Applications
 
