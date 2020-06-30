@@ -6,6 +6,7 @@ import 'package:twoGeeks/app/models/user_profile_model.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
+import 'package:twoGeeks/app/settings/edit_array_tile.dart';
 import 'package:twoGeeks/app/settings/education_levels.dart';
 import 'package:twoGeeks/app/settings/show_tile.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
@@ -124,6 +125,39 @@ class _UserProfileState extends State<UserProfile> {
     }
   }
 
+  void _updateStrength(List<dynamic> newStrengths) async {
+    try {
+      await database.updateProfile("strength", newStrengths);
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+
+  void _updateWeakness(List<dynamic> newWeakness) async {
+    try {
+      await database.updateProfile("weakness", newWeakness);
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+
+  void _updateHobbies(List<dynamic> newHobby) async {
+    try {
+      await database.updateProfile("hobbies", newHobby);
+    } on PlatformException catch (e) {
+      PlatformExceptionAlertDialog(
+        title: "Opps! Something went wrong..",
+        exception: e,
+      ).show(context);
+    }
+  }
+
   Widget _buildUserProfileForm() {
     _getUid();
     return StreamBuilder<UserProfileModel>(
@@ -181,6 +215,27 @@ class _UserProfileState extends State<UserProfile> {
                   onSubmit: _updateAboutMe,
                   maxLength: 140,
                   maxLines: 6,
+                ),
+                EditArrayTile(
+                  title: "Strengths",
+                  array: snapshot.data.strength,
+                  onSubmit: _updateStrength,
+                  helperText: "Add a new strength",
+                  tagFontSize: 15,
+                ),
+                EditArrayTile(
+                  title: "Weakness",
+                  array: snapshot.data.weakness,
+                  onSubmit: _updateWeakness,
+                  helperText: "Add a new weakness",
+                  tagFontSize: 15,
+                ),
+                EditArrayTile(
+                  title: "Hobbies",
+                  array: snapshot.data.hobbies,
+                  onSubmit: _updateHobbies,
+                  helperText: "Add a new hobby",
+                  tagFontSize: 15,
                 ),
                 SizedBox(
                   height: 20,
