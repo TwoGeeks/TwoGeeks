@@ -16,8 +16,6 @@ import 'package:twoGeeks/app/settings/edit_country_tile.dart';
 import 'package:twoGeeks/app/settings/custom_dropdown_tile.dart';
 import 'package:twoGeeks/app/settings/AddPhoto.dart';
 
-import 'AddPhoto.dart';
-
 /* Edit User Profile */
 class UserProfile extends StatefulWidget {
   @override
@@ -168,7 +166,32 @@ class _UserProfileState extends State<UserProfile> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Image.network(snapshot.data.profilePic),
+                    Image.network(snapshot.data.profilePic,fit: BoxFit.cover,
+                      loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Column(
+                          children: <Widget>[
+                            SizedBox(height: 15,),
+                            Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes != null ?
+                                loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            ),
+                            Container(height: 20,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                      width: 1,
+                                      color: Colors.black54.withOpacity(0.2),
+                                    ))
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    ),
                     ShowTile(
                       title: "Change Profile Picture",
                       onTap: () => Navigator.push(
