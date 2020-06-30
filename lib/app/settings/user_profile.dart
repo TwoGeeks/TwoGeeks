@@ -186,6 +186,12 @@ class _UserProfileState extends State<UserProfile> {
                   onSubmit: _updateName,
                   maxLength: 35,
                   maxLines: 1,
+                  validator: (text){
+                    if(text.length < 3){
+                      return "Name must be at least 3 characters long";
+                    }
+                    return null;
+                  },
                 ),
                 EditNumberTile(
                   title: "Age",
@@ -215,6 +221,9 @@ class _UserProfileState extends State<UserProfile> {
                   onSubmit: _updateAboutMe,
                   maxLength: 140,
                   maxLines: 6,
+                  validator: (text) {
+                    return null;
+                  },
                 ),
                 EditArrayTile(
                   title: "Strengths",
