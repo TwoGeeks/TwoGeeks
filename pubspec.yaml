@@ -40,6 +40,7 @@ dependencies:
   simple_animations: ^2.2.1
   numberpicker: 1.2.0
   flutter_country_picker: 0.1.6
+  flutter_tags: 0.4.8+2
 
 dev_dependencies:
   flutter_test:
