@@ -130,22 +130,6 @@ class Auth implements AuthBase {
           'friends_user_uid': [],
           'friendrequest_user_uid': [],
         });
-
-//        _db.collection("users").document('$uid/preferences/${uid}').setData({
-//          'ageLower': 0,
-//          'ageUpper': 0,
-//          'currentSchoolYear': '',
-//          'gender': '',
-//          'location': '',
-//        });
-
-//        _db.collection("users").document('$uid/friends/$uid').setData({
-//          'user_uid': [],
-//        });
-//
-//        _db.collection("users").document('$uid/friendRequests/$uid').setData({
-//          'user_uid': [],
-//        });
       }
     });
   }
