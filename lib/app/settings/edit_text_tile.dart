@@ -8,20 +8,24 @@ class EditTextTile extends StatefulWidget {
   final Function onSubmit;
   final int maxLength;
   final int maxLines;
+  @required final Function validator;
 
   EditTextTile(
       {this.title,
         this.subtitle,
         this.onSubmit,
         this.maxLines,
-        this.maxLength});
+        this.maxLength,
+      this.validator});
   @override
   _EditTextTileState createState() => _EditTextTileState();
 }
 
 class _EditTextTileState extends State<EditTextTile> {
+
   bool _edit = false;
-  TextEditingController _controller;
+  String _newVal;
+  final _formKey = GlobalKey<FormState>();
 
   void _toggle() {
     setState(() {
@@ -29,30 +33,16 @@ class _EditTextTileState extends State<EditTextTile> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.subtitle);
-  }
-
-  bool _validate() {
-    if (_controller.text.length == 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   void _validateAndSubmit() {
-    if (_validate()) {
-      widget.onSubmit(_controller.text);
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      widget.onSubmit(_newVal);
       _toggle();
     }
   }
 
   void _cancel() {
     setState(() {
-      _controller = TextEditingController(text: widget.subtitle);
       _toggle();
     });
   }
@@ -77,13 +67,18 @@ class _EditTextTileState extends State<EditTextTile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              TextFormField(
-                controller: _controller,
-                maxLength: widget.maxLength,
-                maxLines: widget.maxLines,
-                onChanged: (text) => {},
-                onEditingComplete: _validateAndSubmit,
-                decoration: InputDecoration(labelText: widget.title),
+              Form(
+                key: _formKey,
+                child: TextFormField(
+                  validator: widget.validator,
+                  initialValue: widget.subtitle,
+                  onSaved: (value) => _newVal = value,
+                  maxLength: widget.maxLength,
+                  maxLines: widget.maxLines,
+                  onChanged: (text) => {},
+                  onEditingComplete: _validateAndSubmit,
+                  decoration: InputDecoration(labelText: widget.title),
+                ),
               ),
               SizedBox(
                 height: 20,

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
@@ -49,7 +48,7 @@ class _AddPhotoState extends State<AddPhoto> {
         children: <Widget>[
           profilePic == null
               ? Container(
-                  height: 200,
+                  height: 150,
                 )
               : Image.asset(profilePic.path),
           profilePic == null

@@ -5,17 +5,14 @@ import 'package:twoGeeks/app/services/firestore_service.dart';
 import 'package:twoGeeks/app/services/api_paths.dart';
 
 abstract class Database {
-  // method to add hobby
-  Future<void> addHobby(String hobby);
 
-  // get name
-//  Future<String> getName();
+  //  Future<String> getName();
   Future<dynamic> read(String data);
 
   Stream<UserProfileModel> getUserProfile();
 
   // updates the key with a new value
-  Future<void> updateProfile(String key, String value);
+  Future<void> updateProfile(String key, dynamic value);
 }
 
 class FireStoreDatabase implements Database {
@@ -23,12 +20,7 @@ class FireStoreDatabase implements Database {
   final _service = FireStoreService.instance;
   FireStoreDatabase({@required this.uid}) : assert(uid != null);
 
-  Future<void> addHobby(String hobby) async =>
-      _service.updateData(path: APIPath.user(uid), data: {
-        "hobbies": FieldValue.arrayUnion([hobby])
-      });
-
-  Future<void> updateProfile(String key, String value) =>
+  Future<void> updateProfile(String key, dynamic value) =>
       _service.updateData(path: APIPath.user(uid), data: {key: value});
 
   Stream<UserProfileModel> getUserProfile() {
