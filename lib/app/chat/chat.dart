@@ -14,6 +14,7 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   String uid;
+  bool isFriend = false;
 
   Future<void> getCurrentUser() async {
     final auth = Provider.of<AuthBase>(context, listen: false);
@@ -44,7 +45,24 @@ class _ChatState extends State<Chat> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               FadeAnimation(0.8, chatHeader()),
-              Expanded(child: chatContent(context, uid)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Chat"),
+                  Switch(
+                      value: isFriend,
+                      onChanged: (value) {
+                        setState(() {
+                          isFriend = value;
+                          print(isFriend);
+                        });
+                      }),
+                  Text("Friend"),
+                ],
+              ),
+              isFriend
+                  ? Expanded(child: chatContent(context, uid, "friend"))
+                  : Expanded(child: chatContent(context, uid, "chat")),
             ],
           ),
           bottomNavigationBar: navBar(context, 3));
