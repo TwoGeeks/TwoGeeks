@@ -12,6 +12,7 @@ import 'package:twoGeeks/app/landing.dart';
 import 'package:twoGeeks/app/settings/settings.dart';
 import 'package:twoGeeks/app/sign_in/twogeeks_sign_in.dart';
 import 'package:twoGeeks/app/sign_up/sign_up_page.dart';
+import 'package:twoGeeks/app/tutorList/TutorList.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -52,6 +53,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case UserProfileRoute:
       return MaterialPageRoute(builder: (context) => UserProfile());
+
+    case TutorMatchingRoute:
+      return MaterialPageRoute(builder: (context) => TutorList());
 
     default:
       return MaterialPageRoute(
