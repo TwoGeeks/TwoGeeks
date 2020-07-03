@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class TutorList extends StatelessWidget {
@@ -26,12 +27,17 @@ class TutorList extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: GridTile(
-                            child: Container(
-                                padding: EdgeInsets.all(10),
-                                child: Image.asset(
-                                  "images/sample_pictures/guy1.jpg",
-                                  fit: BoxFit.cover,
-                                ))),
+                            child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, TutorDetailRoute, arguments: "7eNFbEQg7iMPDWLTU3CfQiXXmVZ2");
+                          },
+                          child: Container(
+                              padding: EdgeInsets.all(10),
+                              child: Image.asset(
+                                "images/sample_pictures/guy1.jpg",
+                                fit: BoxFit.cover,
+                              )),
+                        )),
                       ),
                     );
                   }),

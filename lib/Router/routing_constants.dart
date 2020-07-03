@@ -10,3 +10,4 @@ const String DetailRoute = 'Detail';
 const String MatchingHandlerRoute = 'MatchingHandler';
 const String UserProfileRoute = 'UserProfile';
 const String TutorMatchingRoute = 'Tutor';
+const String TutorDetailRoute = 'TutorDetail';

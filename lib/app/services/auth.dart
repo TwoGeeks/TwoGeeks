@@ -129,6 +129,9 @@ class Auth implements AuthBase {
           'weakness': [],
           'friends_user_uid': [],
           'friendrequest_user_uid': [],
+          'tutor': false,
+          'tutorrequest_user_uid': [],
+          'tutors_user_uid': [],
         });
       }
     });
