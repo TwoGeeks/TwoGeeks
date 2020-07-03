@@ -65,7 +65,6 @@ class _HomePageState extends State<HomePage> {
               } else {
                 List<dynamic> friendRequestList =
                     snapshot.data["friendrequest_user_uid"];
-                print(friendRequestList);
                 return Column(
                   children: <Widget>[
 //                    FadeAnimation(0.8,
