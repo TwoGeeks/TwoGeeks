@@ -2,12 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/animations/FadeAnimation.dart';
+import 'package:twoGeeks/app/services/database.dart';
+import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  Database database;
+
+  void _getUid() async {
+    final auth = Provider.of<AuthBase>(context, listen: false);
+    User user = await auth.currentUser();
+    if (mounted) {
+      setState(() {
+        database = FireStoreDatabase(uid: user.uid);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +37,7 @@ class Settings extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    _getUid();
     // temporary method to sign in for testing
     Future<void> _signOut() async {
       try {
@@ -89,6 +109,25 @@ class Settings extends StatelessWidget {
             buttonColor: Colors.white,
           ),
         ),
+        StreamBuilder(
+            stream: database.getUserProfile(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                bool tutor = snapshot.data.tutor;
+                return SettingButton(
+                  text: tutor ? "Disable Tutor" : "Enable Tutor",
+                  textColor: Colors.black,
+                  onPressed: () async {
+                    await database.updateProfile("tutor", !tutor);
+                  },
+                  buttonColor: Colors.white,
+                );
+              }
+            }),
         FadeAnimation(
           1.1,
           SettingButton(

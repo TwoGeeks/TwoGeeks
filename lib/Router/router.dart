@@ -3,6 +3,7 @@ import 'package:twoGeeks/app/Undefined/undefined.dart';
 import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/detail/detail.dart';
+import 'package:twoGeeks/app/detailTutor/detailTutor.dart';
 import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/matching/matchingHandler.dart';
 import 'package:twoGeeks/app/settings/user_profile.dart';
@@ -12,6 +13,7 @@ import 'package:twoGeeks/app/landing.dart';
 import 'package:twoGeeks/app/settings/settings.dart';
 import 'package:twoGeeks/app/sign_in/twogeeks_sign_in.dart';
 import 'package:twoGeeks/app/sign_up/sign_up_page.dart';
+import 'package:twoGeeks/app/tutorList/TutorList.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -52,6 +54,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case UserProfileRoute:
       return MaterialPageRoute(builder: (context) => UserProfile());
+
+    case TutorMatchingRoute:
+      return MaterialPageRoute(builder: (context) => TutorList());
+
+    case TutorDetailRoute:
+      {
+        var argumentUID = settings.arguments;
+        return MaterialPageRoute(
+            builder: (context) => DetailTutor(uid: argumentUID));
+      }
 
     default:
       return MaterialPageRoute(
