@@ -63,7 +63,7 @@ class _CustomDropdownTileState extends State<CustomDropdownTile> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            "Current School Year",
+            widget.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15,
