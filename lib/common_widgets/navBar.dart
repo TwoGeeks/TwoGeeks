@@ -38,6 +38,7 @@ Widget navBar(context, selected) {
 
   return BottomAppBar(
     child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
       height: 60.0,
       decoration: BoxDecoration(
           color: Color(0xfffc6767),
@@ -45,8 +46,8 @@ Widget navBar(context, selected) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          FlatButton(
-              onPressed: () => {
+          InkWell(
+              onTap: () => {
                     if (selected != 1)
                       {
                         Navigator.pushReplacementNamed(
@@ -56,24 +57,36 @@ Widget navBar(context, selected) {
               child: selected == 1
                   ? activatedNav("search", Icons.favorite)
                   : deactiveNav(Icons.favorite)),
-          FlatButton(
-              onPressed: () => {
+          InkWell(
+              onTap: () => {
+                if (selected != 5)
+                  {
+                    Navigator.pushReplacementNamed(
+                        context, TutorMatchingRoute)
+                  }
+              },
+
+              child: selected == 5
+                  ? activatedNav("Tutors", Icons.library_books)
+                  : deactiveNav(Icons.library_books)),
+          InkWell(
+              onTap: () => {
                     if (selected != 2)
                       {Navigator.pushReplacementNamed(context, HomeRoute)}
                   },
               child: selected == 2
                   ? activatedNav("Home", Icons.home)
                   : deactiveNav(Icons.home)),
-          FlatButton(
-              onPressed: () => {
+          InkWell(
+              onTap: () => {
                     if (selected != 3)
                       {Navigator.pushReplacementNamed(context, ChatRoute)}
                   },
               child: selected == 3
                   ? activatedNav("Chat", Icons.account_circle)
                   : deactiveNav(Icons.account_circle)),
-          FlatButton(
-              onPressed: () {
+          InkWell(
+              onTap: () {
                 if (selected != 4) {
                   Navigator.pushReplacementNamed(context, SettingRoute);
                 }

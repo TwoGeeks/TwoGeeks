@@ -11,6 +11,7 @@ class UserProfileModel {
   final strength;
   final weakness;
   final hobbies;
+  final tutor;
 
   UserProfileModel(
       {this.name,
@@ -23,7 +24,8 @@ class UserProfileModel {
       this.profilePic,
       this.strength,
       this.weakness,
-      this.hobbies});
+      this.hobbies,
+      this.tutor});
 
   static dynamic _ifEmpty(dynamic value, dynamic altVal){
     if(value == null || value == ""){
@@ -47,8 +49,9 @@ class UserProfileModel {
     final strength = _ifEmpty(data["strength"], []);
     final weakness = _ifEmpty(data["weakness"], []);
     final hobbies = _ifEmpty(data["hobbies"], []);
+    final tutor = _ifEmpty(data["tutor"], false);
     return UserProfileModel(name: name, age: age ,country: country, currentSchool: currentSchool,
     currentSchoolYear: currentSchoolYear, aboutMe: aboutMe, gender: gender,
-    profilePic: profilePic, strength: strength, weakness: weakness, hobbies: hobbies);
+    profilePic: profilePic, strength: strength, weakness: weakness, hobbies: hobbies, tutor: tutor);
   }
 }
