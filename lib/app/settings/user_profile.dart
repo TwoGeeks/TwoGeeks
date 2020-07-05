@@ -233,7 +233,7 @@ class _UserProfileState extends State<UserProfile> {
                   onSubmit: _updateCountry,
                 ),
                 CustomDropdownTile(
-                  title: "Current School Year",
+                  title: "Educational level",
                   subtitle: snapshot.data.currentSchoolYear,
                   list: EducationLevel.education,
                   onSubmit: _updateGrade,
