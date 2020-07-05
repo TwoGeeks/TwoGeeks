@@ -14,6 +14,7 @@ class EducationLevel {
     'Pre-University (grade 11)',
     'Pre-University (grade 12)',
     'Undergraduate',
-    'Advanced',
+    'master',
+    'PhD'
   ];
 }

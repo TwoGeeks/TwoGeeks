@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:twoGeeks/app/models/user_profile_model.dart';
+import 'package:twoGeeks/app/models/user_model.dart';
 import 'package:twoGeeks/app/services/firestore_service.dart';
 import 'package:twoGeeks/app/services/api_paths.dart';
 
@@ -9,10 +9,13 @@ abstract class Database {
   //  Future<String> getName();
   Future<dynamic> read(String data);
 
-  Stream<UserProfileModel> getUserProfile();
+  Stream<UserModel> getUserProfile();
 
   // updates the key with a new value
   Future<void> updateProfile(String key, dynamic value);
+
+  // updates preferences
+  Future<void> updatePreferences(String key, dynamic value);
 }
 
 class FireStoreDatabase implements Database {
@@ -23,10 +26,13 @@ class FireStoreDatabase implements Database {
   Future<void> updateProfile(String key, dynamic value) =>
       _service.updateData(path: APIPath.user(uid), data: {key: value});
 
-  Stream<UserProfileModel> getUserProfile() {
+  Future<void> updatePreferences(String key, dynamic value) =>
+      _service.updateData(path: APIPath.user(uid), data: {"preferences": {key: value}});
+
+  Stream<UserModel> getUserProfile() {
     return _service.documentStream(
         path: APIPath.user(uid),
-        builder: (data) => UserProfileModel.fromMap(data));
+        builder: (data) => UserModel.fromMap(data));
   }
 
   Future<dynamic> read(String data) async {

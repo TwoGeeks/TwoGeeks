@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:twoGeeks/app/models/user_profile_model.dart';
+import 'package:twoGeeks/app/models/user_model.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
@@ -158,7 +158,7 @@ class _UserProfileState extends State<UserProfile> {
 
   Widget _buildUserProfileForm() {
     _getUid();
-    return StreamBuilder<UserProfileModel>(
+    return StreamBuilder<UserModel>(
         stream: database.getUserProfile(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -171,7 +171,7 @@ class _UserProfileState extends State<UserProfile> {
                         if (loadingProgress == null) return child;
                         return Column(
                           children: <Widget>[
-                            SizedBox(height: 15,),
+                            SizedBox(height: 20,),
                             Center(
                               child: CircularProgressIndicator(
                                 value: loadingProgress.expectedTotalBytes != null ?
@@ -233,7 +233,7 @@ class _UserProfileState extends State<UserProfile> {
                   onSubmit: _updateCountry,
                 ),
                 CustomDropdownTile(
-                  title: "Current School Year",
+                  title: "Educational level",
                   subtitle: snapshot.data.currentSchoolYear,
                   list: EducationLevel.education,
                   onSubmit: _updateGrade,

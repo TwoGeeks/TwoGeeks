@@ -38,7 +38,6 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildContent(BuildContext context) {
     _getUid();
-    // temporary method to sign in for testing
     Future<void> _signOut() async {
       try {
         final auth = Provider.of<AuthBase>(context, listen: false);
@@ -105,7 +104,7 @@ class _SettingsState extends State<Settings> {
           SettingButton(
             text: "Edit Preference",
             textColor: Colors.black,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, UserPreferenceRoute),
             buttonColor: Colors.white,
           ),
         ),
