@@ -63,7 +63,7 @@ class _MatchingHandlerState extends State<MatchingHandler> {
 
   void _popUser(context) {
     if (idList.length == 1) {
-      Navigator.pushReplacementNamed(context, HomeRoute);
+      Navigator.pushReplacementNamed(context, ChatRoute);
     } else {
       setState(() {
         idList.removeAt(0);

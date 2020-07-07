@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:twoGeeks/app/homepage/friendRequests/header.dart';
-import 'package:twoGeeks/app/homepage/friendRequests/showFriendAlert.dart';
+import 'package:twoGeeks/app/chat/friendRequests/header.dart';
+import 'package:twoGeeks/app/chat/friendRequests/showFriendAlert.dart';
 
 Widget friendRequests(
     context, String userUid, List<dynamic> friendRequestList, Firestore store) {

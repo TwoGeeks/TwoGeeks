@@ -4,7 +4,6 @@ import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/detail/detail.dart';
 import 'package:twoGeeks/app/detailTutor/detailTutor.dart';
-import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/matching/matchingHandler.dart';
 import 'package:twoGeeks/app/settings/user_preference.dart';
 import 'package:twoGeeks/app/settings/user_profile.dart';
@@ -35,8 +34,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     // To be implemented below
     case 'Signup':
       return MaterialPageRoute(builder: (context) => TwoGeeksSignUpPage());
-    case HomeRoute:
-      return MaterialPageRoute(builder: (context) => HomePage());
     case TwoGeeksSignInRoute:
       return MaterialPageRoute(
           fullscreenDialog: true, builder: (context) => TwoGeeksSignInPage());
