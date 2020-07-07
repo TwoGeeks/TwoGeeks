@@ -1,13 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/chat/chatContent.dart';
 import 'package:twoGeeks/app/chat/chatHeader/chatHeader.dart';
+import 'package:twoGeeks/app/chat/friendRequests/friendRequests.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 
 class Chat extends StatefulWidget {
+  Chat({this.store});
+
+  Firestore store;
+
   @override
   _ChatState createState() => _ChatState();
 }
@@ -15,6 +22,7 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   String uid;
   bool isFriend = false;
+  Database database;
 
   Future<void> getCurrentUser() async {
     final auth = Provider.of<AuthBase>(context, listen: false);
@@ -22,6 +30,7 @@ class _ChatState extends State<Chat> {
     if (mounted) {
       setState(() {
         uid = user.uid;
+        database = FireStoreDatabase(uid: user.uid);
       });
     }
   }
@@ -29,6 +38,9 @@ class _ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
+    if (widget.store == null) {
+      widget.store = Firestore.instance;
+    }
   }
 
   @override
@@ -45,6 +57,21 @@ class _ChatState extends State<Chat> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               FadeAnimation(0.8, chatHeader()),
+              FadeAnimation(
+                0.9,
+                StreamBuilder(
+                    stream: database.getUserProfile(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        return friendRequests(context, uid,
+                            snapshot.data.friends_user_uid, widget.store);
+                      }
+                    }),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

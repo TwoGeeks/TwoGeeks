@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:twoGeeks/app/services/database.dart';
+import 'package:twoGeeks/app/chat/chat.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
-import 'package:twoGeeks/app/homepage/home_page.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/database.dart';
 
 class LandingPage extends StatelessWidget {
   @override
@@ -20,7 +18,7 @@ class LandingPage extends StatelessWidget {
           if (user == null) {
             return SignInPage();
           }
-          return HomePage();
+          return Chat();
         } else {
           return Scaffold(
             body: Column(

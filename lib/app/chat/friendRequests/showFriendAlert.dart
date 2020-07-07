@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:twoGeeks/app/homepage/friendRequests/addToFriendsList.dart';
-import 'package:twoGeeks/app/homepage/friendRequests/friendRequestComplete.dart';
-import 'package:twoGeeks/app/homepage/friendRequests/rejectRequest.dart';
+import 'package:twoGeeks/app/chat/friendRequests/addToFriendsList.dart';
+import 'package:twoGeeks/app/chat/friendRequests/friendRequestComplete.dart';
+import 'package:twoGeeks/app/chat/friendRequests/rejectRequest.dart';
 
 void showFriendAlert(
     context, contextMain, friendUid, userUid, Firestore store) async {

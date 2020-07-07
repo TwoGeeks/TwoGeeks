@@ -15,6 +15,7 @@ class UserModel {
   final strength;
   final weakness;
   final hobbies;
+  final friends_user_uid;
 
   UserModel(
       {this.name,
@@ -29,7 +30,8 @@ class UserModel {
       this.weakness,
       this.userPreference,
       this.tutor,
-      this.hobbies});
+      this.hobbies,
+      this.friends_user_uid});
 
   static dynamic _ifEmpty(dynamic value, dynamic altVal) {
     if (value == null || value == "") {
@@ -56,16 +58,19 @@ class UserModel {
     final weakness = _ifEmpty(data["weakness"], []);
     final hobbies = _ifEmpty(data["hobbies"], []);
     final tutor = _ifEmpty(data["tutor"], false);
-
+    final friends_user_uid = _ifEmpty(data["friends_user_uid"], []);
+//
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
+//
+//    final userPreference = _ifEmpty(
+//        UserPreferenceModel(
+//            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
+//            currentSchoolYear:
+//                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
+//        _emptyPreferenceModel);
 
-    final userPreference = _ifEmpty(
-        UserPreferenceModel(
-            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
-            currentSchoolYear:
-                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
-        _emptyPreferenceModel);
+    final userPreference = _emptyPreferenceModel;
 
     return UserModel(
         name: name,
@@ -80,6 +85,7 @@ class UserModel {
         weakness: weakness,
         hobbies: hobbies,
         userPreference: userPreference,
-        tutor: tutor);
+        tutor: tutor,
+        friends_user_uid: friends_user_uid);
   }
 }

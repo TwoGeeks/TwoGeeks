@@ -44,10 +44,10 @@ Widget navBar(context, selected) {
           color: Color(0xfffc6767),
           borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          InkWell(
-              onTap: () => {
+          FlatButton(
+              onPressed: () => {
                     if (selected != 1)
                       {
                         Navigator.pushReplacementNamed(
@@ -57,36 +57,27 @@ Widget navBar(context, selected) {
               child: selected == 1
                   ? activatedNav("search", Icons.favorite)
                   : deactiveNav(Icons.favorite)),
-          InkWell(
-              onTap: () => {
-                if (selected != 5)
-                  {
-                    Navigator.pushReplacementNamed(
-                        context, TutorMatchingRoute)
-                  }
-              },
-
-              child: selected == 5
-                  ? activatedNav("Tutors", Icons.library_books)
-                  : deactiveNav(Icons.library_books)),
-          InkWell(
-              onTap: () => {
+          FlatButton(
+              onPressed: () => {
                     if (selected != 2)
-                      {Navigator.pushReplacementNamed(context, HomeRoute)}
+                      {
+                        Navigator.pushReplacementNamed(
+                            context, TutorMatchingRoute)
+                      }
                   },
               child: selected == 2
-                  ? activatedNav("Home", Icons.home)
-                  : deactiveNav(Icons.home)),
-          InkWell(
-              onTap: () => {
+                  ? activatedNav("Tutors", Icons.library_books)
+                  : deactiveNav(Icons.library_books)),
+          FlatButton(
+              onPressed: () => {
                     if (selected != 3)
                       {Navigator.pushReplacementNamed(context, ChatRoute)}
                   },
               child: selected == 3
                   ? activatedNav("Chat", Icons.account_circle)
                   : deactiveNav(Icons.account_circle)),
-          InkWell(
-              onTap: () {
+          FlatButton(
+              onPressed: () {
                 if (selected != 4) {
                   Navigator.pushReplacementNamed(context, SettingRoute);
                 }

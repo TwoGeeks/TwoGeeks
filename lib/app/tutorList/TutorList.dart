@@ -145,7 +145,7 @@ class _TutorListState extends State<TutorList> {
           ),
         ],
       ),
-      bottomNavigationBar: navBar(context, 5),
+      bottomNavigationBar: navBar(context, 2),
     );
   }
 }
