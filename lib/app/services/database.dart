@@ -26,8 +26,17 @@ class FireStoreDatabase implements Database {
   Future<void> updateProfile(String key, dynamic value) =>
       _service.updateData(path: APIPath.user(uid), data: {key: value});
 
-  Future<void> updatePreferences(String key, dynamic value) =>
-      _service.updateData(path: APIPath.user(uid), data: {"preferences": {key: value}});
+  Future<void> updatePreferences(String key, dynamic newValue) {
+    
+    Map _update(Map map, dynamic val, String key){
+      map[key] = val;
+      return map;
+    }
+    
+     return _service.get(path: APIPath.user(uid)).then((value) => value["preferences"])
+         .then((map) => _update(map, newValue, key))
+         .then((value) => _service.updateData(path: APIPath.user(uid), data: {"preferences": value}));
+  }
 
   Stream<UserModel> getUserProfile() {
     return _service.documentStream(
