@@ -33,4 +33,11 @@ class FireStoreService {
     final documentReference = Firestore.instance.document(path);
     await documentReference.updateData(data);
   }
+
+  // get data
+  Future<dynamic> get({String path}) async {
+    final documentReference = Firestore.instance.document(path);
+    final snapshot = await documentReference.get();
+    return snapshot.data;
+  }
 }

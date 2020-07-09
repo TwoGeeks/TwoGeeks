@@ -15,8 +15,9 @@ Widget chatContent(context, userID, String type) {
         } else {
           DocumentSnapshot userData = snapshot.data;
           List<dynamic> friendList = userData["friends_user_uid"];
+          int _len = friendList == null ? 0 : friendList.length;
           return (ListView.builder(
-              itemCount: friendList.length,
+              itemCount: _len,
               itemBuilder: (BuildContext ctxt, int index) {
                 double animationDelay = 1.3 + index / 10;
                 return FadeAnimation(animationDelay,

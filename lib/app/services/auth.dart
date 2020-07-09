@@ -124,6 +124,7 @@ class Auth implements AuthBase {
           'gender': '',
           'profilePic': '',
           'statement': '',
+          'preferences': {"gender":"neutral", "currentSchoolYear":"Others"},
           'hobbies': [],
           'strength': [],
           'weakness': [],
