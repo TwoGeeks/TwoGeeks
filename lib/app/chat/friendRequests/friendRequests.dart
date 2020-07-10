@@ -4,10 +4,10 @@ import 'package:twoGeeks/app/chat/friendRequests/header.dart';
 import 'package:twoGeeks/app/chat/friendRequests/showFriendAlert.dart';
 
 Widget friendRequests(
-    context, String userUid, List<dynamic> friendRequestList, Firestore store) {
+    context, String userUid, List<dynamic> friendRequestList, Firestore store, bool tutor) {
   return Column(
     children: <Widget>[
-      header(),
+      header(tutor),
       Container(
         height: 90,
         width: MediaQuery.of(context).size.width * 0.9,
