@@ -65,6 +65,7 @@ class UserModel {
     final hobbies = _ifEmpty(data["hobbies"], []);
     final tutor = _ifEmpty(data["tutor"], false);
     final friends_user_uid = _ifEmpty(data["friends_user_uid"], []);
+
     final tutorrequest_user_uid = _ifEmpty(data["tutorrequest_user_uid"], []);
     final tutors_user_uid = _ifEmpty(data["tutors_user_uid"], []);
     final friendrequest_user_uid = _ifEmpty(data["friendrequest_user_uid"], []);
@@ -72,12 +73,12 @@ class UserModel {
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
 
-//    final userPreference = _ifEmpty(
-//        UserPreferenceModel(
-//            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
-//            currentSchoolYear:
-//                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
-//        _emptyPreferenceModel);
+    final userPreference = _ifEmpty(
+        UserPreferenceModel(
+            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
+            currentSchoolYear:
+                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
+        _emptyPreferenceModel);
 
     return UserModel(
       name: name,
@@ -91,7 +92,7 @@ class UserModel {
       strength: strength,
       weakness: weakness,
       hobbies: hobbies,
-      userPreference: _emptyPreferenceModel,
+      userPreference: userPreference,
       tutor: tutor,
       friends_user_uid: friends_user_uid,
       tutorrequest_user_uid: tutorrequest_user_uid,
