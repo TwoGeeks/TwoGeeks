@@ -4,8 +4,8 @@ import 'package:twoGeeks/app/chat/friendRequests/addToFriendsList.dart';
 import 'package:twoGeeks/app/chat/friendRequests/friendRequestComplete.dart';
 import 'package:twoGeeks/app/chat/friendRequests/rejectRequest.dart';
 
-void showFriendAlert(
-    context, contextMain, friendUid, userUid, Firestore store) async {
+void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store,
+    bool tutor) async {
   DocumentSnapshot user =
       await store.collection("users").document(friendUid).get();
   String name = user.data["name"];
@@ -15,7 +15,9 @@ void showFriendAlert(
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
-        title: Center(child: Text("Friend request from: ")),
+        title: Center(
+            child: Text(
+                tutor ? "Student request from: " : "Friend request from: ")),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -35,7 +37,8 @@ void showFriendAlert(
           Container(
             child: FlatButton(
                 onPressed: () async {
-                  bool done = await rejectRequest(friendUid, userUid, store);
+                  bool done =
+                      await rejectRequest(friendUid, userUid, store, tutor);
                   if (done) {
                     Navigator.pop(context);
                   }
@@ -51,10 +54,10 @@ void showFriendAlert(
             child: FlatButton(
                 onPressed: () async {
                   bool done = await addToFriendsList(
-                      context, friendUid, userUid, store);
+                      context, friendUid, userUid, store, tutor);
                   if (done) {
                     friendRequestComplete(
-                        contextMain, friendUid, userUid, name);
+                        contextMain, friendUid, userUid, name, tutor);
                   }
                 },
                 child: Text(

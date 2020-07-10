@@ -25,7 +25,7 @@ Widget friendRequests(
               child: FlatButton(
                 key: Key("friendRequest button"),
                 onPressed: () => showFriendAlert(
-                    ctxt, context, friendRequestList[index], userUid, store),
+                    ctxt, context, friendRequestList[index], userUid, store, tutor),
                 child: CircleAvatar(
                   key: Key("friendRequest avatar"),
                   backgroundImage:
