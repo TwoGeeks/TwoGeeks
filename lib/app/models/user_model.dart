@@ -59,7 +59,7 @@ class UserModel {
     final hobbies = _ifEmpty(data["hobbies"], []);
     final tutor = _ifEmpty(data["tutor"], false);
     final friends_user_uid = _ifEmpty(data["friends_user_uid"], []);
-    
+
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
 
