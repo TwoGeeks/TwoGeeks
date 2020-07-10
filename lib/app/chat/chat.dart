@@ -53,46 +53,62 @@ class _ChatState extends State<Chat> {
     } else {
       return Scaffold(
           backgroundColor: Color(0xfff0f6f4),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              FadeAnimation(0.8, chatHeader()),
-              FadeAnimation(
-                0.9,
-                StreamBuilder(
-                    stream: database.getUserProfile(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else {
-                        return friendRequests(context, uid,
-                            snapshot.data.friends_user_uid, widget.store);
-                      }
-                    }),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Chat"),
-                  Switch(
-                      value: isFriend,
-                      onChanged: (value) {
-                        setState(() {
-                          isFriend = value;
-                          print(isFriend);
-                        });
-                      }),
-                  Text("Friend"),
-                ],
-              ),
-              isFriend
-                  ? Expanded(child: chatContent(context, uid, "friend"))
-                  : Expanded(child: chatContent(context, uid, "chat")),
-            ],
-          ),
+          body: StreamBuilder(
+              stream: database.getUserProfile(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  List idList;
+                  if (snapshot.data.tutor) {
+                    idList = snapshot.data.tutorrequest_user_uid;
+                  } else {
+                    idList = snapshot.data.friendrequest_user_uid;
+                  }
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      FadeAnimation(0.8, chatHeader(snapshot.data.tutor)),
+                      FadeAnimation(
+                        0.9,
+                        friendRequests(context, uid, idList, widget.store, snapshot.data.tutor),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("Chat"),
+                          Switch(
+                              value: isFriend,
+                              onChanged: (value) {
+                                setState(() {
+                                  isFriend = value;
+                                });
+                              }),
+                          Text(snapshot.data.tutor ? "Student" : "Friend"),
+                        ],
+                      ),
+                      chatWidget(snapshot),
+                    ],
+                  );
+                }
+              }),
           bottomNavigationBar: navBar(context, 3));
+    }
+  }
+
+  Widget chatWidget(snapshot) {
+    if (snapshot.data.tutor) {
+      if (isFriend)
+        return Expanded(child: chatContent(context, uid, snapshot.data.tutors_user_uid, "friend"));
+      else
+        return Expanded(child: chatContent(context, uid, snapshot.data.tutors_user_uid, "chat"));
+    } else {
+      if (isFriend)
+          return Expanded(child: chatContent(context, uid, snapshot.data.friends_user_uid, "friend"));
+      else
+          return Expanded(child: chatContent(context, uid, snapshot.data.friends_user_uid, "chat"));
     }
   }
 }

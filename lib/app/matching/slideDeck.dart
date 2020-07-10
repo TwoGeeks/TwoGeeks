@@ -20,15 +20,16 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
         "friendrequest_user_uid": FieldValue.arrayUnion([user.uid]),
       });
       Scaffold.of(context).showSnackBar(SnackBar(
+          duration: Duration(seconds: 2),
           content: Row(
-        children: <Widget>[
-          Container(
-            child: Icon(Icons.person_add),
-            margin: EdgeInsets.only(right: 20),
-          ),
-          Text("Friend Request Sent!"),
-        ],
-      )));
+            children: <Widget>[
+              Container(
+                child: Icon(Icons.person_add),
+                margin: EdgeInsets.only(right: 20),
+              ),
+              Text("Friend Request Sent!"),
+            ],
+          )));
     }
 
     onNext();
