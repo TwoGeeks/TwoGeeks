@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/app/chatroom/chatroom.dart';
 
-void friendRequestComplete(context, friendUid, userUid, name) async {
+void friendRequestComplete(context, friendUid, userUid, name, bool tutor) async {
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
-        title: Center(child: Text("You made a new friend!")),
+        title: Center(child: Text(tutor ? "You made a new student!" : "You made a new friend!")),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

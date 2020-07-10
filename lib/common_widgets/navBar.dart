@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
+import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/app/services/user.dart';
 
 /// Selected can be either 1,2,3,4
 /// 1 == Search
@@ -38,55 +41,54 @@ Widget navBar(context, selected) {
 
   return BottomAppBar(
     child: Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      height: 60.0,
-      decoration: BoxDecoration(
-          color: Color(0xfffc6767),
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          FlatButton(
-              onPressed: () => {
-                    if (selected != 1)
-                      {
-                        Navigator.pushReplacementNamed(
-                            context, MatchingHandlerRoute)
-                      }
-                  },
-              child: selected == 1
-                  ? activatedNav("search", Icons.favorite)
-                  : deactiveNav(Icons.favorite)),
-          FlatButton(
-              onPressed: () => {
-                    if (selected != 2)
-                      {
-                        Navigator.pushReplacementNamed(
-                            context, TutorMatchingRoute)
-                      }
-                  },
-              child: selected == 2
-                  ? activatedNav("Tutors", Icons.library_books)
-                  : deactiveNav(Icons.library_books)),
-          FlatButton(
-              onPressed: () => {
-                    if (selected != 3)
-                      {Navigator.pushReplacementNamed(context, ChatRoute)}
-                  },
-              child: selected == 3
-                  ? activatedNav("Chat", Icons.account_circle)
-                  : deactiveNav(Icons.account_circle)),
-          FlatButton(
-              onPressed: () {
-                if (selected != 4) {
-                  Navigator.pushReplacementNamed(context, SettingRoute);
-                }
-              },
-              child: selected == 4
-                  ? activatedNav("Settings", Icons.settings)
-                  : deactiveNav(Icons.settings)),
-        ],
-      ),
-    ),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        height: 60.0,
+        decoration: BoxDecoration(
+            color: Color(0xfffc6767),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            FlatButton(
+                onPressed: () => {
+                      if (selected != 1)
+                        {
+                          Navigator.pushReplacementNamed(
+                              context, MatchingHandlerRoute)
+                        }
+                    },
+                child: selected == 1
+                    ? activatedNav("search", Icons.favorite)
+                    : deactiveNav(Icons.favorite)),
+            FlatButton(
+                onPressed: () => {
+                      if (selected != 2)
+                        {
+                          Navigator.pushReplacementNamed(
+                              context, TutorMatchingRoute)
+                        }
+                    },
+                child: selected == 2
+                    ? activatedNav("Tutors", Icons.library_books)
+                    : deactiveNav(Icons.library_books)),
+            FlatButton(
+                onPressed: () => {
+                      if (selected != 3)
+                        {Navigator.pushReplacementNamed(context, ChatRoute)}
+                    },
+                child: selected == 3
+                    ? activatedNav("Chat", Icons.account_circle)
+                    : deactiveNav(Icons.account_circle)),
+            FlatButton(
+                onPressed: () {
+                  if (selected != 4) {
+                    Navigator.pushReplacementNamed(context, SettingRoute);
+                  }
+                },
+                child: selected == 4
+                    ? activatedNav("Settings", Icons.settings)
+                    : deactiveNav(Icons.settings)),
+          ],
+        )),
   );
 }

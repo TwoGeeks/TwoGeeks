@@ -106,20 +106,20 @@ class _TutorListState extends State<TutorList> {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         AspectRatio(
-                                          aspectRatio: 18.0 / 12.0,
-                                          child: idList[index]
-                                                      .data["profilePic"] !=
-                                                  ""
-                                              ? Image.network(
-                                                  idList[index]
-                                                      .data["profilePic"],
-                                                  fit: BoxFit.cover,
-                                                )
-                                              : Image.asset(
-                                                  "images/sample_pictures/guy1.jpg",
-                                                  fit: BoxFit.cover,
-                                                ),
-                                        ),
+                                            aspectRatio: 18.0 / 12.0,
+                                            child: idList[index]
+                                                        .data["profilePic"] !=
+                                                    ""
+                                                ? Image.network(
+                                                    idList[index]
+                                                        .data["profilePic"],
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : Image.asset(
+                                                    "images/sample_pictures/guy1.jpg",
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                          ),
                                         Padding(
                                           padding: EdgeInsets.all(10),
                                           child: Column(

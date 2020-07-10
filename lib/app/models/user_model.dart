@@ -16,6 +16,9 @@ class UserModel {
   final weakness;
   final hobbies;
   final friends_user_uid;
+  final tutorrequest_user_uid;
+  final tutors_user_uid;
+  final friendrequest_user_uid;
 
   UserModel(
       {this.name,
@@ -31,7 +34,10 @@ class UserModel {
       this.userPreference,
       this.tutor,
       this.hobbies,
-      this.friends_user_uid});
+      this.friends_user_uid,
+      this.tutorrequest_user_uid,
+      this.tutors_user_uid,
+      this.friendrequest_user_uid});
 
   static dynamic _ifEmpty(dynamic value, dynamic altVal) {
     if (value == null || value == "") {
@@ -59,32 +65,38 @@ class UserModel {
     final hobbies = _ifEmpty(data["hobbies"], []);
     final tutor = _ifEmpty(data["tutor"], false);
     final friends_user_uid = _ifEmpty(data["friends_user_uid"], []);
-    
+    final tutorrequest_user_uid = _ifEmpty(data["tutorrequest_user_uid"], []);
+    final tutors_user_uid = _ifEmpty(data["tutors_user_uid"], []);
+    final friendrequest_user_uid = _ifEmpty(data["friendrequest_user_uid"], []);
+
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
 
-    final userPreference = _ifEmpty(
-        UserPreferenceModel(
-            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
-            currentSchoolYear:
-                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
-        _emptyPreferenceModel);
-
+//    final userPreference = _ifEmpty(
+//        UserPreferenceModel(
+//            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
+//            currentSchoolYear:
+//                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
+//        _emptyPreferenceModel);
 
     return UserModel(
-        name: name,
-        age: age,
-        country: country,
-        currentSchool: currentSchool,
-        currentSchoolYear: currentSchoolYear,
-        aboutMe: aboutMe,
-        gender: gender,
-        profilePic: profilePic,
-        strength: strength,
-        weakness: weakness,
-        hobbies: hobbies,
-        userPreference: userPreference,
-        tutor: tutor,
-        friends_user_uid: friends_user_uid);
+      name: name,
+      age: age,
+      country: country,
+      currentSchool: currentSchool,
+      currentSchoolYear: currentSchoolYear,
+      aboutMe: aboutMe,
+      gender: gender,
+      profilePic: profilePic,
+      strength: strength,
+      weakness: weakness,
+      hobbies: hobbies,
+      userPreference: _emptyPreferenceModel,
+      tutor: tutor,
+      friends_user_uid: friends_user_uid,
+      tutorrequest_user_uid: tutorrequest_user_uid,
+      friendrequest_user_uid: friendrequest_user_uid,
+      tutors_user_uid: tutors_user_uid
+    );
   }
 }

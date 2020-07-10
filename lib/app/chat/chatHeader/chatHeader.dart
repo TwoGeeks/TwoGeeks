@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:twoGeeks/app/chat/chatHeader/searchBar.dart';
 
-Widget chatHeader() {
+Widget chatHeader(bool tutor) {
   return Stack(children: <Widget>[
     Column(
       children: <Widget>[
@@ -11,7 +11,7 @@ Widget chatHeader() {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Friends",
+              tutor ? "Students" : "Friends",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
