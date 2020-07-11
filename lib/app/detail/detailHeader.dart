@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 List<Widget> detailHeader(data) {
   String name = data["name"];
-  int age = data["age"];
+  String age = data["age"];
   String gender = data["gender"] == "m" ? "Male" : "Female";
   String currentSchool = data["currentSchool"];
   String currentSchoolYear = data["currentSchoolYear"];

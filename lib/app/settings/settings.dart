@@ -108,27 +108,30 @@ class _SettingsState extends State<Settings> {
             buttonColor: Colors.white,
           ),
         ),
-        StreamBuilder(
-            stream: database.getUserProfile(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                bool tutor = snapshot.data.tutor;
-                return SettingButton(
-                  text: tutor ? "Disable Tutor" : "Enable Tutor",
-                  textColor: Colors.black,
-                  onPressed: () async {
-                    await database.updateProfile("tutor", !tutor);
-                  },
-                  buttonColor: Colors.white,
-                );
-              }
-            }),
         FadeAnimation(
           1.1,
+          StreamBuilder(
+              stream: database.getUserProfile(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  bool tutor = snapshot.data.tutor;
+                  return SettingButton(
+                    text: tutor ? "Disable Tutor" : "Enable Tutor",
+                    textColor: Colors.black,
+                    onPressed: () async {
+                      await database.updateProfile("tutor", !tutor);
+                    },
+                    buttonColor: Colors.white,
+                  );
+                }
+              }),
+        ),
+        FadeAnimation(
+          1.2,
           SettingButton(
             text: "Log Out",
             textColor: Colors.black,

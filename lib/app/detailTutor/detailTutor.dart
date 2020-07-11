@@ -18,7 +18,7 @@ class DetailTutor extends StatelessWidget {
     User user = await auth.currentUser();
     // get user's tutor list to check if friend is already a friend
     DocumentSnapshot userData =
-    await Firestore.instance.collection("users").document(user.uid).get();
+        await Firestore.instance.collection("users").document(user.uid).get();
     List<dynamic> tutorList = userData.data["tutors_user_uid"];
 
     if (!tutorList.contains(uid)) {
@@ -66,9 +66,14 @@ class DetailTutor extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Image.asset(
-                            "images/sample_pictures/guy1.jpg",
-                            key: Key("image of friend"),
+                          AspectRatio(
+                            aspectRatio: 18.0 / 18.0,
+                            child: data["profilePic"] != ""
+                                ? Image.network(data["profilePic"])
+                                : Image.asset(
+                                    "images/sample_pictures/guy1.jpg",
+                                    key: Key("image of friend"),
+                                  ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(20.0),

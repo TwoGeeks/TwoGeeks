@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:twoGeeks/Router/routing_constants.dart';
-import 'package:twoGeeks/app/services/auth_base.dart';
-import 'package:twoGeeks/app/services/user.dart';
 
 /// Selected can be either 1,2,3,4
 /// 1 == Search
