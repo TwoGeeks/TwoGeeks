@@ -22,14 +22,12 @@ Widget eachChatView(context, userID, friendID, String type) {
           child: FlatButton(
             onPressed: () {
               Navigator.pushNamed(context, ChatroomRoute,
-                  arguments: ObjectID(
-                      userID: userID, friendID: friendID));
+                  arguments: ObjectID(userID: userID, friendID: friendID));
             },
             child: Container(
               decoration: BoxDecoration(
                 color: Color.fromRGBO(227, 184, 255, 1),
-                borderRadius:
-                BorderRadius.all(Radius.circular(17.0)),
+                borderRadius: BorderRadius.all(Radius.circular(17.0)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
@@ -48,29 +46,27 @@ Widget eachChatView(context, userID, friendID, String type) {
                   Container(
                     margin: EdgeInsets.only(right: 20),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage(
-                          "images/sample_pictures/profile_pic.png"),
+                      backgroundImage: friendData["profilePic"] != ""
+                          ? NetworkImage(friendData["profilePic"])
+                          : AssetImage(
+                              "images/sample_pictures/profile_pic.png"),
                       radius: 32,
                     ),
                   ),
                   Column(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceAround,
-                    crossAxisAlignment:
-                    CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         friendData["name"],
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Container(
                           width: 250,
                           height: 35,
                           child: Text(
-//                                            lastMessage[0]["content"],
-                            "hi",
+                            lastMessage[0]["content"],
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                           )),
@@ -91,14 +87,12 @@ Widget eachChatView(context, userID, friendID, String type) {
         child: FlatButton(
           onPressed: () {
             Navigator.pushNamed(context, ChatroomRoute,
-                arguments: ObjectID(
-                    userID: userID, friendID: friendID));
+                arguments: ObjectID(userID: userID, friendID: friendID));
           },
           child: Container(
             decoration: BoxDecoration(
               color: Color.fromRGBO(227, 184, 255, 1),
-              borderRadius:
-              BorderRadius.all(Radius.circular(17.0)),
+              borderRadius: BorderRadius.all(Radius.circular(17.0)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -109,26 +103,23 @@ Widget eachChatView(context, userID, friendID, String type) {
               ],
             ),
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            width:
-            MediaQuery.of(context).size.width * 0.9,
+            width: MediaQuery.of(context).size.width * 0.9,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment:
-              CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(right: 20),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage(
-                        "images/sample_pictures/profile_pic.png"),
+                    backgroundImage: friendData["profilePic"] != ""
+                        ? NetworkImage(friendData["profilePic"])
+                        : AssetImage("images/sample_pictures/profile_pic.png"),
                     radius: 28,
                   ),
                 ),
                 Text(
                   friendData["name"],
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

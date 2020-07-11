@@ -35,6 +35,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
     onNext();
   }
 
+  print(photourl);
   return Stack(children: <Widget>[
     InkWell(
       onTap: () {
@@ -55,7 +56,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(30.0),
 //                child: Image.network(
 //                  photourl,
 //                  fit: BoxFit.cover,
@@ -64,11 +65,18 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
 //                    return Center(child: CircularProgressIndicator(),);
 //                  },
 //                ),
-                child: Image.asset(
-                  photourl,
-                  fit: BoxFit.cover,
-                ),
-              )),
+                  child: AspectRatio(
+                    aspectRatio: 18.0 / 18.0,
+                    child: photourl == ""
+                        ? Image.asset(
+                            "images/sample_pictures/guy1.jpg",
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            photourl,
+                            fit: BoxFit.cover,
+                          ),
+                  ))),
           slideInfo(name, statement),
           Spacer(),
           Row(

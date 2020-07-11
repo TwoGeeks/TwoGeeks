@@ -9,6 +9,7 @@ void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store,
   DocumentSnapshot user =
       await store.collection("users").document(friendUid).get();
   String name = user.data["name"];
+  String photoUrl = user.data["profilePic"];
   return showDialog(
     context: context,
     builder: (context) {
@@ -23,8 +24,9 @@ void showFriendAlert(context, contextMain, friendUid, userUid, Firestore store,
           children: <Widget>[
             CircleAvatar(
               key: Key("Friend Image"),
-              backgroundImage:
-                  AssetImage("images/sample_pictures/profile_pic.png"),
+              backgroundImage: photoUrl != ""
+                  ? NetworkImage(photoUrl)
+                  : AssetImage("images/sample_pictures/profile_pic.png"),
               radius: 25,
             ),
             Text(

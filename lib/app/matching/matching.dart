@@ -29,7 +29,7 @@ class Matching extends StatelessWidget {
                   context,
                   auth,
                   user["name"],
-                  "images/sample_pictures/guy1.jpg",
+                  user["profilePic"],
                   user["statement"],
                   uid,
                   onNext);

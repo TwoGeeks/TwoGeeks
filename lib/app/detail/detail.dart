@@ -36,9 +36,14 @@ class Detail extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Image.asset(
-                          "images/sample_pictures/guy1.jpg",
-                          key: Key("image of friend"),
+                        AspectRatio(
+                          aspectRatio: 18.0 / 18.0,
+                          child: data["profilePic"] != ""
+                              ? Image.network(data["profilePic"])
+                              : Image.asset(
+                                  "images/sample_pictures/guy1.jpg",
+                                  key: Key("image of friend"),
+                                ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
