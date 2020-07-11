@@ -10,12 +10,13 @@ Widget friendRequests(context, String userUid, List<dynamic> requestList,
       header(tutor),
       Container(
         height: 90,
-        width: MediaQuery.of(context).size.width * 0.9,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        margin: EdgeInsets.only(bottom: 100),
+//        width: MediaQuery.of(context).size.width * 0.9,
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.only(bottom: 30, left: 30),
         decoration: BoxDecoration(
           color: Color.fromRGBO(98, 0, 238, 0.15),
-          borderRadius: BorderRadius.all(Radius.circular(60.0)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(35), bottomLeft: Radius.circular(35)),
         ),
         child: ListView.builder(
           itemBuilder: (BuildContext ctxt, int index) {
@@ -32,7 +33,7 @@ Widget friendRequests(context, String userUid, List<dynamic> requestList,
                   } else {
                     return Container(
                       key: Key("friendRequest container"),
-                      margin: EdgeInsets.all(20),
+                      margin: EdgeInsets.all(5),
                       child: FlatButton(
                         key: Key("friendRequest button"),
                         onPressed: () => showFriendAlert(ctxt, context,
@@ -41,7 +42,8 @@ Widget friendRequests(context, String userUid, List<dynamic> requestList,
                           key: Key("friendRequest avatar"),
                           backgroundImage: snapshot.data["profilePic"] != ""
                               ? NetworkImage(snapshot.data["profilePic"])
-                              : AssetImage("images/sample_pictures/profile_pic.png"),
+                              : AssetImage(
+                                  "images/sample_pictures/profile_pic.png"),
                           radius: 25,
                         ),
                       ),

@@ -75,19 +75,21 @@ class _ChatState extends State<Chat> {
                         0.9,
                         friendRequests(context, uid, idList, widget.store, snapshot.data.tutor),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Chat"),
-                          Switch(
-                              value: isFriend,
-                              onChanged: (value) {
-                                setState(() {
-                                  isFriend = value;
-                                });
-                              }),
-                          Text(snapshot.data.tutor ? "Student" : "Friend"),
-                        ],
+                      FadeAnimation(
+                        1.0, Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Chat"),
+                            Switch(
+                                value: isFriend,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isFriend = value;
+                                  });
+                                }),
+                            Text(snapshot.data.tutor ? "Student" : "Friend"),
+                          ],
+                        ),
                       ),
                       chatWidget(snapshot),
                     ],
