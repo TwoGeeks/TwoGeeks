@@ -90,7 +90,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        colors: [Color(0xffec008c), Color(0xfffc6767)]),
+                        colors: [Color(0xfffc6767), Color(0xffec008c)]),
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                         bottomRight: Radius.circular(30)),
@@ -111,7 +111,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        colors: [Color(0xff04ce9b), Color(0xff64e408)]),
+                        colors: [Color(0xff8080ff), Color(0xff80b3ff)]),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         bottomLeft: Radius.circular(30)),

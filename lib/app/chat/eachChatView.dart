@@ -26,7 +26,7 @@ Widget eachChatView(context, userID, friendID, String type) {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromRGBO(227, 184, 255, 1),
+                color: Color(0xffb3b3ff),
                 borderRadius: BorderRadius.all(Radius.circular(17.0)),
                 boxShadow: [
                   BoxShadow(

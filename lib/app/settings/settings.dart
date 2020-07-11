@@ -4,6 +4,7 @@ import 'package:twoGeeks/Router/routing_constants.dart';
 import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
+import 'package:twoGeeks/app/settings/settingHeader.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -31,7 +32,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildContent(context),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfff0f6f4),
       bottomNavigationBar: navBar(context, 4),
     );
   }
@@ -64,29 +65,7 @@ class _SettingsState extends State<Settings> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        FadeAnimation(
-          0.8,
-          Container(
-            height: 100,
-            alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 10),
-            decoration: BoxDecoration(
-                color: Color(0xffb9789f),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30))),
-            child: Text(
-              "Settings",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w500,
-                fontSize: 30,
-                letterSpacing: 1.4,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
+        FadeAnimation(0.8, settingHeader()),
         SizedBox(
           height: 40,
         ),
@@ -96,7 +75,6 @@ class _SettingsState extends State<Settings> {
             text: "Edit Profile",
             textColor: Colors.black,
             onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
-            buttonColor: Colors.white,
           ),
         ),
         FadeAnimation(
@@ -105,7 +83,6 @@ class _SettingsState extends State<Settings> {
             text: "Edit Preference",
             textColor: Colors.black,
             onPressed: () => Navigator.pushNamed(context, UserPreferenceRoute),
-            buttonColor: Colors.white,
           ),
         ),
         FadeAnimation(
@@ -125,7 +102,6 @@ class _SettingsState extends State<Settings> {
                     onPressed: () async {
                       await database.updateProfile("tutor", !tutor);
                     },
-                    buttonColor: Colors.white,
                   );
                 }
               }),
@@ -136,7 +112,6 @@ class _SettingsState extends State<Settings> {
             text: "Log Out",
             textColor: Colors.black,
             onPressed: () => _confirmSignOut(context),
-            buttonColor: Colors.white,
           ),
         ),
         SizedBox(

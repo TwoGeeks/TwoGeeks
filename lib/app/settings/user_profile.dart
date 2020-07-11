@@ -9,6 +9,7 @@ import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/settings/edit_array_tile.dart';
 import 'package:twoGeeks/app/settings/education_levels.dart';
 import 'package:twoGeeks/app/settings/show_tile.dart';
+import 'package:twoGeeks/app/settings/subSettingHeaders.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 import 'package:twoGeeks/app/settings/edit_number_tile.dart';
@@ -38,12 +39,11 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Edit User Profile"),
-        elevation: 3.0,
-      ),
-      body: _buildUserProfileForm(),
-    );
+        backgroundColor: Color(0xfff0f6f4),
+        body: Column(children: <Widget>[
+          subSettingHeader("Edit User Profile", context),
+          _buildUserProfileForm(),
+        ]));
   }
 
   void _updateName(String name) async {
@@ -162,118 +162,129 @@ class _UserProfileState extends State<UserProfile> {
         stream: database.getUserProfile(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Image.network(snapshot.data.profilePic,fit: BoxFit.cover,
-                      loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Column(
-                          children: <Widget>[
-                            SizedBox(height: 20,),
-                            Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes != null ?
-                                loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
-                                    : null,
-                              ),
-                            ),
-                            Container(height: 20,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
+            return Expanded(
+                  child: ListView(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Image.network(
+                            snapshot.data.profilePic,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Center(
+                                    child: CircularProgressIndicator(
+                                      value: loadingProgress
+                                                  .expectedTotalBytes !=
+                                              null
+                                          ? loadingProgress
+                                                  .cumulativeBytesLoaded /
+                                              loadingProgress.expectedTotalBytes
+                                          : null,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
                                       width: 1,
                                       color: Colors.black54.withOpacity(0.2),
-                                    ))
-                              ),
-                            )
-                          ],
-                        );
-                      },
-                    ),
-                    ShowTile(
-                      title: "Change Profile Picture",
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddPhoto(
-                                    updateImgUrl: _updateProfilePicture,
-                                  ))),
-                    ),
-                  ],
-                ),
-                EditTextTile(
-                  title: "Name",
-                  subtitle: snapshot.data.name,
-                  onSubmit: _updateName,
-                  maxLength: 35,
-                  maxLines: 1,
-                  validator: (text){
-                    if(text.length < 3){
-                      return "Name must be at least 3 characters long";
-                    }
-                    return null;
-                  },
-                ),
-                EditNumberTile(
-                  title: "Age",
-                  subtitle: snapshot.data.age.toString(),
-                  onSubmit: _updateAge,
-                ),
-                CustomDropdownTile(
-                  title: "Gender",
-                  subtitle: snapshot.data.gender,
-                  list: ["neutral", "male", "female"],
-                  onSubmit: _updateGender,
-                ),
-                EditCountryTile(
-                  title: "Country",
-                  subtitle: snapshot.data.country,
-                  onSubmit: _updateCountry,
-                ),
-                CustomDropdownTile(
-                  title: "Educational level",
-                  subtitle: snapshot.data.currentSchoolYear,
-                  list: EducationLevel.education,
-                  onSubmit: _updateGrade,
-                ),
-                EditTextTile(
-                  title: "About me",
-                  subtitle: snapshot.data.aboutMe,
-                  onSubmit: _updateAboutMe,
-                  maxLength: 140,
-                  maxLines: 6,
-                  validator: (text) {
-                    return null;
-                  },
-                ),
-                EditArrayTile(
-                  title: "Strengths",
-                  array: snapshot.data.strength,
-                  onSubmit: _updateStrength,
-                  helperText: "Add a new strength",
-                  tagFontSize: 15,
-                ),
-                EditArrayTile(
-                  title: "Weakness",
-                  array: snapshot.data.weakness,
-                  onSubmit: _updateWeakness,
-                  helperText: "Add a new weakness",
-                  tagFontSize: 15,
-                ),
-                EditArrayTile(
-                  title: "Hobbies",
-                  array: snapshot.data.hobbies,
-                  onSubmit: _updateHobbies,
-                  helperText: "Add a new hobby",
-                  tagFontSize: 15,
-                ),
-                SizedBox(
-                  height: 20,
-                )
-              ],
-            );
+                                    ))),
+                                  )
+                                ],
+                              );
+                            },
+                          ),
+                          ShowTile(
+                            title: "Change Profile Picture",
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddPhoto(
+                                          updateImgUrl: _updateProfilePicture,
+                                        ))),
+                          ),
+                        ],
+                      ),
+                      EditTextTile(
+                        title: "Name",
+                        subtitle: snapshot.data.name,
+                        onSubmit: _updateName,
+                        maxLength: 35,
+                        maxLines: 1,
+                        validator: (text) {
+                          if (text.length < 3) {
+                            return "Name must be at least 3 characters long";
+                          }
+                          return null;
+                        },
+                      ),
+                      EditNumberTile(
+                        title: "Age",
+                        subtitle: snapshot.data.age.toString(),
+                        onSubmit: _updateAge,
+                      ),
+                      CustomDropdownTile(
+                        title: "Gender",
+                        subtitle: snapshot.data.gender,
+                        list: ["neutral", "male", "female"],
+                        onSubmit: _updateGender,
+                      ),
+                      EditCountryTile(
+                        title: "Country",
+                        subtitle: snapshot.data.country,
+                        onSubmit: _updateCountry,
+                      ),
+                      CustomDropdownTile(
+                        title: "Educational level",
+                        subtitle: snapshot.data.currentSchoolYear,
+                        list: EducationLevel.education,
+                        onSubmit: _updateGrade,
+                      ),
+                      EditTextTile(
+                        title: "About me",
+                        subtitle: snapshot.data.aboutMe,
+                        onSubmit: _updateAboutMe,
+                        maxLength: 140,
+                        maxLines: 6,
+                        validator: (text) {
+                          return null;
+                        },
+                      ),
+                      EditArrayTile(
+                        title: "Strengths",
+                        array: snapshot.data.strength,
+                        onSubmit: _updateStrength,
+                        helperText: "Add a new strength",
+                        tagFontSize: 15,
+                      ),
+                      EditArrayTile(
+                        title: "Weakness",
+                        array: snapshot.data.weakness,
+                        onSubmit: _updateWeakness,
+                        helperText: "Add a new weakness",
+                        tagFontSize: 15,
+                      ),
+                      EditArrayTile(
+                        title: "Hobbies",
+                        array: snapshot.data.hobbies,
+                        onSubmit: _updateHobbies,
+                        helperText: "Add a new hobby",
+                        tagFontSize: 15,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
+                );
           } else {
             return Center(
               child: CircularProgressIndicator(),
