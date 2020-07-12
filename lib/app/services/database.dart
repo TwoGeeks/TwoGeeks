@@ -6,8 +6,8 @@ import 'package:twoGeeks/app/services/api_paths.dart';
 
 abstract class Database {
 
-  //  Future<String> getName();
-  Future<dynamic> read(String data);
+  //  get data
+  Future<dynamic> get(String data);
 
   Stream<UserModel> getUserProfile();
 
@@ -16,6 +16,9 @@ abstract class Database {
 
   // updates preferences
   Future<void> updatePreferences(String key, dynamic value);
+
+  // updates position
+  Future<void> updateLocation(String key, dynamic newValue);
 }
 
 class FireStoreDatabase implements Database {
@@ -38,14 +41,17 @@ class FireStoreDatabase implements Database {
          .then((value) => _service.updateData(path: APIPath.user(uid), data: {"preferences": value}));
   }
 
+  Future<void> updateLocation(String key, dynamic newValue) =>
+      _service.updateData(path: APIPath.user(uid), data: {key: newValue});
+
   Stream<UserModel> getUserProfile() {
     return _service.documentStream(
         path: APIPath.user(uid),
         builder: (data) => UserModel.fromMap(data));
   }
 
-  Future<dynamic> read(String data) async {
+  Future<dynamic> get(String data) async {
     var document = await Firestore.instance.document(APIPath.user(uid));
-    document.get().then((item) => print(item.data[data]));
+    return document.get().then((value) => value.data);
   }
 }

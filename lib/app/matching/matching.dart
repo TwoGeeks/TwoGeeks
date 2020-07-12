@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:twoGeeks/app/matching/slideDeck.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
+import 'package:twoGeeks/app/matching_engine/match_engine.dart';
 
 class Matching extends StatelessWidget {
   Matching({this.onNext, this.uid});
@@ -14,6 +15,8 @@ class Matching extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
+    print("match");
+    MatchEngine.instance.match();
     return Scaffold(
       body: StreamBuilder(
           stream:
