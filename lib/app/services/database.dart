@@ -16,6 +16,9 @@ abstract class Database {
 
   // updates position
   Future<void> updateLocation(String key, dynamic newValue);
+  
+  // delete chat
+  Future<void> deleteChat(String receiver, String message);
 }
 
 class FireStoreDatabase implements Database {
@@ -34,6 +37,13 @@ class FireStoreDatabase implements Database {
         path: APIPath.user(uid),
         builder: (data) => UserModel.fromMap(data));
   }
+
+  Future<void> deleteChat(String receiver, String message) {
+    print(APIPath.message(uid, receiver, message));
+    return _service.deleteDocument(APIPath.message(uid, receiver, message));
+  }
+
+  
 
   Future<dynamic> get(String data) async {
     var document = await Firestore.instance.document(APIPath.user(uid));

@@ -34,7 +34,7 @@ class _TwoGeeksSignInFormState extends State<TwoGeeksSignInForm> {
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
       PlatformAlertDialog(
-        title: "Sign In Failed",
+        title: Text("Sign In Failed"),
         content: Text(e.toString().split(",")[1].trim()),
         defaultActionText: 'OK',
       ).show(context);

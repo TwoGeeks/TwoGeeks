@@ -17,65 +17,65 @@ Widget eachChatView(context, userID, friendID, String type) {
         return Container();
       } else if (lastMessage[0]["content"] != null) {
         return Container(
-          height: 80,
-          margin: EdgeInsets.only(top: 20),
-          child: FlatButton(
-            onPressed: () {
-              Navigator.pushNamed(context, ChatroomRoute,
-                  arguments: ObjectID(userID: userID, friendID: friendID));
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xffb3b3ff),
-                borderRadius: BorderRadius.all(Radius.circular(17.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 7,
-                    offset: Offset(1, 1),
-                  )
-                ],
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: CircleAvatar(
-                      backgroundImage: friendData["profilePic"] != ""
-                          ? NetworkImage(friendData["profilePic"])
-                          : AssetImage(
-                              "images/sample_pictures/profile_pic.png"),
-                      radius: 32,
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        friendData["name"],
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+            height: 80,
+            margin: EdgeInsets.only(top: 20),
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pushNamed(context, ChatroomRoute,
+                    arguments: ObjectID(userID: userID, friendID: friendID));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xffb3b3ff),
+                  borderRadius: BorderRadius.all(Radius.circular(17.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 7,
+                      offset: Offset(1, 1),
+                    )
+                  ],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(right: 20),
+                      child: CircleAvatar(
+                        backgroundImage: friendData["profilePic"] != ""
+                            ? NetworkImage(friendData["profilePic"])
+                            : AssetImage(
+                            "images/sample_pictures/profile_pic.png"),
+                        radius: 32,
                       ),
-                      Container(
-                          width: 250,
-                          height: 35,
-                          child: Text(
-                            lastMessage[0]["content"],
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                          )),
-                    ],
-                  )
-                ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          friendData["name"],
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: 250,
+                            height: 35,
+                            child: Text(
+                              lastMessage[0]["content"],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            )),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
         );
       } else {
         return Container();

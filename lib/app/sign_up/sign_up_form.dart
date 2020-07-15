@@ -34,7 +34,7 @@ class _TwoGeeksSignUpFormState extends State<TwoGeeksSignUpForm> {
       Navigator.of(context).pushReplacementNamed(LandingRoute);
     } catch (e) {
       PlatformAlertDialog(
-        title: "Sign Up Failed",
+        title: Text("Sign Up Failed"),
         content: Text(e.toString().split(",")[1].trim()),
         defaultActionText: 'OK',
       ).show(context);

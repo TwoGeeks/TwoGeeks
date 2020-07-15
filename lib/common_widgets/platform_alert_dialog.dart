@@ -8,7 +8,7 @@ import 'dart:io';
 class PlatformAlertDialog extends PlatformWidget {
   // takes in a title, content message for the body,
   // message for default button text and a optional cancel button
-  final String title;
+  final Widget title;
   final Widget content;
   final String defaultActionText;
   final String cancelActionText;
@@ -18,13 +18,13 @@ class PlatformAlertDialog extends PlatformWidget {
       @required this.defaultActionText,
       this.cancelActionText})
       : assert(title != null),
-        assert(content != null),
+//        assert(content != null),
         assert(defaultActionText != null);
 
   @override
   Widget buildCupertinoWidget(BuildContext context) {
     return CupertinoAlertDialog(
-      title: Text(title),
+      title: title,
       content: content,
       actions: _buildActions(context),
     );
@@ -33,7 +33,7 @@ class PlatformAlertDialog extends PlatformWidget {
   @override
   Widget buildMaterialWidget(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
+      title: title,
       content: content,
       actions: _buildActions(context),
     );
