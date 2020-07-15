@@ -35,6 +35,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
     onNext();
   }
 
+  print(photourl);
   return Stack(children: <Widget>[
     InkWell(
       onTap: () {
@@ -55,7 +56,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(30.0),
 //                child: Image.network(
 //                  photourl,
 //                  fit: BoxFit.cover,
@@ -64,11 +65,18 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
 //                    return Center(child: CircularProgressIndicator(),);
 //                  },
 //                ),
-                child: Image.asset(
-                  photourl,
-                  fit: BoxFit.cover,
-                ),
-              )),
+                  child: AspectRatio(
+                    aspectRatio: 18.0 / 18.0,
+                    child: photourl == ""
+                        ? Image.asset(
+                            "images/sample_pictures/guy1.jpg",
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            photourl,
+                            fit: BoxFit.cover,
+                          ),
+                  ))),
           slideInfo(name, statement),
           Spacer(),
           Row(
@@ -82,7 +90,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        colors: [Color(0xffec008c), Color(0xfffc6767)]),
+                        colors: [Color(0xfffc6767), Color(0xffec008c)]),
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                         bottomRight: Radius.circular(30)),
@@ -103,7 +111,7 @@ Widget slideDeck(context, Auth auth, name, photourl, statement, uid, onNext) {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        colors: [Color(0xff04ce9b), Color(0xff64e408)]),
+                        colors: [Color(0xff8080ff), Color(0xff80b3ff)]),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         bottomLeft: Radius.circular(30)),

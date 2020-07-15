@@ -18,6 +18,7 @@ class Matching extends StatelessWidget {
     print("match");
     MatchEngine.instance.match();
     return Scaffold(
+      backgroundColor: Color(0xfff0f6f4),
       body: StreamBuilder(
           stream:
               Firestore.instance.collection("users").document(uid).snapshots(),
@@ -28,14 +29,8 @@ class Matching extends StatelessWidget {
               );
             } else {
               DocumentSnapshot user = snapshot.data;
-              return slideDeck(
-                  context,
-                  auth,
-                  user["name"],
-                  "images/sample_pictures/guy1.jpg",
-                  user["statement"],
-                  uid,
-                  onNext);
+              return slideDeck(context, auth, user["name"], user["profilePic"],
+                  user["statement"], uid, onNext);
             }
           }),
       bottomNavigationBar: navBar(context, 1),

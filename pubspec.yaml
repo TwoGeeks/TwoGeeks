@@ -74,6 +74,7 @@ flutter:
     - google-logo.png
     - images/friends.svg
     - images/study.svg
+    - images/edit.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

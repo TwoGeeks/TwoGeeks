@@ -73,7 +73,7 @@ class UserModel {
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
 
-    final userPreference = _ifEmpty(
+    final _userPreference = _ifEmpty(
         UserPreferenceModel(
             gender: _ifEmpty(data["preferredGender"], "neutral"),
             currentSchoolYear:
@@ -92,7 +92,7 @@ class UserModel {
       strength: strength,
       weakness: weakness,
       hobbies: hobbies,
-      userPreference: userPreference,
+      userPreference: _userPreference,
       tutor: tutor,
       friends_user_uid: friends_user_uid,
       tutorrequest_user_uid: tutorrequest_user_uid,

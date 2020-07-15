@@ -20,8 +20,8 @@ class UserPreferenceModel {
     if (data.isEmpty) {
       return null;
     }
-    final String currentSchoolYear = _ifEmpty(data["currentSchoolYear"], "Others").toString();
-    final String gender = _ifEmpty(data["gender"], "neutral").toString();
+    final String currentSchoolYear = _ifEmpty(data["preferredCurrentSchoolYear"], "Others");
+    final String gender = _ifEmpty(data["preferredGender"], "neutral");
 
     return UserPreferenceModel(currentSchoolYear: currentSchoolYear, gender: gender);
   }
