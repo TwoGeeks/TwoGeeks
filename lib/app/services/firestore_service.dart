@@ -34,6 +34,11 @@ class FireStoreService {
     await documentReference.updateData(data);
   }
 
+  Future<void> deleteDocument(String path) async {
+    final documentReference = Firestore.instance.document(path);
+    return await documentReference.delete();
+  }
+
   // get data
   Future<dynamic> get({String path}) async {
     final documentReference = Firestore.instance.document(path);

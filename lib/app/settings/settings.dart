@@ -51,7 +51,7 @@ class _SettingsState extends State<Settings> {
 
     Future<void> _confirmSignOut(BuildContext context) async {
       final requestSignOut = await PlatformAlertDialog(
-        title: "Log Out",
+        title: Text("Log Out"),
         content: Text("Are you sure you want to log out?"),
         defaultActionText: 'LogOut',
         cancelActionText: "Cancel",

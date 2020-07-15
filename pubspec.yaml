@@ -39,7 +39,6 @@ dependencies:
   flutter_svg: 0.17.4
   simple_animations: ^2.2.1
   numberpicker: 1.2.0
-  flutter_country_picker: 0.1.6
   flutter_tags: 0.4.8+2
   geolocator: ^5.3.2+2
 

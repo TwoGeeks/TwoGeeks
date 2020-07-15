@@ -42,7 +42,7 @@ class _AddPhotoState extends State<AddPhoto> {
   @override
   Widget build(BuildContext context) {
     return PlatformAlertDialog(
-      title: "Add a photo",
+      title: Text("Add a photo"),
       content: Center(
           child: Column(
         children: <Widget>[

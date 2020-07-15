@@ -6,16 +6,19 @@ import 'package:twoGeeks/app/services/api_paths.dart';
 
 abstract class Database {
 
-  //  Future<String> getName();
-  Future<dynamic> read(String data);
+  //  get data
+  Future<dynamic> get(String data);
 
   Stream<UserModel> getUserProfile();
 
   // updates the key with a new value
   Future<void> updateProfile(String key, dynamic value);
 
-  // updates preferences
-  Future<void> updatePreferences(String key, dynamic value);
+  // updates position
+  Future<void> updateLocation(String key, dynamic newValue);
+  
+  // delete chat
+  Future<void> deleteChat(String receiver, String message);
 }
 
 class FireStoreDatabase implements Database {
@@ -26,17 +29,8 @@ class FireStoreDatabase implements Database {
   Future<void> updateProfile(String key, dynamic value) =>
       _service.updateData(path: APIPath.user(uid), data: {key: value});
 
-  Future<void> updatePreferences(String key, dynamic newValue) {
-    
-    Map _update(Map map, dynamic val, String key){
-      map[key] = val;
-      return map;
-    }
-    
-     return _service.get(path: APIPath.user(uid)).then((value) => value["preferences"])
-         .then((map) => _update(map, newValue, key))
-         .then((value) => _service.updateData(path: APIPath.user(uid), data: {"preferences": value}));
-  }
+  Future<void> updateLocation(String key, dynamic newValue) =>
+      _service.updateData(path: APIPath.user(uid), data: {key: newValue});
 
   Stream<UserModel> getUserProfile() {
     return _service.documentStream(
@@ -44,8 +38,15 @@ class FireStoreDatabase implements Database {
         builder: (data) => UserModel.fromMap(data));
   }
 
-  Future<dynamic> read(String data) async {
+  Future<void> deleteChat(String receiver, String message) {
+    print(APIPath.message(uid, receiver, message));
+    return _service.deleteDocument(APIPath.message(uid, receiver, message));
+  }
+
+  
+
+  Future<dynamic> get(String data) async {
     var document = await Firestore.instance.document(APIPath.user(uid));
-    document.get().then((item) => print(item.data[data]));
+    return document.get().then((value) => value.data);
   }
 }

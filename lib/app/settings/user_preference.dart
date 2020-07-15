@@ -45,7 +45,7 @@ class _UserPreferenceState extends State<UserPreference> {
 
   void _updatePreferredGrade(String grade) async {
     try {
-      await database.updatePreferences("currentSchoolYear", grade);
+      await database.updateProfile("preferredCurrentSchoolYear", grade);
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
@@ -56,7 +56,7 @@ class _UserPreferenceState extends State<UserPreference> {
 
   void _updatePreferredGender(String gender) async {
     try {
-      await database.updatePreferences("gender", gender);
+      await database.updateProfile("preferredGender", gender);
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
