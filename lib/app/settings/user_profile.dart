@@ -12,7 +12,6 @@ import 'package:twoGeeks/app/settings/show_tile.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:twoGeeks/app/settings/edit_text_tile.dart';
 import 'package:twoGeeks/app/settings/edit_number_tile.dart';
-import 'package:twoGeeks/app/settings/edit_country_tile.dart';
 import 'package:twoGeeks/app/settings/custom_dropdown_tile.dart';
 import 'package:twoGeeks/app/settings/AddPhoto.dart';
 
@@ -71,17 +70,6 @@ class _UserProfileState extends State<UserProfile> {
   void _updateAge(int age) async {
     try {
       await database.updateProfile("age", age.toString());
-    } on PlatformException catch (e) {
-      PlatformExceptionAlertDialog(
-        title: "Opps! Something went wrong..",
-        exception: e,
-      ).show(context);
-    }
-  }
-
-  void _updateCountry(String country) async {
-    try {
-      await database.updateProfile("country", country);
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: "Opps! Something went wrong..",
@@ -226,11 +214,6 @@ class _UserProfileState extends State<UserProfile> {
                   subtitle: snapshot.data.gender,
                   list: ["neutral", "male", "female"],
                   onSubmit: _updateGender,
-                ),
-                EditCountryTile(
-                  title: "Country",
-                  subtitle: snapshot.data.country,
-                  onSubmit: _updateCountry,
                 ),
                 CustomDropdownTile(
                   title: "Educational level",

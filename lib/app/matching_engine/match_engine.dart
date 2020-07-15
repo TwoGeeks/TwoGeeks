@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter/material.dart';
-import 'package:twoGeeks/app/models/user_model.dart';
 import 'package:twoGeeks/app/services/database.dart';
 
 class MatchEngine {
@@ -10,7 +7,7 @@ class MatchEngine {
   final Geolocator _geolocator = Geolocator()..forceAndroidLocationManager;
   final _firestore = Firestore.instance;
   static Database _database;
-  Map<String, dynamic> _preferences;
+
   Position _position;
   String _locality;
   String _country;
@@ -43,7 +40,11 @@ class MatchEngine {
 
         await _getCurrentLocation().then((value) => _position = value);
         await _geolocator.placemarkFromPosition(_position).then((value) => _updateUserLocation(value[0]));
-        await _database.get("preferences").then((value) => _preferences = value);
+
+        String _preferredGender;
+        String _preferredCurrentSchoolYear;
+        await _database.get("preferredGender").then((value) => _preferredGender = value);
+        await _database.get("preferredCurrentSchoolYear").then((value) => _preferredCurrentSchoolYear = value);
 
         List<String> results = [];
         List friendsLst = await _database.get("friends-user-uid");
@@ -51,7 +52,8 @@ class MatchEngine {
         var query = _firestore.collection("users")
             .where("country",isEqualTo: _country)
             .where("locality",isEqualTo: _locality)
-            .where("preferences",arrayContains: {"currentSchoolYear":_preferences["currentSchoolYear"]});
+            .where("preferredGender", isEqualTo: _preferredGender)
+            .where("preferredCurrentSchoolYear", isEqualTo: _preferredCurrentSchoolYear);
 
         await query.getDocuments()
             .then((value) => value.documents)

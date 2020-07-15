@@ -14,9 +14,6 @@ abstract class Database {
   // updates the key with a new value
   Future<void> updateProfile(String key, dynamic value);
 
-  // updates preferences
-  Future<void> updatePreferences(String key, dynamic value);
-
   // updates position
   Future<void> updateLocation(String key, dynamic newValue);
 }
@@ -28,18 +25,6 @@ class FireStoreDatabase implements Database {
 
   Future<void> updateProfile(String key, dynamic value) =>
       _service.updateData(path: APIPath.user(uid), data: {key: value});
-
-  Future<void> updatePreferences(String key, dynamic newValue) {
-    
-    Map _update(Map map, dynamic val, String key){
-      map[key] = val;
-      return map;
-    }
-    
-     return _service.get(path: APIPath.user(uid)).then((value) => value["preferences"])
-         .then((map) => _update(map, newValue, key))
-         .then((value) => _service.updateData(path: APIPath.user(uid), data: {"preferences": value}));
-  }
 
   Future<void> updateLocation(String key, dynamic newValue) =>
       _service.updateData(path: APIPath.user(uid), data: {key: newValue});

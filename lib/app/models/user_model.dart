@@ -75,9 +75,9 @@ class UserModel {
 
     final userPreference = _ifEmpty(
         UserPreferenceModel(
-            gender: _ifEmpty(data["preferences"]["gender"], "neutral"),
+            gender: _ifEmpty(data["preferredGender"], "neutral"),
             currentSchoolYear:
-                _ifEmpty(data["preferences"]["currentSchoolYear"], "Others")),
+                _ifEmpty(data["preferredCurrentSchoolYear"], "Others")),
         _emptyPreferenceModel);
 
     return UserModel(
