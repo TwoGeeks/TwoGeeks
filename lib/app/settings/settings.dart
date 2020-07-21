@@ -5,6 +5,7 @@ import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/settings/settingHeader.dart';
+import 'package:twoGeeks/app/settings/tutor_profile.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
@@ -37,30 +38,30 @@ class _SettingsState extends State<Settings> {
     );
   }
 
+  Future<void> _signOut() async {
+    try {
+      final auth = Provider.of<AuthBase>(context, listen: false);
+      await auth.signOut();
+      Navigator.pushReplacementNamed(context, LandingRoute);
+    } catch (e) {
+      print("Error Encountered ${e.toString()}");
+    }
+  }
+
+  Future<void> _confirmSignOut(BuildContext context) async {
+    final requestSignOut = await PlatformAlertDialog(
+      title: Text("Log Out"),
+      content: Text("Are you sure you want to log out?"),
+      defaultActionText: 'LogOut',
+      cancelActionText: "Cancel",
+    ).show(context);
+    if (requestSignOut) {
+      _signOut();
+    }
+  }
+
   Widget _buildContent(BuildContext context) {
     _getUid();
-    Future<void> _signOut() async {
-      try {
-        final auth = Provider.of<AuthBase>(context, listen: false);
-        await auth.signOut();
-        Navigator.pushReplacementNamed(context, LandingRoute);
-      } catch (e) {
-        print("Error Encountered ${e.toString()}");
-      }
-    }
-
-    Future<void> _confirmSignOut(BuildContext context) async {
-      final requestSignOut = await PlatformAlertDialog(
-        title: Text("Log Out"),
-        content: Text("Are you sure you want to log out?"),
-        defaultActionText: 'LogOut',
-        cancelActionText: "Cancel",
-      ).show(context);
-      if (requestSignOut) {
-        _signOut();
-      }
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -75,6 +76,14 @@ class _SettingsState extends State<Settings> {
             text: "Edit Profile",
             textColor: Colors.black,
             onPressed: () => Navigator.pushNamed(context, UserProfileRoute),
+          ),
+        ),
+        FadeAnimation(
+          1,
+          SettingButton(
+            text: "Edit Tutor profile",
+            textColor: Colors.black,
+            onPressed: () => Navigator.pushNamed(context, TutorProfileRoute, arguments: database),
           ),
         ),
         FadeAnimation(
@@ -99,6 +108,7 @@ class _SettingsState extends State<Settings> {
                   return SettingButton(
                     text: tutor ? "Disable Tutor" : "Enable Tutor",
                     textColor: Colors.black,
+                    buttonColor: Colors.grey.withOpacity(0.3),
                     onPressed: () async {
                       await database.updateProfile("tutor", !tutor);
                     },
