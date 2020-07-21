@@ -6,9 +6,9 @@ import 'package:twoGeeks/app/services/auth_base.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/settings/edit_array_dropdown_tile.dart';
-import 'package:twoGeeks/app/settings/edit_array_tile.dart';
 import 'package:twoGeeks/app/settings/education_levels.dart';
 import 'package:twoGeeks/app/settings/subSettingHeaders.dart';
+import 'package:twoGeeks/app/settings/subjects.dart';
 import 'package:twoGeeks/common_widgets/platform_exception_alert_dialog.dart';
 
 class TutorProfile extends StatefulWidget {
@@ -74,10 +74,11 @@ class _TutorProfileState extends State<TutorProfile> {
             return Expanded(
               child: ListView(
                 children: <Widget>[
-                  EditArrayTile(
+                  EditArrayDropdownTile(
                     title: "Tutoring Subjects",
                     helperText: "eg. mathematics",
                     array: snapshot.data.tutoringSubjects,
+                    suggestions: Subjects.subjects,
                     onSubmit: _updateTutoringSubjects,
                   ),
                   EditArrayDropdownTile(
