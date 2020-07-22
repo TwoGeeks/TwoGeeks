@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:twoGeeks/app/chatroom/messageBody.dart';
 import 'package:twoGeeks/app/chatroom/messageHeader.dart';
 import 'package:twoGeeks/app/chatroom/messageInput.dart';
@@ -15,7 +14,8 @@ class ObjectID {
 
 class Chatroom extends StatefulWidget {
   final ObjectID objectID;
-  Chatroom({this.objectID});
+  Firestore store;
+  Chatroom({this.objectID, this.store});
 
   @override
   _ChatroomState createState() => _ChatroomState();
@@ -77,10 +77,13 @@ class _ChatroomState extends State<Chatroom> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.store == null) {
+      widget.store = Firestore.instance;
+    }
     return Scaffold(
       backgroundColor: Color(0xfff0f6f4),
       resizeToAvoidBottomInset: true,
-      appBar: messageHeader(context, friendID),
+      appBar: messageHeader(context, friendID, widget.store),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -88,7 +91,7 @@ class _ChatroomState extends State<Chatroom> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             StreamBuilder(
-                stream: Firestore.instance
+                stream: widget.store
                     .collection("messages")
                     .document(groupChatId)
                     .collection(groupChatId)

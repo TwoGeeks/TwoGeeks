@@ -1,14 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-Widget messageHeader(context, String friendID) {
+Widget messageHeader(context, String friendID, Firestore store) {
   return AppBar(
       backgroundColor: Color(0xff2398ab),
       title: StreamBuilder(
-          stream: Firestore.instance
-              .collection("users")
-              .document(friendID)
-              .snapshots(),
+          stream: store.collection("users").document(friendID).snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
@@ -21,6 +18,7 @@ Widget messageHeader(context, String friendID) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CircleAvatar(
+                    key: Key("Image of friend"),
                     backgroundImage:
                         AssetImage("images/sample_pictures/profile_pic.png"),
                   ),
