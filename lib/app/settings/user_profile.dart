@@ -193,11 +193,12 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                           ShowTile(
                             title: "Change Profile Picture",
+                            iconData: Icons.camera_alt,
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => AddPhoto(
-                                          updateImgUrl: _updateProfilePicture,
+//                                          updateImgUrl: _updateProfilePicture,
                                         ))),
                           ),
                         ],
