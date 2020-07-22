@@ -26,14 +26,14 @@ List<Widget> detailHeader(data) {
           name,
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        IconButton(
-            icon: Icon(
-              Icons.favorite,
-              size: 30,
-              color: Colors.red,
-              key: Key("Heart icon"),
-            ),
-            onPressed: null)
+//        IconButton(
+//            icon: Icon(
+//              Icons.favorite,
+//              size: 30,
+//              color: Colors.red,
+//              key: Key("Heart icon"),
+//            ),
+//            onPressed: null)
       ],
     ),
     Text("$age, $gender"),
