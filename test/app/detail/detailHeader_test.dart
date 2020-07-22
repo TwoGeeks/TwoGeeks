@@ -9,7 +9,7 @@ void main() {
         (WidgetTester tester) async {
       final data = {
         "name": "Jon",
-        "age": 23,
+        "age": "23",
         "gender": "m",
         "currentSchool": "NUS",
         "currentSchoolYear": "year2 sem1"
@@ -20,9 +20,7 @@ void main() {
 
       await tester.pumpWidget(createWidgetTester(widgets[0]));
       final nameFinder = find.text("Jon");
-      final iconFinder = find.byKey(Key("Heart icon"));
       expect(nameFinder, findsOneWidget);
-      expect(iconFinder, findsOneWidget);
 
       await tester.pumpWidget(createWidgetTester(widgets[1]));
       final ageAndGenderFinder = find.text("23, Male");
@@ -37,7 +35,7 @@ void main() {
         (WidgetTester tester) async {
       final data = {
         "name": "Jon",
-        "age": 23,
+        "age": "23",
         "gender": "m",
         "currentSchool": "",
         "currentSchoolYear": "year2 sem1"
@@ -53,7 +51,7 @@ void main() {
         (WidgetTester tester) async {
       final data = {
         "name": "Jon",
-        "age": 23,
+        "age": "23",
         "gender": "m",
         "currentSchool": "NUS",
         "currentSchoolYear": ""

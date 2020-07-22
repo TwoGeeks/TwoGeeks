@@ -29,7 +29,7 @@ void main() {
       final instance = MockFirestoreInstance();
       await instance.collection("users").document(friendID).setData({
         "name": "Jon",
-        "age": 23,
+        "age": "23",
         "gender": "m",
         "currentSchool": "NUS",
         "currentSchoolYear": "year2 sem1",
@@ -37,6 +37,7 @@ void main() {
         "strength": ["Math", "English"],
         "weakness": ["Science", "Biology", "Chinese"],
         "hobbies": ["badminton", "volleyball"],
+        "profilePic": "",
       });
 
       await tester.pumpWidget(createWidgetTester(Detail(
@@ -54,9 +55,7 @@ void main() {
       expect(imageFinder, findsOneWidget);
 
       final nameFinder = find.text("Jon");
-      final iconFinder = find.byKey(Key("Heart icon"));
       expect(nameFinder, findsOneWidget);
-      expect(iconFinder, findsOneWidget);
 
       final ageAndGenderFinder = find.text("23, Male");
       expect(ageAndGenderFinder, findsOneWidget);
@@ -70,7 +69,7 @@ void main() {
       final instance = MockFirestoreInstance();
       await instance.collection("users").document(friendID).setData({
         "name": "Jon",
-        "age": 23,
+        "age": "23",
         "gender": "m",
         "currentSchool": "NUS",
         "currentSchoolYear": "year2 sem1",
@@ -78,6 +77,7 @@ void main() {
         "strength": ["Math", "English"],
         "weakness": ["Science", "Biology", "Chinese"],
         "hobbies": ["badminton", "volleyball"],
+        "profilePic": "",
       });
 
       await tester.pumpWidget(createWidgetTester(Detail(
