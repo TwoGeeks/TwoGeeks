@@ -158,6 +158,7 @@ class _UserProfileState extends State<UserProfile> {
                             child: Image.network(
                               snapshot.data.profilePic,
                               fit: BoxFit.contain,
+                              height: 250,
                               loadingBuilder: (BuildContext context, Widget child,
                                   ImageChunkEvent loadingProgress) {
                                 if (loadingProgress == null) return child;

@@ -5,7 +5,6 @@ import 'package:twoGeeks/animations/FadeAnimation.dart';
 import 'package:twoGeeks/app/services/database.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/settings/settingHeader.dart';
-import 'package:twoGeeks/app/settings/tutor_profile.dart';
 import 'package:twoGeeks/common_widgets/navBar.dart';
 import 'package:twoGeeks/app/settings/setting_button.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';

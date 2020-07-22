@@ -4,11 +4,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:camera/camera.dart';
+import 'package:twoGeeks/app/camera/picture_cropper.dart';
 import 'package:twoGeeks/app/camera/TakeImageWithCamera.dart';
 import 'package:twoGeeks/common_widgets/circular_progress_indicator.dart';
-import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
-import 'package:twoGeeks/common_widgets/custom_raised_button.dart';
-import 'package:twoGeeks/common_widgets/platform_alert_dialog.dart';
 
 class AddPhoto extends StatefulWidget {
 
@@ -88,7 +86,7 @@ class _AddPhotoState extends State<AddPhoto> {
   Widget build(BuildContext context) {
     if (_initialised && profilePic == null){
       return _buildSelectWidget();
-    } else if (_initialised) {
+    } else if (_initialised && profilePic != null) {
       return _buildPreviewWidget(context);
     }
     else {
@@ -99,7 +97,6 @@ class _AddPhotoState extends State<AddPhoto> {
     }
   }
   Widget _buildSelectWidget(){
-    if (profilePic == null) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -130,57 +127,30 @@ class _AddPhotoState extends State<AddPhoto> {
           onClick: _takePhoto,
         ),
       );
-    }
   }
 
   Widget _buildPreviewWidget(BuildContext context){
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("Preview image"),
-      ),
-      body: !_isLoading
-          ? Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            color: Colors.grey,
-            child: Center(
-              child: Image.file(profilePic),
-            )
-          ),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              FloatingActionButton(
-                child: Icon(Icons.check),
-                backgroundColor: Colors.green,
-                onPressed: () => _sendData(context),
-              ),
-              FloatingActionButton(
-                backgroundColor: Colors.red,
-                child: Icon(Icons.clear),
-                onPressed: () => {
-                  setState(() {
-                    profilePic = null;
-                  })
-                },
-              )
-            ],
-          )
-        ],
+    void _cropPhotoAndSubmit(File croppedPhoto){
+      setState(() {
+        profilePic = croppedPhoto;
+        _isLoading = true;
+      });
+      _sendData(context);
+    }
+    return !_isLoading
+          ? PictureCropper(
+        title: "Edit Image",
+        callBack: _cropPhotoAndSubmit,
+        imageFile: profilePic,
       )
       : Container(
         color: Colors.white,
         child: TwoGeeksCircularProgressIndicator(
-          title: "Please wait...",
+          title: "Please wait",
           subtitle: "Photo is being uploaded",
           titleColor: Colors.black,
           subtitleColor: Colors.black54,
         ),
-      ),
     );
   }
 }
