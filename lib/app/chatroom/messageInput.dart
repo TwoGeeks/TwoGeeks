@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget messageInput(Function onSendMessage, TextEditingController _controller) {
+Widget messageInput(Function onSendMessage, TextEditingController _controller, store) {
   return Container(
     decoration: BoxDecoration(
         color: Color.fromRGBO(0, 0, 0, 0.13),
@@ -42,8 +42,9 @@ Widget messageInput(Function onSendMessage, TextEditingController _controller) {
           ),
         ),
         IconButton(
+          key: Key("Submit button"),
           iconSize: 28,
-          onPressed: () => onSendMessage(),
+          onPressed: () => onSendMessage(store),
           padding: EdgeInsets.only(right: 10),
           icon: Icon(Icons.message),
         )
