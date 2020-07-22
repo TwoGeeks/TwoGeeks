@@ -153,43 +153,44 @@ class _UserProfileState extends State<UserProfile> {
             return Expanded(
                   child: ListView(
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Image.network(
-                            snapshot.data.profilePic,
-                            fit: BoxFit.cover,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Column(
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress
-                                                  .expectedTotalBytes !=
-                                              null
-                                          ? loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes
-                                          : null,
+                          Container(
+                            color: Colors.black,
+                            child: Image.network(
+                              snapshot.data.profilePic,
+                              fit: BoxFit.contain,
+                              loadingBuilder: (BuildContext context, Widget child,
+                                  ImageChunkEvent loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Column(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height: 20,
                                     ),
-                                  ),
-                                  Container(
-                                    height: 20,
-                                    decoration: BoxDecoration(
-                                        border: Border(
-                                            bottom: BorderSide(
-                                      width: 1,
-                                      color: Colors.black54.withOpacity(0.2),
+                                    Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                            .expectedTotalBytes !=
+                                            null
+                                            ? loadingProgress
+                                            .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes
+                                            : null,
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                width: 1,
+                                                color: Colors.black54.withOpacity(0.2),
 
-                                    ))),
-                                  )
-                                ],
-                              );
-                            },
+                                              ))),
+                                    )
+                                  ],
+                                );
+                              },
+                            ),
                           ),
                           ShowTile(
                             title: "Change Profile Picture",
@@ -198,11 +199,9 @@ class _UserProfileState extends State<UserProfile> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => AddPhoto(
-//                                          updateImgUrl: _updateProfilePicture,
+                                          updateImgUrl: _updateProfilePicture,
                                         ))),
                           ),
-                        ],
-                      ),
                       EditTextTile(
                         title: "Name",
                         subtitle: snapshot.data.name,

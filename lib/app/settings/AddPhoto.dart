@@ -26,7 +26,8 @@ class _AddPhotoState extends State<AddPhoto> {
 
    List<CameraDescription> _camerasList;
    CameraDescription _operatingCamera;
-   bool initialised = false;
+   bool _initialised = false;
+   bool _isLoading = false;
 
   @override
   void initState() {
@@ -57,7 +58,7 @@ class _AddPhotoState extends State<AddPhoto> {
     _camerasList = await availableCameras();
     _operatingCamera = _camerasList.first;
     setState(() {
-      initialised = true;
+      _initialised = true;
     });
   }
 
@@ -72,20 +73,22 @@ class _AddPhotoState extends State<AddPhoto> {
 
   void _sendData(BuildContext context) async {
     String _imageUrl;
+    setState(() {
+      _isLoading = true;
+    });
     StorageReference imageRef =
         storageReference.ref().child("profile/picture/${path.basename(profilePic.path)}");
     StorageUploadTask uploadTask = imageRef.putFile(profilePic);
     await uploadTask.onComplete;
     _imageUrl = await imageRef.getDownloadURL();
-    print("image url is " + _imageUrl);
     widget.updateImgUrl(_imageUrl).then((_) => Navigator.pop(context));
   }
 
   @override
   Widget build(BuildContext context) {
-    if (initialised && profilePic == null){
+    if (_initialised && profilePic == null){
       return _buildSelectWidget();
-    } else if (initialised) {
+    } else if (_initialised) {
       return _buildPreviewWidget(context);
     }
     else {
@@ -99,19 +102,26 @@ class _AddPhotoState extends State<AddPhoto> {
     if (profilePic == null) {
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           actions: <Widget>[
-            FlatButton(
-              child: Text("Upload from Gallery"),
-              onPressed: _chooseFile,
+            Container(
+              child: Row(
+                children: <Widget>[
+                  FlatButton(
+                    child: Text("Upload from Gallery"),
+                    onPressed: _chooseFile,
 //              shape: ShapeBorder.,
-              color: Colors.white,
-            ),
-            SizedBox(width: 20,),
-            FlatButton(
-              child: Icon(Icons.switch_camera),
-              onPressed: _swapCamera,
-//              shape: ShapeBorder.,
-              color: Colors.white,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 20,),
+                  FlatButton(
+                    child: Icon(Icons.switch_camera),
+                    onPressed: _swapCamera,
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0)),
+                    color: Colors.white,
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -125,14 +135,17 @@ class _AddPhotoState extends State<AddPhoto> {
 
   Widget _buildPreviewWidget(BuildContext context){
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text("Preview image"),
       ),
-      body: Column(
+      body: !_isLoading
+          ? Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            color: Colors.black,
+            color: Colors.grey,
             child: Center(
               child: Image.file(profilePic),
             )
@@ -149,63 +162,25 @@ class _AddPhotoState extends State<AddPhoto> {
               FloatingActionButton(
                 backgroundColor: Colors.red,
                 child: Icon(Icons.clear),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => {
+                  setState(() {
+                    profilePic = null;
+                  })
+                },
               )
             ],
           )
         ],
+      )
+      : Container(
+        color: Colors.white,
+        child: TwoGeeksCircularProgressIndicator(
+          title: "Please wait...",
+          subtitle: "Photo is being uploaded",
+          titleColor: Colors.black,
+          subtitleColor: Colors.black54,
+        ),
       ),
     );
   }
 }
-
-//return PlatformAlertDialog(
-//title: Text("Add a photo"),
-//content: Center(
-//child: Column(
-//children: <Widget>[
-//profilePic == null
-//? Container(
-//height: 150,
-//)
-//: Container(
-//child: Image.asset(profilePic.path),
-//margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
-//),
-//profilePic == null
-//? Column(
-//children: <Widget>[
-//CustomFlatButton(
-//onPressed: _chooseFile,
-//child: Text("Add profile picture"),
-//color: Colors.lightBlue.withOpacity(0.5),
-//height: 40,
-//),
-//SizedBox(height: 15,),
-//Text("or", style: TextStyle(
-//fontSize: 15,
-//),
-//textAlign: TextAlign.center,
-//),
-//SizedBox(height: 15,),
-//CustomFlatButton(
-//onPressed: _chooseFile,
-//child: Text("Add profile picture"),
-//color: Colors.lightBlue.withOpacity(0.5),
-//height: 40,
-//),
-//],
-//)
-//: CustomRaisedButton(
-//onPressed: _sendData,
-//child: Text("Submit"),
-//color: Colors.lightGreen.withOpacity(0.5),
-//height: 40,
-//),
-//SizedBox(
-//height: 20,
-//),
-//],
-//)),
-//defaultActionText: "Cancel",
-//);
