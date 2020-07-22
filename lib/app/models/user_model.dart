@@ -81,23 +81,22 @@ class UserModel {
         _emptyPreferenceModel);
 
     return UserModel(
-      name: name,
-      age: age,
-      country: country,
-      currentSchool: currentSchool,
-      currentSchoolYear: currentSchoolYear,
-      aboutMe: aboutMe,
-      gender: gender,
-      profilePic: profilePic,
-      strength: strength,
-      weakness: weakness,
-      hobbies: hobbies,
-      userPreference: _userPreference,
-      tutor: tutor,
-      friends_user_uid: friends_user_uid,
-      tutorrequest_user_uid: tutorrequest_user_uid,
-      friendrequest_user_uid: friendrequest_user_uid,
-      tutors_user_uid: tutors_user_uid
-    );
+        name: name,
+        age: age,
+        country: country,
+        currentSchool: currentSchool,
+        currentSchoolYear: currentSchoolYear,
+        aboutMe: aboutMe,
+        gender: gender,
+        profilePic: profilePic,
+        strength: strength,
+        weakness: weakness,
+        hobbies: hobbies,
+        userPreference: _userPreference,
+        tutor: tutor,
+        friends_user_uid: friends_user_uid,
+        tutorrequest_user_uid: tutorrequest_user_uid,
+        friendrequest_user_uid: friendrequest_user_uid,
+        tutors_user_uid: tutors_user_uid);
   }
 }
