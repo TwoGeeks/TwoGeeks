@@ -42,17 +42,17 @@ class _ChatroomState extends State<Chatroom> {
     }
   }
 
-  void onSendMessage() {
+  void onSendMessage(Firestore store) {
     String message = _controller.text;
     if (message.trim() != '') {
       _controller.clear();
 
-      var documentReference = Firestore.instance
+      var documentReference = store
           .collection('messages')
           .document(groupChatId)
           .collection(groupChatId)
           .document(DateTime.now().millisecondsSinceEpoch.toString());
-      Firestore.instance.runTransaction((transaction) async {
+      store.runTransaction((transaction) async {
         await transaction.set(
           documentReference,
           {
@@ -60,7 +60,6 @@ class _ChatroomState extends State<Chatroom> {
             'idTo': friendID,
             'timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
             'content': message,
-//            'type': type
           },
         );
       });
@@ -112,7 +111,7 @@ class _ChatroomState extends State<Chatroom> {
                     );
                   }
                 }),
-            messageInput(onSendMessage, _controller)
+            messageInput(onSendMessage, _controller, widget.store)
           ],
         ),
       ),
