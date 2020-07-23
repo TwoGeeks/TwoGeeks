@@ -19,6 +19,8 @@ class UserModel {
   final tutorrequest_user_uid;
   final tutors_user_uid;
   final friendrequest_user_uid;
+  final tutoringGrades;
+  final tutoringSubjects;
 
   UserModel(
       {this.name,
@@ -34,6 +36,8 @@ class UserModel {
       this.userPreference,
       this.tutor,
       this.hobbies,
+      this.tutoringGrades,
+      this.tutoringSubjects,
       this.friends_user_uid,
       this.tutorrequest_user_uid,
       this.tutors_user_uid,
@@ -69,6 +73,8 @@ class UserModel {
     final tutorrequest_user_uid = _ifEmpty(data["tutorrequest_user_uid"], []);
     final tutors_user_uid = _ifEmpty(data["tutors_user_uid"], []);
     final friendrequest_user_uid = _ifEmpty(data["friendrequest_user_uid"], []);
+    final tutoringGrades = _ifEmpty(data["tutoringGrades"], []);
+    final tutoringSubjects = _ifEmpty(data["tutoringSubjects"], []);
 
     UserPreferenceModel _emptyPreferenceModel =
         new UserPreferenceModel(currentSchoolYear: "Others", gender: "neutral");
@@ -94,9 +100,11 @@ class UserModel {
         hobbies: hobbies,
         userPreference: _userPreference,
         tutor: tutor,
+        tutoringGrades: tutoringGrades,
         friends_user_uid: friends_user_uid,
         tutorrequest_user_uid: tutorrequest_user_uid,
         friendrequest_user_uid: friendrequest_user_uid,
+        tutoringSubjects: tutoringSubjects,
         tutors_user_uid: tutors_user_uid);
   }
 }

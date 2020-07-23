@@ -11,4 +11,5 @@ const String UserProfileRoute = 'UserProfile';
 const String TutorMatchingRoute = 'Tutor';
 const String TutorDetailRoute = 'TutorDetail';
 const String UserPreferenceRoute = 'UserPreference';
+const String TutorProfileRoute = 'TutorProfile';
 

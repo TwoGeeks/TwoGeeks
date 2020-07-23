@@ -6,7 +6,7 @@ import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 
 class SettingButton extends CustomFlatButton {
   SettingButton(
-      {String text, Color textColor, Color buttonColor, VoidCallback onPressed})
+      {String text, Color textColor, Color buttonColor, VoidCallback onPressed, IconData icon = Icons.arrow_forward_ios})
       : super(
             child: Padding(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -23,7 +23,7 @@ class SettingButton extends CustomFlatButton {
                     ),
                   ),
                   Icon(
-                    Icons.arrow_forward_ios,
+                    icon,
                     color: textColor,
                   )
                 ],

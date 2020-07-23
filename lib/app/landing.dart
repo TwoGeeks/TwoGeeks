@@ -6,6 +6,7 @@ import 'package:twoGeeks/app/matching_engine/match_engine.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
 import 'package:twoGeeks/app/services/user.dart';
 import 'package:twoGeeks/app/services/auth_base.dart';
+import 'package:twoGeeks/common_widgets/circular_progress_indicator.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LandingPage extends StatelessWidget {
@@ -30,28 +31,7 @@ class LandingPage extends StatelessWidget {
           }
         } else {
           return Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text(
-                  "TwoGeeks",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.purple[600],
-                    fontSize: 35,
-                  ),
-                ),
-                SizedBox(
-                  height: 35,
-                ),
-                Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.grey[400],
-                  ),
-                )
-              ],
-            ),
+            body: TwoGeeksCircularProgressIndicator(title: "TwoGeeks",),
           );
         }
       },

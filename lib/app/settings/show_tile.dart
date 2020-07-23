@@ -4,7 +4,8 @@ class ShowTile extends StatelessWidget {
   String title;
   String subtitle;
   Function onTap;
-  ShowTile({this.title, this.subtitle, this.onTap});
+  IconData iconData;
+  ShowTile({this.title, this.subtitle, this.onTap, this.iconData = Icons.edit});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class ShowTile extends StatelessWidget {
                 ),
               ),
         onTap: onTap,
-        trailing: Icon(Icons.edit),
+        trailing: Icon(iconData),
       ),
       decoration: BoxDecoration(
         border: Border(
