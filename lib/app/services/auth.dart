@@ -129,6 +129,8 @@ class Auth implements AuthBase {
           'hobbies': [],
           'strength': [],
           'weakness': [],
+          'tutoringGrades': [],
+          'tutoringSubjects' : [],
           'friends_user_uid': [],
           'friendrequest_user_uid': [],
           'tutor': false,

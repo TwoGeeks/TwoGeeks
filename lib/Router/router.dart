@@ -5,6 +5,7 @@ import 'package:twoGeeks/app/chatroom/chatroom.dart';
 import 'package:twoGeeks/app/detail/detail.dart';
 import 'package:twoGeeks/app/detailTutor/detailTutor.dart';
 import 'package:twoGeeks/app/matching/matchingHandler.dart';
+import 'package:twoGeeks/app/settings/tutor_profile.dart';
 import 'package:twoGeeks/app/settings/user_preference.dart';
 import 'package:twoGeeks/app/settings/user_profile.dart';
 import 'package:twoGeeks/app/sign_in/sign_in_page.dart';
@@ -66,6 +67,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case UserPreferenceRoute:
       return MaterialPageRoute(builder: (context) => UserPreference());
 
+    case TutorProfileRoute:
+      return MaterialPageRoute(builder: (context) => TutorProfile());
 
     default:
       return MaterialPageRoute(

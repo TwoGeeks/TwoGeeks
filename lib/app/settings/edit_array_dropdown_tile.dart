@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:twoGeeks/common_widgets/custom_flat_button.dart';
 
-class EditArrayTile extends StatefulWidget {
+class EditArrayDropdownTile extends StatefulWidget {
   final String title;
   final List<dynamic> array;
+  final List<dynamic> suggestions;
   final Function onSubmit;
   final String helperText;
   final double tagFontSize;
 
-  EditArrayTile(
-      {this.title, this.helperText, this.array, this.onSubmit, this.tagFontSize = 15.0,});
+  EditArrayDropdownTile(
+      {this.title, this.helperText, this.array, this.onSubmit, this.suggestions, this.tagFontSize = 15.0,});
   @override
-  _EditArrayTileState createState() => _EditArrayTileState();
+  _EditArrayDropdownTileState createState() => _EditArrayDropdownTileState();
 }
 
-class _EditArrayTileState extends State<EditArrayTile> {
+class _EditArrayDropdownTileState extends State<EditArrayDropdownTile> {
 
   bool _edit = false;
-  String _newStrength;
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _formController = TextEditingController();
+  dynamic _newField;
 
   void _toggle() {
     setState(() {
@@ -33,14 +32,13 @@ class _EditArrayTileState extends State<EditArrayTile> {
   }
 
   void _validateThenSubmit() {
-    if (_formKey.currentState.validate()){
-      _formKey.currentState.save();
-      setState(() {
-        widget.array.add(_newStrength);
-      });
-      _submit();
-      _formController.clear();
-    }
+      if (!widget.array.contains(_newField)) {
+        setState(() {
+          widget.array.add(_newField);
+        });
+        _submit();
+      }
+      _cancel();
   }
 
   void _cancel() {
@@ -61,48 +59,48 @@ class _EditArrayTileState extends State<EditArrayTile> {
   Widget _editTile() {
     return Card(
         child: Padding(
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Text(
-            widget.title,
-            style: TextStyle(
-              color: Colors.black87,
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          _buildEditWidgetFromArray(),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              CustomFlatButton(
-                child: Text("Cancel"),
-                onPressed: _cancel,
-                color: Colors.red.withOpacity(0.7),
-                height: 30,
+              Text(
+                widget.title,
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
               ),
               SizedBox(
-                width: 20,
+                height: 10,
               ),
-              CustomFlatButton(
-                child: Text("Add"),
-                onPressed: _validateThenSubmit,
-                color: Colors.green.withOpacity(0.7),
-                height: 30,
+              _buildEditWidgetFromArray(),
+              SizedBox(
+                height: 20,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  CustomFlatButton(
+                    child: Text("Cancel"),
+                    onPressed: _cancel,
+                    color: Colors.red.withOpacity(0.7),
+                    height: 30,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CustomFlatButton(
+                    child: Text("Add"),
+                    onPressed: _validateThenSubmit,
+                    color: Colors.green.withOpacity(0.7),
+                    height: 30,
+                  ),
+                ],
+              )
             ],
-          )
-        ],
-      ),
-    ));
+          ),
+        ));
   }
 
   Widget _showTile() {
@@ -124,9 +122,9 @@ class _EditArrayTileState extends State<EditArrayTile> {
       decoration: BoxDecoration(
         border: Border(
             bottom: BorderSide(
-          width: 1,
-          color: Colors.black54.withOpacity(0.2),
-        )),
+              width: 1,
+              color: Colors.black54.withOpacity(0.2),
+            )),
       ),
     );
   }
@@ -199,30 +197,30 @@ class _EditArrayTileState extends State<EditArrayTile> {
         SizedBox(
           height: 10,
         ),
-        Form(
-          key: _formKey,
-          child: TextFormField(
-            autofocus: true,
-            controller: _formController,
-            onSaved: (value) => _newStrength = value,
-            validator: (text) {
-              if (text.length == 0) {
-                return "Field can't be empty";
-              }
-              return null;
-            },
-            maxLength: 20,
-            maxLines: 1,
-            enableSuggestions: true,
-            decoration: new InputDecoration(
-              hintText: widget.helperText,
-              focusColor: Colors.lightBlue,
-              border: new OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: new BorderSide(color: Colors.teal)),
+        DropdownButton<String>(
+            value: _newField,
+            icon: Icon(Icons.arrow_downward),
+            iconSize: 24,
+            elevation: 16,
+            isExpanded: true,
+            style: TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 2,
+              color: Colors.deepPurpleAccent,
             ),
-          ),
-        )
+            onChanged: (String newValue) {
+              setState(() {
+                _newField = newValue;
+              });
+            },
+            items: widget.suggestions
+                .map<DropdownMenuItem<String>>((value) {
+              return DropdownMenuItem<String>(
+                value: value.toString(),
+                child: Text(value),
+              );
+            }).toList(),
+          )
       ],
     );
   }
