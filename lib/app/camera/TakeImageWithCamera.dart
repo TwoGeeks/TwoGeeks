@@ -10,11 +10,13 @@ import 'package:path_provider/path_provider.dart';
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
   final Function onClick;
+  final CameraController controller;
 
   const TakePictureScreen({
     Key key,
     @required this.camera,
-    @required this.onClick
+    @required this.onClick,
+    @required this.controller
   }) : super(key: key);
 
   @override
@@ -22,30 +24,30 @@ class TakePictureScreen extends StatefulWidget {
 }
 
 class TakePictureScreenState extends State<TakePictureScreen> {
-  CameraController _controller;
   Future<void> _initializeControllerFuture;
 
   @override
   void initState() {
     super.initState();
-    // To display the current output from the Camera,
-    // create a CameraController.
-    _controller = CameraController(
-      // Get a specific camera from the list of available cameras.
-      widget.camera,
-      // Define the resolution to use.
-      ResolutionPreset.medium,
-    );
-
     // Next, initialize the controller. This returns a Future.
-    _initializeControllerFuture = _controller.initialize();
+    _initializeControllerFuture = widget.controller.initialize();
   }
 
   @override
   void dispose() {
     // Dispose of the controller when the widget is disposed.
-    _controller.dispose();
+    widget.controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(TakePictureScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.controller != oldWidget.controller) {
+      setState(() {
+        _initializeControllerFuture = widget.controller.initialize();
+      });
+    }
   }
 
   @override
@@ -59,7 +61,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
-            return CameraPreview(_controller);
+            return CameraPreview(widget.controller);
           } else {
             // Otherwise, display a loading indicator.
             return Center(child: CircularProgressIndicator());
@@ -87,7 +89,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             );
 
             // Attempt to take a picture and log where it's been saved.
-            await _controller.takePicture(path);
+            await widget.controller.takePicture(path);
 
             widget.onClick(path);
 //            // If the picture was taken, display it on a new screen.
@@ -106,20 +108,3 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     );
   }
 }
-
-//// A widget that displays the picture taken by the user.
-//class DisplayPictureScreen extends StatelessWidget {
-//  final String imagePath;
-//
-//  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(title: Text('Display the Picture')),
-//      // The image is stored as a file on the device. Use the `Image.file`
-//      // constructor with the given path to display the image.
-//      body: Image.file(File(imagePath)),
-//    );
-//  }
-//}

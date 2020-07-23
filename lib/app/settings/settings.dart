@@ -121,6 +121,7 @@ class _SettingsState extends State<Settings> {
             text: "Log Out",
             textColor: Colors.black,
             onPressed: () => _confirmSignOut(context),
+            icon: Icons.exit_to_app,
           ),
         ),
         SizedBox(
