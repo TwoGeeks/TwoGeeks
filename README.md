@@ -48,51 +48,51 @@ Using Adobe XD, we have come up we a mockup of our mobile application.
 
 ### Authentication pages
 <p float="left">
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Login-SIgnup.png" width="200" />
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Login%20page.png" width="200" /> 
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page.png" width="200" />
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login-SIgnup.png" width="200" />
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login%20page.png" width="200" /> 
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page.png" width="200" />
 </p>
 
 ### Sign up pages
 <p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%201.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%202.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%203.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Signup%20page%20%E2%80%93%204.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%201.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%202.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%203.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%204.png" width="200" />
 </p>
 
 ### In-app screens pages
 <p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Home%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Matching%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Chat%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Settings.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/People%20details%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Home%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Matching%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Chat%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Settings.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/People%20details%20page.png" width="200" />
 </p>
 
 ### Chat page and FriendRequest notification
 <p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Chatroom%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Notification.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Notification%20%E2%80%93%20Accept.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Chatroom%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification%20%E2%80%93%20Accept.png" width="200" />
 </p>
 
 ### Tutor UI pages
 <p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20matching%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20details%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/mockups/Tutor%20Home%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Tutor%20matching%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Tutor%20details%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Tutor%20Home%20page.png" width="200" />
 </p>
 
 ---
 
 For our database, we have come up with a initial schema.
-![backend schema](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/schema.jpg)
+![backend schema](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/schema.jpg)
 
 ---
 
 ### Overall app design
-![app design](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project%20assets/userflow.jpg)
+![app design](https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/userflow.jpg)
 
 ## Development Plan
 
@@ -214,12 +214,12 @@ For our database, we have come up with a initial schema.
 ## Other Similar Applications
 
 ### Reddit r/FindStudyBuddies
-![r/FindStudyBuddies](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other2.png)
+![r/FindStudyBuddies](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/other2.png)
 - Limitations
     - Hard to filter and search based on preferences as reddit can only sort via latest or most popular or search via description
 
 ### MoocLab
-![mooclab](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project%20assets/other1.png)
+![mooclab](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/other1.png)
 - Limitations
     - This platform is designed for students to meet up online and share their progress on MOOC courses. It doest really support looking at finding physical interactions and studying
 
