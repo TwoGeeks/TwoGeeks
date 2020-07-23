@@ -7,8 +7,9 @@ import 'package:image_cropper/image_cropper.dart';
 class PictureCropper extends StatefulWidget {
   final String title;
   final File imageFile;
-  final Function callBack;
-  PictureCropper({this.title, this.imageFile, this.callBack});
+  @required final Function onSubmit;
+  @required final Function onCancel;
+  PictureCropper({this.title, this.imageFile, this.onSubmit, this.onCancel});
 
   @override
   _PictureCropperState createState() => _PictureCropperState();
@@ -43,12 +44,17 @@ class _PictureCropperState extends State<PictureCropper> {
             FloatingActionButton(
               child: Icon(Icons.check),
               backgroundColor: Colors.green,
-              onPressed: () => widget.callBack(cropped),
+              onPressed: () => widget.onSubmit(cropped),
+            ),
+            FloatingActionButton(
+              child: Icon(Icons.crop),
+              backgroundColor: Colors.brown.withOpacity(0.9),
+              onPressed: () => _cropImage(),
             ),
             FloatingActionButton(
                 backgroundColor: Colors.red,
                 child: Icon(Icons.clear),
-                onPressed: _cropImage
+                onPressed: widget.onCancel
             ),
           ],
         )

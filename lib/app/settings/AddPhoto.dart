@@ -24,11 +24,19 @@ class _AddPhotoState extends State<AddPhoto> {
   CameraDescription _operatingCamera;
   bool _initialised = false;
   bool _isLoading = false;
+  CameraController _cameraController;
 
   @override
   void initState() {
     super.initState();
     _initializeCamera();
+  }
+
+  void _redoImage(){
+    setState(() {
+      profilePic = null;
+      _cameraController = CameraController(_operatingCamera, ResolutionPreset.medium);
+    });
   }
 
   void _takePhoto(String imgUrl) {
@@ -41,10 +49,12 @@ class _AddPhotoState extends State<AddPhoto> {
     if (_operatingCamera == _camerasList[0] && _camerasList[1] != null) {
       setState(() {
         _operatingCamera = _camerasList[1];
+        _cameraController = CameraController(_operatingCamera, ResolutionPreset.medium);
       });
     } else {
       setState(() {
         _operatingCamera = _camerasList[0];
+        _cameraController = CameraController(_operatingCamera, ResolutionPreset.medium);
       });
     }
   }
@@ -52,9 +62,15 @@ class _AddPhotoState extends State<AddPhoto> {
   Future<void> _initializeCamera() async {
     WidgetsFlutterBinding.ensureInitialized();
     _camerasList = await availableCameras();
-    _operatingCamera = _camerasList.first;
+    _camerasList.length == 2
+        ? _operatingCamera = _camerasList[1]
+        : _operatingCamera = _camerasList[0];
     setState(() {
       _initialised = true;
+      _cameraController = CameraController(
+        _operatingCamera,
+        ResolutionPreset.medium,
+      );
     });
   }
 
@@ -126,6 +142,7 @@ class _AddPhotoState extends State<AddPhoto> {
       body: TakePictureScreen(
         camera: _operatingCamera,
         onClick: _takePhoto,
+        controller: _cameraController,
       ),
     );
   }
@@ -145,15 +162,14 @@ class _AddPhotoState extends State<AddPhoto> {
             appBar: AppBar(
               leading: new IconButton(
                   icon: Icon(Icons.arrow_back),
-                  onPressed: () => setState(() {
-                        profilePic = null;
-                      })),
+                  onPressed: _redoImage),
               backgroundColor: Colors.black,
               title: Text("Preview image"),
             ),
             body: PictureCropper(
               title: "Edit Image",
-              callBack: _cropPhotoAndSubmit,
+              onSubmit: _cropPhotoAndSubmit,
+              onCancel: _redoImage,
               imageFile: profilePic,
             ))
         : Container(

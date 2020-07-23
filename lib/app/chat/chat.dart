@@ -71,7 +71,9 @@ class _ChatState extends State<Chat> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       FadeAnimation(0.8, chatHeader(snapshot.data.tutor)),
-                      FadeAnimation(
+                      idList.length == 0
+                      ? SizedBox()
+                      : FadeAnimation(
                         0.9,
                         friendRequests(context, uid, idList, widget.store, snapshot.data.tutor),
                       ),
