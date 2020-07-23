@@ -205,6 +205,49 @@ For our database, we have come up with a initial schema.
 - Ensure buttons are not obscured
 - Ensure app is easy to use and understand
 
+### User Testing
+We have asked some of our friends to try our app and followed up with a simple [survey](https://docs.google.com/forms/d/e/1FAIpQLSdOvKnX5yGGNCqL8BNKcIwv3203P2BXHNEKR-64E-Pu_bZLzw/viewform?usp=sf_link)
+
+Here are the results:
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>How good is the UI design?</th>
+    <th>Are the buttons for functions obvious?</th>
+    <th>Was there any bugs that you discovered while using this app?</th>
+  </tr>
+  
+  <tr>
+    <td>Shaun</td>
+    <td>4</td>
+    <td>Yes</td>
+    <td>Details page which have missing info have empty boxes</td>
+  </tr>
+  
+  <tr>
+    <td>Jonathan</td>
+    <td>5</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <td>Wei Zhi</td>
+    <td>4</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <td>Timothy</td>
+    <td>5</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+</table>
+
+In general, the feedback for the UI design and button functions are well received. Some of them mentioned serveral bugs and have fixed them.
+
 ## Problems Encountered
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
 - Since firebase and firestore are deeply intertwined in our app, it was hard to set up testing as most of the time it would break. One way we resolved this issue was to mock both dependencies
