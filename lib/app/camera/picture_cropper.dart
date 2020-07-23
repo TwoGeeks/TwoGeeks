@@ -28,38 +28,31 @@ class _PictureCropperState extends State<PictureCropper> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("Preview image"),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-              color: Colors.grey,
-              child: Center(
-                child: Image.file(cropped),
-              )),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              FloatingActionButton(
-                child: Icon(Icons.check),
-                backgroundColor: Colors.green,
-                onPressed: () => widget.callBack(cropped),
-              ),
-              FloatingActionButton(
-                  backgroundColor: Colors.red,
-                  child: Icon(Icons.clear),
-                  onPressed: _cropImage
-              ),
-            ],
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Container(
+            color: Colors.grey,
+            child: Center(
+              child: Image.file(cropped),
+            )),
+        SizedBox(height: 30),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            FloatingActionButton(
+              child: Icon(Icons.check),
+              backgroundColor: Colors.green,
+              onPressed: () => widget.callBack(cropped),
+            ),
+            FloatingActionButton(
+                backgroundColor: Colors.red,
+                child: Icon(Icons.clear),
+                onPressed: _cropImage
+            ),
+          ],
+        )
+      ],
     );
   }
 
@@ -85,13 +78,13 @@ class _PictureCropperState extends State<PictureCropper> {
                 CropAspectRatioPreset.ratio16x9
               ],
         androidUiSettings: AndroidUiSettings(
-            toolbarTitle: 'Cropper',
-            toolbarColor: Colors.deepOrange,
+            toolbarTitle: 'Photo Cropper',
+            toolbarColor: Colors.black,
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
         iosUiSettings: IOSUiSettings(
-          title: 'Cropper',
+          title: 'Photo Cropper',
         ));
     if (croppedFile != null) {
       setState(() {
