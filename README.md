@@ -169,6 +169,54 @@ For our database, we have come up with a initial schema.
   </tr>
 </table>
 
+## Features development
+
+<table style="width:100%">
+  <tr>
+    <th>Milestone</th>
+    <th>Features</th>
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>
+      <ol>
+        <li>Authentication</li>
+        <li>Setting up front end pages with no backendlogic</li>
+        <li>Accepting and rejecting friend requests</li>
+      </ol>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>2</td>
+    <td>
+      <ol>
+        <li>Chat functionality</li>
+        <li>Sending friend requests</li>
+        <li>Adding profile picture</li>
+        <li>Editing own profile</li>
+        <li>List current chats</li>
+        <li>Profile Matching</li>
+      </ol>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>3</td>
+    <td>
+      <ol>
+        <li>Tutor Search Function</li>
+        <li>Edit tutor profile page</li>
+        <li>Send, receive and accept tutor requests</li>
+        <li>Take profile picture using camera with cropping</li>
+        <li>Edit user preference</li>
+        <li>Delete user chat messages</li>
+      </ol>
+    </td>
+  </tr>
+</table>
+
 ## Software engineering design practices
 - Using Github for version control and merging of conflicts
     - Creating separate branches for both of us to work on before doing a pull request to merge it to master branch
@@ -246,14 +294,14 @@ Here are the results:
     <td>Jonathan</td>
     <td>5</td>
     <td>Yes</td>
-    <td></td>
+    <td>When I upload my own image, the image covers the entire page awkwardly. The profile picture in the chatroom are not my pictures.</td>
   </tr>
   
   <tr>
     <td>Wei Zhi</td>
     <td>4</td>
     <td>Yes</td>
-    <td></td>
+    <td>Sometimes the page shows blank when loading. Maybe it need to have a loader?</td>
   </tr>
   
   <tr>
@@ -264,7 +312,7 @@ Here are the results:
   </tr>
 </table>
 
-In general, the feedback for the UI design and button functions are well received. Some of them mentioned serveral bugs and have fixed them.
+In general, the feedback for the UI design and button functions are well received. Some of them mentioned serveral bugs that makes the app feels clunky, such as the aspect ratio of the images and the lack of a progress indicator when loading a page. We have taken that into consideration and made those bug fixes/improvements.
 
 ## Problems Encountered
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
