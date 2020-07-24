@@ -270,6 +270,45 @@ In general, the feedback for the UI design and button functions are well receive
 
 ---
 
+## Design of Final product
+
+Here is a view of our latest design for the application. We decided to have a more consistant color palette, have images and animations to make it more appealing for users.
+
+### Authentication pages
+<p float="left">
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login-SIgnup.png" width="200" />
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login%20page.png" width="200" /> 
+  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page.png" width="200" />
+</p>
+
+### Sign up pages
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%201.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%202.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%203.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%204.png" width="200" />
+</p>
+
+### In-app screens pages
+<p float="left">
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Homepage.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Matching%20page.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Tutor%20search%20page.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Settings.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Edit%20tutor%20profile.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Edit%20user%20preference.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/Edit%20user%20profile.jpg" width="200" />
+</p>
+
+### Chat page and FriendRequest notification
+<p float="left">
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Chatroom%20page.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification.png" width="200" />
+    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification%20%E2%80%93%20Accept.png" width="200" />
+</p>
+
+---
+
 By Dev++  
 Andre Wong Zhi Hua  
 Peh Jun Siang
