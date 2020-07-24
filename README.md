@@ -292,17 +292,9 @@ Here is a view of our latest design for the application. We decided to have a mo
 
 ### Authentication pages
 <p float="left">
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login-SIgnup.png" width="200" />
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Login%20page.png" width="200" /> 
-  <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page.png" width="200" />
-</p>
-
-### Sign up pages
-<p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%201.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%202.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%203.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Signup%20page%20%E2%80%93%204.png" width="200" />
+  <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/landing.jpg" width="200" />
+  <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/signin.jpg" width="200" /> 
+  <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/signup.jpg" width="200" />
 </p>
 
 ### In-app screens pages
@@ -318,9 +310,9 @@ Here is a view of our latest design for the application. We decided to have a mo
 
 ### Chat page and FriendRequest notification
 <p float="left">
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Chatroom%20page.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification.png" width="200" />
-    <img src="https://raw.githubusercontent.com/todoge/TwoGeeks/master/project_assets/mockups/Notification%20%E2%80%93%20Accept.png" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/chatroom.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/addfriend1.jpg" width="200" />
+    <img src="https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/final/addfriend2.jpg" width="200" />
 </p>
 
 ---
