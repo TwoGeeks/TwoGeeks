@@ -171,7 +171,23 @@ For our database, we have come up with a initial schema.
 
 ## Software engineering design practices
 - Using Github for version control and merging of conflicts
-- Ensure all test are passed before merging to master branch
+    - Creating separate branches for both of us to work on before doing a pull request to merge it to master branch
+    - ![branch](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/branches.png)
+- Ensure all test are passed before merging to master branch / (Continuous Integration/ Continuous Development)
+    - We used travis CI such that every time there is a pull request, the unit testing will be auto ran on the new branch's code
+    - If all tests are passed then we will merge branch to master branch
+    - ![travisCI](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/travis1.png)
+    - ![travisCI2](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/travis2.png)
+- Adopt DRY Principle
+    - We have a folder for common widgets that are used by several pages or components to ensure that we do not duplicate codes
+    - ![DRY](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/commonWidgets.png)
+- Abstraction
+    - We abstracted out the logic for routing so that configuring routing will only be in one file
+    - Easier for us to make changes to routing if needed
+    - ![routing](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/routingpage.png)
+- Defensive programming
+    - Check inputs are well validated before submission
+    - ![validate](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/validators.png)
 - Ensure harder to understand codes are well commented
 - Write test to ensure code is working
 
