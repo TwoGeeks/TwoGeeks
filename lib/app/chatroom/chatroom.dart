@@ -107,7 +107,7 @@ class _ChatroomState extends State<Chatroom> {
                         snapshot.data.documents;
                     return Flexible(
                       child: messageBody(
-                          context, listMessage, userID, listScrollController),
+                          context, listMessage, userID, listScrollController, widget.store),
                     );
                   }
                 }),

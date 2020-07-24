@@ -5,7 +5,7 @@ import 'package:twoGeeks/app/chatroom/friendChat.dart';
 import 'package:twoGeeks/app/chatroom/userChat.dart';
 
 Widget messageBody(context, List<DocumentSnapshot> listMessage, String userID,
-    listScrollController) {
+    listScrollController, store) {
   return (ListView.builder(
       controller: listScrollController,
       reverse: true,
@@ -13,9 +13,9 @@ Widget messageBody(context, List<DocumentSnapshot> listMessage, String userID,
       itemBuilder: (BuildContext ctxt, int index) {
         DocumentSnapshot doc = listMessage[index];
         if (userID == doc["idFrom"]) {
-          return FadeAnimation(0.2, userChat(context, doc, userID));
+          return FadeAnimation(0.2, userChat(context, doc, userID, store));
         } else {
-          return FadeAnimation(0.2, friendChat(context, doc, doc["idFrom"]));
+          return FadeAnimation(0.2, friendChat(context, doc, doc["idFrom"], store));
         }
       }));
 }

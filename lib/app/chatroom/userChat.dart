@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'DeletableChatBox.dart';
 
-Widget userChat(context, DocumentSnapshot doc, String uid) {
+Widget userChat(context, DocumentSnapshot doc, String uid, Firestore store) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
     margin: EdgeInsets.symmetric(vertical: 20),
@@ -29,10 +29,7 @@ Widget userChat(context, DocumentSnapshot doc, String uid) {
             ),
           ),
           StreamBuilder(
-              stream: Firestore.instance
-                  .collection("users")
-                  .document(uid)
-                  .snapshots(),
+              stream: store.collection("users").document(uid).snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
