@@ -32,7 +32,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case LandingRoute:
       return MaterialPageRoute(builder: (context) => LandingPage());
 
-    // To be implemented below
     case 'Signup':
       return MaterialPageRoute(builder: (context) => TwoGeeksSignUpPage());
     case TwoGeeksSignInRoute:
