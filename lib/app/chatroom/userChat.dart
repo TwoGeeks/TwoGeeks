@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'DeletableChatBox.dart';
 
-Widget userChat(context, DocumentSnapshot doc) {
+Widget userChat(context, DocumentSnapshot doc, String uid) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
     margin: EdgeInsets.symmetric(vertical: 20),
@@ -28,9 +28,24 @@ Widget userChat(context, DocumentSnapshot doc) {
               textAlign: TextAlign.left,
             ),
           ),
-          CircleAvatar(
-            backgroundImage: AssetImage("images/sample_pictures/profile_pic.png"),
-          ),
+          StreamBuilder(
+              stream: Firestore.instance
+                  .collection("users")
+                  .document(uid)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return CircleAvatar(
+                    backgroundImage: snapshot.data["profilePic"] != ""
+                        ? NetworkImage(snapshot.data["profilePic"])
+                        : AssetImage("images/sample_pictures/profile_pic.png"),
+                  );
+                }
+              }),
         ],
       )),
     ),

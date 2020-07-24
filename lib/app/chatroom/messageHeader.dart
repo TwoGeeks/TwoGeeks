@@ -19,8 +19,9 @@ Widget messageHeader(context, String friendID, Firestore store) {
                 children: <Widget>[
                   CircleAvatar(
                     key: Key("Image of friend"),
-                    backgroundImage:
-                        AssetImage("images/sample_pictures/profile_pic.png"),
+                    backgroundImage: doc["profilePic"] != ""
+                        ? NetworkImage(doc["profilePic"])
+                        : AssetImage("images/sample_pictures/profile_pic.png"),
                   ),
                   Container(
                       padding: EdgeInsets.only(left: 15),

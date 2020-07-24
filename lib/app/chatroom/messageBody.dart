@@ -13,9 +13,9 @@ Widget messageBody(context, List<DocumentSnapshot> listMessage, String userID,
       itemBuilder: (BuildContext ctxt, int index) {
         DocumentSnapshot doc = listMessage[index];
         if (userID == doc["idFrom"]) {
-          return FadeAnimation(0.2, userChat(context, doc));
+          return FadeAnimation(0.2, userChat(context, doc, userID));
         } else {
-          return FadeAnimation(0.2, friendChat(context, doc));
+          return FadeAnimation(0.2, friendChat(context, doc, doc["idFrom"]));
         }
       }));
 }
