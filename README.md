@@ -219,8 +219,11 @@ For our database, we have come up with a initial schema.
 
 ## Software engineering design practices
 - Using Github for version control and merging of conflicts
-    - Creating separate branches for both of us to work on before doing a pull request to merge it to master branch
+    - Creating separate branches for both of us to work on before doing a pull request to merge it to master branch using the feature branch flow method
     - ![branch](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/branches.png)
+- Scrum meetings
+    - We have a scrum meeting every Sunday night to discuss what we have done for the week and what features we will be doing for the next week.
+    - We also ensure that the merge conflicts are resolved before moving on to the next sprint.
 - Ensure all test are passed before merging to master branch / (Continuous Integration/ Continuous Development)
     - We used travis CI such that every time there is a pull request, the unit testing will be auto ran on the new branch's code
     - If all tests are passed then we will merge branch to master branch
@@ -238,6 +241,9 @@ For our database, we have come up with a initial schema.
     - ![validate](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/validators.png)
 - Ensure harder to understand codes are well commented
 - Write test to ensure code is working
+- Solid Principles
+    - Single Responsibility Principle
+    - Open-Closed Principle
 
 ## Testing Methods
 
