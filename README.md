@@ -222,8 +222,8 @@ For our database, we have come up with a initial schema.
     - Creating separate branches for both of us to work on before doing a pull request to merge it to master branch using the feature branch flow method
     - ![branch](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/branches.png)
 - Scrum meetings
-    - We have a scrum meeting every Sunday night to discuss what we have done for the week and what features we will be doing for the next week.
-    - We also ensure that the merge conflicts are resolved before moving on to the next sprint.
+    - We have a scrum meeting every Sunday night to discuss what we have done for the week and what features we will be doing for the next week
+    - We also ensure that the merge conflicts are resolved before moving on to the next sprint
 - Ensure all test are passed before merging to master branch / (Continuous Integration/ Continuous Development)
     - We used travis CI such that every time there is a pull request, the unit testing will be auto ran on the new branch's code
     - If all tests are passed then we will merge branch to master branch
@@ -240,10 +240,20 @@ For our database, we have come up with a initial schema.
     - Check inputs are well validated before submission
     - ![validate](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/validators.png)
 - Ensure harder to understand codes are well commented
-- Write test to ensure code is working
 - Solid Principles
     - Single Responsibility Principle
+        - We ensured that most of our classes only have one responsibility so that it will be easier to make changes to them
+        - ![s1](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/S1.png)
+        - ![s2](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/S2.png)
     - Open-Closed Principle
+        - We implemented from our auth_base to ensure that current methods cannot be modified but additional methods can be added to them if needed
+        - ![openclose](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/authbase.png)
+- Separation of Concerns Principle
+    - We separated the codes between the different pages
+    - The code does not overlap and cause problems when someone changes a code in a page
+    - ![pages](https://raw.githubusercontent.com/TwoGeeks/TwoGeeks/master/project_assets/app.png)
+    
+- Write test to ensure code is working
 
 ## Testing Methods
 
