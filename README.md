@@ -2,7 +2,7 @@
 
 **twoGeeks is a mobile application to allow students to find study partners to make more friends, knowledge and experiences as well as to provide an avenue for them to ask for help in subjects they are weak at.**
 
-Download apk file [here](https://drive.google.com/file/d/1HUb6m5JJ-hSuULo3gyvgQnHGIFIlYEVG/view?usp=sharing)
+Download apk file [here](https://drive.google.com/file/d/1hB4-Uz9i3_N_o7awuKW-28kXTT1uVY-Y/view?usp=sharing)
 
 <div align="center">
     <span display="inline">Build using </span>
@@ -329,6 +329,12 @@ Here are the results:
 </table>
 
 In general, the feedback for the UI design and button functions are well received. Some of them mentioned serveral bugs that makes the app feels clunky, such as the aspect ratio of the images and the lack of a progress indicator when loading a page. We have taken that into consideration and made those bug fixes/improvements.
+
+## Bugs squashed
+- Aspect ratio of images when user uploads different sized images
+- Lack of progress indicators when page is still loading
+- Some of the images are still showing default placeholder images
+- Unable to add user as friend
 
 ## Problems Encountered
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
