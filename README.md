@@ -330,6 +330,12 @@ Here are the results:
 
 In general, the feedback for the UI design and button functions are well received. Some of them mentioned serveral bugs that makes the app feels clunky, such as the aspect ratio of the images and the lack of a progress indicator when loading a page. We have taken that into consideration and made those bug fixes/improvements.
 
+## Bugs squashed
+- Aspect ratio of images when user uploads different sized images
+- Lack of progress indicators when page is still loading
+- Some of the images are still showing default placeholder images
+- Unable to add user as friend
+
 ## Problems Encountered
 - Since Android phones comes in difference sizes, we are expecting some phones to have bad UI issues.
 - Since firebase and firestore are deeply intertwined in our app, it was hard to set up testing as most of the time it would break. One way we resolved this issue was to mock both dependencies
