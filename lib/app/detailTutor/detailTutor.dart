@@ -64,7 +64,7 @@ class DetailTutor extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           AspectRatio(
                             aspectRatio: 18.0 / 18.0,
@@ -81,18 +81,32 @@ class DetailTutor extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: <Widget>[
                                 ...detailTutorHeader(data),
-                                aboutMe(data["aboutMe"]),
-                                strengthAndWeakness(
-                                    data["strength"], data["weakness"]),
-                                Text(
-                                    "Teaching subjects in English, math and science"),
-                                Text("Preferably weekends")
+                                data["aboutMe"] == ""
+                                    ? Container()
+                                    : aboutMe(data["aboutMe"]),
+                                data["strength"].length == 0 &&
+                                        data["weakness"].length == 0
+                                    ? Container()
+                                    : strengthAndWeakness(
+                                        data["strength"], data["weakness"]),
                               ],
                             ),
                           ),
-                          RaisedButton(
-                            onPressed: () => _sendTutorRequest(context),
-                            child: Text("Send Tutor Request"),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Color(0xff8080ff),
+                                Color(0xff80b3ff)
+                              ]),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30)),
+                            ),
+                            margin: EdgeInsets.only(left: 30, top: 30, bottom: 30),
+                            child: FlatButton(
+                              onPressed: () => _sendTutorRequest(context),
+                              child: Text("Send Tutor Request"),
+                            ),
                           )
                         ],
                       ),

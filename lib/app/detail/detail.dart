@@ -51,10 +51,17 @@ class Detail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               ...detailHeader(data),
-                              data["aboutMe"] == "" ? Container() : aboutMe(data["aboutMe"]),
-                              data["strength"].length == 0 && data["weakness"].length == 0 ? Container() : strengthAndWeakness(
-                                  data["strength"], data["weakness"]),
-                              data["hobbies"].length == 0 ? Container() : hobbies(data["hobbies"]),
+                              data["aboutMe"] == ""
+                                  ? Container()
+                                  : aboutMe(data["aboutMe"]),
+                              data["strength"].length == 0 &&
+                                      data["weakness"].length == 0
+                                  ? Container()
+                                  : strengthAndWeakness(
+                                      data["strength"], data["weakness"]),
+                              data["hobbies"].length == 0
+                                  ? Container()
+                                  : hobbies(data["hobbies"]),
                             ],
                           ),
                         )
