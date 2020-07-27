@@ -2,7 +2,7 @@
 
 **twoGeeks is a mobile application to allow students to find study partners to make more friends, knowledge and experiences as well as to provide an avenue for them to ask for help in subjects they are weak at.**
 
-Download apk file [here](https://drive.google.com/file/d/1HUb6m5JJ-hSuULo3gyvgQnHGIFIlYEVG/view?usp=sharing)
+Download apk file [here](https://drive.google.com/file/d/1HfeRj-PnJVM0AglyW_IxM05q8HTnJKCY/view?usp=sharing)
 
 <div align="center">
     <span display="inline">Build using </span>
