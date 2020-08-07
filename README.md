@@ -1,4 +1,4 @@
-# Orbital 2020 Apollo 11
+# Orbital 2020 Artemis
 
 **twoGeeks is a mobile application to allow students to find study partners to make more friends, knowledge and experiences as well as to provide an avenue for them to ask for help in subjects they are weak at.**
 
